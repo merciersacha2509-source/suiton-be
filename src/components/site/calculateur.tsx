@@ -123,9 +123,15 @@ export function Calculateur({
         compact ? 'p-5' : 'p-6 sm:p-8',
       )}
     >
+      <p className="text-aqua-deep mb-6 inline-flex items-center gap-2 text-[0.6875rem] font-semibold tracking-[0.16em] uppercase">
+        <span className="bg-aqua-deep h-1 w-1 shrink-0 rounded-full" aria-hidden />
+        Simulateur SUITON
+      </p>
+
       <div className="space-y-6">
         <fieldset>
-          <legend className="text-ardoise text-xs font-medium tracking-[0.1em] uppercase">
+          <legend className="text-ardoise inline-flex items-center gap-1.5 text-xs font-medium tracking-[0.1em] uppercase">
+            <span className="bg-ardoise-clair h-1 w-1 shrink-0 rounded-full" aria-hidden />
             Type de nettoyage
           </legend>
           <div className="mt-3 grid grid-cols-3 gap-2">
@@ -149,7 +155,8 @@ export function Calculateur({
         </fieldset>
 
         <fieldset>
-          <legend className="text-ardoise text-xs font-medium tracking-[0.1em] uppercase">
+          <legend className="text-ardoise inline-flex items-center gap-1.5 text-xs font-medium tracking-[0.1em] uppercase">
+            <span className="bg-ardoise-clair h-1 w-1 shrink-0 rounded-full" aria-hidden />
             Type de bien
           </legend>
           <div className="mt-3 grid grid-cols-4 gap-2">
@@ -176,8 +183,9 @@ export function Calculateur({
           <div className="flex items-baseline justify-between">
             <label
               htmlFor="calc-surface"
-              className="text-ardoise text-xs font-medium tracking-[0.1em] uppercase"
+              className="text-ardoise inline-flex items-center gap-1.5 text-xs font-medium tracking-[0.1em] uppercase"
             >
+              <span className="bg-ardoise-clair h-1 w-1 shrink-0 rounded-full" aria-hidden />
               Surface
             </label>
             <span className="font-heading tabular text-lg font-semibold">{surface} m²</span>
@@ -208,8 +216,9 @@ export function Calculateur({
           </div>
         </div>
 
-        <fieldset>
-          <legend className="text-ardoise text-xs font-medium tracking-[0.1em] uppercase">
+        <fieldset className="border-mineral-dark border-t pt-6">
+          <legend className="text-ardoise inline-flex items-center gap-1.5 text-xs font-medium tracking-[0.1em] uppercase">
+            <span className="bg-ardoise-clair h-1 w-1 shrink-0 rounded-full" aria-hidden />
             Niveau de salissure
           </legend>
           <div className="mt-3 space-y-2">
@@ -257,8 +266,9 @@ export function Calculateur({
           <div>
             <label
               htmlFor="calc-cp"
-              className="text-ardoise text-xs font-medium tracking-[0.1em] uppercase"
+              className="text-ardoise inline-flex items-center gap-1.5 text-xs font-medium tracking-[0.1em] uppercase"
             >
+              <span className="bg-ardoise-clair h-1 w-1 shrink-0 rounded-full" aria-hidden />
               Code postal
             </label>
             <input
@@ -301,7 +311,8 @@ export function Calculateur({
           </div>
         ) : (
           <div>
-            <p className="text-ardoise text-xs font-medium tracking-[0.1em] uppercase">
+            <p className="text-aqua-deep inline-flex items-center gap-1.5 text-xs font-medium tracking-[0.1em] uppercase">
+              <span className="bg-aqua-deep h-1 w-1 shrink-0 rounded-full" aria-hidden />
               Estimation indicative
             </p>
             <p className="font-heading tabular text-abysse mt-1 text-3xl font-semibold">

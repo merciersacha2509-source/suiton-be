@@ -13,7 +13,7 @@ import { COMMUNES } from '@/lib/site/communes';
  */
 export function Pied() {
   return (
-    <footer className="border-mineral-dark bg-abysse text-mineral border-t">
+    <footer className="bg-abysse text-mineral border-aqua-deep/60 border-t-2">
       <div className="mx-auto max-w-6xl px-4 py-12">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
@@ -27,7 +27,7 @@ export function Pied() {
               <div className="pt-2">
                 <a
                   href={`tel:${ENTREPRISE.telephoneE164}`}
-                  className="hover:text-aqua transition-colors duration-150"
+                  className="hover:text-aqua inline-block transition-[color,transform] duration-150 hover:translate-x-0.5"
                 >
                   {ENTREPRISE.telephone}
                 </a>
@@ -35,7 +35,7 @@ export function Pied() {
               <div>
                 <a
                   href={`mailto:${ENTREPRISE.email}`}
-                  className="hover:text-aqua transition-colors duration-150"
+                  className="hover:text-aqua inline-block transition-[color,transform] duration-150 hover:translate-x-0.5"
                 >
                   {ENTREPRISE.email}
                 </a>
@@ -44,13 +44,17 @@ export function Pied() {
           </div>
 
           <nav aria-label="Services">
-            <h2 className="font-heading text-mineral/50 text-xs tracking-[0.12em] uppercase">
+            <h2 className="font-heading text-mineral/50 inline-flex items-center gap-1.5 text-xs tracking-[0.12em] uppercase">
+              <span className="bg-aqua h-1 w-1 shrink-0 rounded-full" aria-hidden />
               Services
             </h2>
             <ul className="mt-4 space-y-2 text-sm">
               {SERVICES.map((s) => (
                 <li key={s.slug}>
-                  <Link href={`/${s.slug}`} className="text-mineral/80 hover:text-aqua transition-colors duration-150">
+                  <Link
+                    href={`/${s.slug}`}
+                    className="text-mineral/80 hover:text-aqua inline-block transition-[color,transform] duration-150 hover:translate-x-0.5"
+                  >
                     {s.nom}
                   </Link>
                 </li>
@@ -59,7 +63,8 @@ export function Pied() {
           </nav>
 
           <nav aria-label="Zones desservies">
-            <h2 className="font-heading text-mineral/50 text-xs tracking-[0.12em] uppercase">
+            <h2 className="font-heading text-mineral/50 inline-flex items-center gap-1.5 text-xs tracking-[0.12em] uppercase">
+              <span className="bg-aqua h-1 w-1 shrink-0 rounded-full" aria-hidden />
               Zones desservies
             </h2>
             <ul className="mt-4 space-y-2 text-sm">
@@ -67,7 +72,7 @@ export function Pied() {
                 <li key={c.slug}>
                   <Link
                     href={`/nettoyage-fin-de-chantier/${c.slug}`}
-                    className="text-mineral/80 hover:text-aqua transition-colors duration-150"
+                    className="text-mineral/80 hover:text-aqua inline-block transition-[color,transform] duration-150 hover:translate-x-0.5"
                   >
                     {c.nom}
                   </Link>
@@ -77,47 +82,72 @@ export function Pied() {
           </nav>
 
           <nav aria-label="Entreprise">
-            <h2 className="font-heading text-mineral/50 text-xs tracking-[0.12em] uppercase">
+            <h2 className="font-heading text-mineral/50 inline-flex items-center gap-1.5 text-xs tracking-[0.12em] uppercase">
+              <span className="bg-aqua h-1 w-1 shrink-0 rounded-full" aria-hidden />
               SUITON
             </h2>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
-                <Link href="/realisations" className="text-mineral/80 hover:text-aqua transition-colors duration-150">
+                <Link
+                  href="/realisations"
+                  className="text-mineral/80 hover:text-aqua inline-block transition-[color,transform] duration-150 hover:translate-x-0.5"
+                >
                   Réalisations
                 </Link>
               </li>
               <li>
-                <Link href="/professionnels" className="text-mineral/80 hover:text-aqua transition-colors duration-150">
+                <Link
+                  href="/professionnels"
+                  className="text-mineral/80 hover:text-aqua inline-block transition-[color,transform] duration-150 hover:translate-x-0.5"
+                >
                   Professionnels
                 </Link>
               </li>
               <li>
-                <Link href="/a-propos" className="text-mineral/80 hover:text-aqua transition-colors duration-150">
+                <Link
+                  href="/a-propos"
+                  className="text-mineral/80 hover:text-aqua inline-block transition-[color,transform] duration-150 hover:translate-x-0.5"
+                >
                   À propos
                 </Link>
               </li>
               <li>
-                <Link href="/devis" className="text-mineral/80 hover:text-aqua transition-colors duration-150">
+                <Link
+                  href="/devis"
+                  className="text-mineral/80 hover:text-aqua inline-block transition-[color,transform] duration-150 hover:translate-x-0.5"
+                >
                   Devis gratuit
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-mineral/80 hover:text-aqua transition-colors duration-150">
+                <Link
+                  href="/contact"
+                  className="text-mineral/80 hover:text-aqua inline-block transition-[color,transform] duration-150 hover:translate-x-0.5"
+                >
                   Contact
                 </Link>
               </li>
               <li className="pt-3">
-                <Link href="/mentions-legales" className="text-mineral/60 hover:text-aqua transition-colors duration-150">
+                <Link
+                  href="/mentions-legales"
+                  className="text-mineral/60 hover:text-aqua inline-block transition-[color,transform] duration-150 hover:translate-x-0.5"
+                >
                   Mentions légales
                 </Link>
               </li>
               <li>
-                <Link href="/confidentialite" className="text-mineral/60 hover:text-aqua transition-colors duration-150">
+                <Link
+                  href="/confidentialite"
+                  className="text-mineral/60 hover:text-aqua inline-block transition-[color,transform] duration-150 hover:translate-x-0.5"
+                >
                   Confidentialité
                 </Link>
               </li>
               <li>
-                <Link href="/conditions-generales" className="text-mineral/60 hover:text-aqua transition-colors duration-150">
+                <Link
+                  href="/conditions-generales"
+                  className="text-mineral/60 hover:text-aqua inline-block transition-[color,transform] duration-150 hover:translate-x-0.5"
+                >
                   Conditions générales
                 </Link>
               </li>
@@ -126,7 +156,7 @@ export function Pied() {
         </div>
 
         <div className="text-mineral/50 mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs sm:flex-row sm:items-center sm:justify-between">
-          <p>
+          <p className="tabular">
             © {new Date().getFullYear()} SUITON — TVA {ENTREPRISE.tva} — Peppol{' '}
             {ENTREPRISE.peppol}
           </p>

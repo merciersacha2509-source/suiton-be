@@ -115,7 +115,7 @@ export default async function Accueil() {
               Enghien · Brabant wallon · Hainaut · Bruxelles
             </p>
 
-            <h1 className="anime-apparition mt-6 text-3xl leading-[1.15] font-semibold [animation-delay:60ms] sm:text-4xl lg:text-[2.75rem]">
+            <h1 className="anime-apparition mt-6 text-3xl leading-[1.15] font-bold [animation-delay:60ms] sm:text-4xl lg:text-[2.75rem]">
               Le chantier est fini.
               <br />
               Nous le rendons livrable.
@@ -212,7 +212,7 @@ export default async function Accueil() {
               titre="Un chantier propre n'est pas un chantier livrable"
               chapeau="Le gros œuvre est terminé, les corps de métier sont partis, et il reste la poussière de ponçage dans les rainures, les projections de peinture sur les châssis, le film plastique collé aux vitres depuis six mois et les résidus de silicone dans les angles de douche."
             />
-            <div className="text-ardoise mt-8 space-y-4 text-sm leading-relaxed">
+            <div className="border-aqua-deep/20 text-ardoise mt-8 space-y-4 border-l pl-5 text-sm leading-relaxed">
               <p>
                 Un nettoyage domestique classique ne suffit pas : ce n&apos;est pas de la
                 saleté, c&apos;est du matériau. Une trace de ciment sur du grès cérame ne part
@@ -371,8 +371,9 @@ export default async function Accueil() {
             </Link>
           </div>
 
-          <div className="rounded-suiton border-mineral-dark border bg-white p-6">
-            <p className="text-ardoise text-xs font-medium tracking-[0.12em] uppercase">
+          <div className="rounded-suiton border-mineral-dark border bg-white p-6 shadow-sm">
+            <p className="text-ardoise inline-flex items-center gap-1.5 text-xs font-medium tracking-[0.12em] uppercase">
+              <span className="bg-aqua-deep h-1 w-1 shrink-0 rounded-full" aria-hidden />
               Extrait d&apos;un rapport de chantier
             </p>
             <dl className="divide-mineral-dark mt-5 divide-y">
@@ -463,7 +464,8 @@ export default async function Accueil() {
           </div>
 
           <Carte>
-            <p className="text-ardoise text-xs font-medium tracking-[0.12em] uppercase">
+            <p className="text-ardoise inline-flex items-center gap-1.5 text-xs font-medium tracking-[0.12em] uppercase">
+              <span className="bg-aqua-deep h-1 w-1 shrink-0 rounded-full" aria-hidden />
               Facturation électronique
             </p>
             <p className="mt-4 text-sm leading-relaxed">

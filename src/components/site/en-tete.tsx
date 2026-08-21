@@ -32,10 +32,10 @@ export function EnTete() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-30 border-b transition-[background-color,box-shadow,border-color] duration-200',
+        'border-mineral-dark sticky top-0 z-30 border-b transition-[background-color,box-shadow] duration-200',
         descendu
-          ? 'border-mineral-dark bg-white/85 shadow-[0_1px_12px_rgba(11,34,57,0.06)] backdrop-blur-md'
-          : 'border-transparent bg-white/95 backdrop-blur',
+          ? 'bg-white/85 shadow-[0_1px_12px_rgba(11,34,57,0.06)] backdrop-blur-md'
+          : 'bg-white/95 backdrop-blur',
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-4">
@@ -51,13 +51,19 @@ export function EnTete() {
                   href={l.href}
                   aria-current={chemin === l.href ? 'page' : undefined}
                   className={cn(
-                    'rounded-suiton flex h-9 items-center px-3 text-[0.8125rem] transition-colors',
+                    'rounded-suiton relative flex h-9 items-center px-3 text-[0.8125rem] transition-colors duration-150',
                     chemin === l.href
-                      ? 'bg-mineral text-abysse font-medium'
+                      ? 'text-abysse font-medium'
                       : 'text-ardoise hover:bg-mineral hover:text-abysse',
                   )}
                 >
                   {l.label}
+                  {chemin === l.href ? (
+                    <span
+                      className="bg-aqua-deep absolute inset-x-3 -bottom-[1px] h-[2px] rounded-full"
+                      aria-hidden
+                    />
+                  ) : null}
                 </Link>
               </li>
             ))}
@@ -73,7 +79,7 @@ export function EnTete() {
           </a>
           <Link
             href="/reservation"
-            className="h-touch rounded-suiton bg-abysse text-mineral hover:bg-abysse-90 hidden items-center px-4 text-sm font-medium shadow-sm transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-md active:translate-y-0 sm:flex"
+            className="h-touch rounded-suiton bg-abysse text-mineral hover:bg-abysse-90 hidden items-center px-4 text-sm font-medium tracking-[0.01em] shadow-sm transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-md active:translate-y-0 sm:flex"
           >
             Obtenir un devis
           </Link>
@@ -106,21 +112,25 @@ export function EnTete() {
         >
           <ul className="mx-auto max-w-6xl px-4 py-2">
             {LIENS.map((l) => (
-              <li key={l.href}>
+              <li key={l.href} className="border-mineral-dark border-b last:border-b-0">
                 <Link
                   href={l.href}
                   onClick={() => setOuvert(false)}
-                  className="h-touch flex items-center text-sm"
+                  aria-current={chemin === l.href ? 'page' : undefined}
+                  className={cn(
+                    'h-touch flex items-center text-sm transition-colors duration-150',
+                    chemin === l.href ? 'text-abysse font-medium' : 'text-ardoise',
+                  )}
                 >
                   {l.label}
                 </Link>
               </li>
             ))}
-            <li className="border-mineral-dark mt-2 border-t pt-2">
+            <li className="mt-3 pb-1">
               <Link
                 href="/reservation"
                 onClick={() => setOuvert(false)}
-                className="h-touch rounded-suiton bg-abysse text-mineral flex items-center justify-center text-sm font-medium"
+                className="h-touch rounded-suiton bg-abysse text-mineral flex items-center justify-center text-sm font-medium shadow-sm transition-[background-color,box-shadow] duration-200 active:shadow-none"
               >
                 Obtenir un devis
               </Link>

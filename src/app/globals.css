@@ -76,8 +76,13 @@
   h4 {
     font-family: var(--font-heading);
     font-weight: 600;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.016em;
+    line-height: 1.2;
     color: var(--color-abysse);
+  }
+
+  h1 {
+    line-height: 1.12;
   }
 
   /* Focus visible partout. Le parcours doit etre franchissable au clavier

@@ -27,7 +27,7 @@ export function Comparaison({
   const ratio = avant.largeur && avant.hauteur ? (avant.hauteur / avant.largeur) * 100 : 66.7;
 
   return (
-    <figure className="rounded-suiton border-mineral-dark overflow-hidden border bg-white">
+    <figure className="rounded-suiton border-mineral-dark group overflow-hidden border bg-white shadow-sm transition-shadow duration-200 hover:shadow-md">
       <div className="relative select-none" style={{ paddingBottom: `${ratio}%` }}>
         {/* Apres, en fond : c'est le resultat qu'on veut voir en premier. */}
         <img
@@ -51,14 +51,29 @@ export function Comparaison({
         </div>
 
         <span
-          className="bg-aqua pointer-events-none absolute inset-y-0 w-0.5"
+          className="bg-aqua pointer-events-none absolute inset-y-0 w-0.5 shadow-[0_0_0_1px_rgba(11,34,57,0.15)]"
           style={{ left: `${position}%` }}
           aria-hidden
         />
-        <span className="bg-abysse/80 text-mineral pointer-events-none absolute top-3 left-3 rounded-full px-2 py-0.5 text-[0.6875rem] font-medium">
+        <span
+          className="border-aqua-deep pointer-events-none absolute top-1/2 flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border bg-white shadow-sm transition-transform duration-200 group-hover:scale-105"
+          style={{ left: `${position}%` }}
+          aria-hidden
+        >
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+            <path
+              d="M6 4L2 8l4 4M10 4l4 4-4 4"
+              stroke="#1E6E78"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </span>
+        <span className="bg-abysse/85 text-mineral pointer-events-none absolute top-3 left-3 rounded-full px-2.5 py-1 text-[0.6875rem] font-medium tracking-[0.04em] uppercase">
           Avant
         </span>
-        <span className="bg-aqua text-abysse pointer-events-none absolute top-3 right-3 rounded-full px-2 py-0.5 text-[0.6875rem] font-semibold">
+        <span className="bg-aqua text-abysse pointer-events-none absolute top-3 right-3 rounded-full px-2.5 py-1 text-[0.6875rem] font-semibold tracking-[0.04em] uppercase">
           Après
         </span>
 
