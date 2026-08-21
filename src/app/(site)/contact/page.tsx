@@ -66,7 +66,7 @@ export default function PageContact() {
             </p>
             <a
               href={`tel:${ENTREPRISE.telephoneE164}`}
-              className="h-touch rounded-suiton bg-abysse text-mineral hover:bg-abysse-90 mt-5 flex items-center justify-center px-4 text-sm font-medium transition-colors"
+              className="h-touch rounded-suiton bg-abysse text-mineral hover:bg-abysse-90 mt-5 flex items-center justify-center px-4 text-sm font-medium shadow-sm transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-md active:translate-y-0"
             >
               {ENTREPRISE.telephone}
             </a>
@@ -82,7 +82,7 @@ export default function PageContact() {
               href={`https://wa.me/${ENTREPRISE.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="h-touch rounded-suiton border-mineral-dark hover:border-ardoise-clair mt-5 flex items-center justify-center border px-4 text-sm font-medium transition-colors"
+              className="h-touch rounded-suiton border-mineral-dark hover:border-ardoise-clair mt-5 flex items-center justify-center border px-4 text-sm font-medium transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-sm active:translate-y-0"
             >
               Ouvrir WhatsApp
             </a>
@@ -96,7 +96,7 @@ export default function PageContact() {
             </p>
             <a
               href={`mailto:${ENTREPRISE.email}`}
-              className="h-touch rounded-suiton border-mineral-dark hover:border-ardoise-clair mt-5 flex items-center justify-center border px-4 text-sm font-medium transition-colors"
+              className="h-touch rounded-suiton border-mineral-dark hover:border-ardoise-clair mt-5 flex items-center justify-center border px-4 text-sm font-medium transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-sm active:translate-y-0"
             >
               {ENTREPRISE.email}
             </a>
@@ -116,7 +116,7 @@ export default function PageContact() {
             </p>
             <Link
               href="/reservation"
-              className="h-touch rounded-suiton bg-abysse text-mineral hover:bg-abysse-90 mt-5 inline-flex items-center px-5 text-sm font-medium transition-colors"
+              className="h-touch rounded-suiton bg-abysse text-mineral hover:bg-abysse-90 mt-5 inline-flex items-center px-5 text-sm font-medium shadow-sm transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-md active:translate-y-0"
             >
               Démarrer ma demande de devis
             </Link>
@@ -188,7 +188,7 @@ export default function PageContact() {
                 <li key={c.slug}>
                   <Link
                     href={`/nettoyage-fin-de-chantier/${c.slug}`}
-                    className="rounded-suiton border-mineral-dark hover:border-ardoise-clair inline-flex h-9 items-center border bg-white px-3 text-sm transition-colors"
+                    className="rounded-suiton border-mineral-dark hover:border-ardoise-clair inline-flex h-9 items-center border bg-white px-3 text-sm transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-sm active:translate-y-0"
                   >
                     {c.nom}
                   </Link>

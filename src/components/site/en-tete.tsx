@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { SuitonLogo } from '@/components/brand/suiton-mark';
@@ -19,10 +19,25 @@ const LIENS = [
 
 export function EnTete() {
   const [ouvert, setOuvert] = useState(false);
+  const [descendu, setDescendu] = useState(false);
   const chemin = usePathname();
 
+  useEffect(() => {
+    const surScroll = () => setDescendu(window.scrollY > 8);
+    surScroll();
+    window.addEventListener('scroll', surScroll, { passive: true });
+    return () => window.removeEventListener('scroll', surScroll);
+  }, []);
+
   return (
-    <header className="border-mineral-dark sticky top-0 z-30 border-b bg-white/95 backdrop-blur">
+    <header
+      className={cn(
+        'sticky top-0 z-30 border-b transition-[background-color,box-shadow,border-color] duration-200',
+        descendu
+          ? 'border-mineral-dark bg-white/85 shadow-[0_1px_12px_rgba(11,34,57,0.06)] backdrop-blur-md'
+          : 'border-transparent bg-white/95 backdrop-blur',
+      )}
+    >
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-4">
         <Link href="/" aria-label="SUITON — accueil" className="shrink-0">
           <SuitonLogo />
@@ -52,13 +67,13 @@ export function EnTete() {
         <div className="ml-auto flex items-center gap-2 lg:ml-0">
           <a
             href={`tel:${ENTREPRISE.telephoneE164}`}
-            className="h-touch rounded-suiton text-ocean hover:bg-mineral hidden items-center px-3 text-sm font-medium sm:flex"
+            className="h-touch rounded-suiton text-ocean hover:bg-mineral hidden items-center px-3 text-sm font-medium transition-colors duration-150 sm:flex"
           >
             {ENTREPRISE.telephone}
           </a>
           <Link
             href="/reservation"
-            className="h-touch rounded-suiton bg-abysse text-mineral hover:bg-abysse-90 hidden items-center px-4 text-sm font-medium transition-colors sm:flex"
+            className="h-touch rounded-suiton bg-abysse text-mineral hover:bg-abysse-90 hidden items-center px-4 text-sm font-medium shadow-sm transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-md active:translate-y-0 sm:flex"
           >
             Obtenir un devis
           </Link>
@@ -68,7 +83,7 @@ export function EnTete() {
             onClick={() => setOuvert((v) => !v)}
             aria-expanded={ouvert}
             aria-controls="menu-mobile"
-            className="h-touch w-touch rounded-suiton hover:bg-mineral flex items-center justify-center lg:hidden"
+            className="h-touch w-touch rounded-suiton hover:bg-mineral flex items-center justify-center transition-colors duration-150 lg:hidden"
           >
             <span className="sr-only">Menu</span>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden>

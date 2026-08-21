@@ -156,7 +156,7 @@ export default function PageNettoyageAuto() {
           <div className="mt-8">
             <a
               href="#devis"
-              className="rounded-suiton bg-aqua text-abysse inline-flex h-12 items-center justify-center px-6 text-sm font-semibold transition-opacity hover:opacity-90"
+              className="rounded-suiton bg-aqua text-abysse inline-flex h-12 items-center justify-center px-6 text-sm font-semibold shadow-sm transition-[opacity,transform,box-shadow] duration-200 hover:-translate-y-px hover:opacity-90 hover:shadow-md active:translate-y-0"
             >
               Demander un devis
             </a>

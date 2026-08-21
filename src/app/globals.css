@@ -104,3 +104,88 @@
     }
   }
 }
+
+/* ==========================================================================
+   Polish visuel — micro-interactions
+   --------------------------------------------------------------------------
+   Rien ici ne change une couleur d'identite ni une structure : uniquement
+   des transitions et de tres legers deplacements. `prefers-reduced-motion`
+   est deja neutralise plus haut, ces classes en heritent automatiquement.
+   ========================================================================== */
+@layer components {
+  /* Apparition au chargement — hero et elements ponctuels. */
+  @keyframes suiton-apparition {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .anime-apparition {
+    animation: suiton-apparition 550ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* Apparition au scroll — bascule par IntersectionObserver (voir EnVue). */
+  .en-vue {
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      opacity 550ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 550ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .en-vue.est-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Curseur du slider de surface — un rond net plutot que le style
+     par defaut du navigateur, qui varie trop d'un systeme a l'autre. */
+  .curseur-suiton {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .curseur-suiton::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 9999px;
+    background: var(--color-abysse);
+    border: 3px solid white;
+    box-shadow: 0 1px 4px rgba(11, 34, 57, 0.35);
+    cursor: pointer;
+    transition:
+      transform 150ms ease,
+      box-shadow 150ms ease;
+  }
+  .curseur-suiton::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+  }
+  .curseur-suiton:active::-webkit-slider-thumb {
+    transform: scale(1.15);
+    box-shadow: 0 2px 6px rgba(11, 34, 57, 0.4);
+  }
+  .curseur-suiton::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 9999px;
+    background: var(--color-abysse);
+    border: 3px solid white;
+    box-shadow: 0 1px 4px rgba(11, 34, 57, 0.35);
+    cursor: pointer;
+    transition:
+      transform 150ms ease,
+      box-shadow 150ms ease;
+  }
+  .curseur-suiton::-moz-range-thumb:hover {
+    transform: scale(1.1);
+  }
+  .curseur-suiton::-moz-range-progress {
+    background: var(--color-ocean);
+    border-radius: 9999px;
+    height: 100%;
+  }
+}

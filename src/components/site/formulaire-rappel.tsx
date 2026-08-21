@@ -92,7 +92,7 @@ export function FormulaireRappel({
     <form
       id={id}
       onSubmit={soumettre}
-      className="rounded-suiton border-mineral-dark border bg-white p-6"
+      className="rounded-suiton border-mineral-dark border bg-white p-6 shadow-sm"
     >
       <h3 className="font-heading text-base font-semibold">{titre}</h3>
       <p className="text-ardoise mt-1.5 text-sm">{description}</p>
@@ -107,7 +107,7 @@ export function FormulaireRappel({
             name="nom"
             required
             autoComplete="name"
-            className="h-touch rounded-suiton border-mineral-dark focus:border-ocean mt-1.5 w-full border px-3 text-sm focus:outline-none"
+            className="h-touch rounded-suiton border-mineral-dark focus:border-ocean mt-1.5 w-full border px-3 text-sm transition-colors duration-150 focus:outline-none"
           />
         </div>
 
@@ -123,7 +123,7 @@ export function FormulaireRappel({
             inputMode="tel"
             autoComplete="tel"
             placeholder="0489 21 01 24"
-            className="h-touch rounded-suiton border-mineral-dark tabular focus:border-ocean mt-1.5 w-full border px-3 text-sm focus:outline-none"
+            className="h-touch rounded-suiton border-mineral-dark tabular focus:border-ocean mt-1.5 w-full border px-3 text-sm transition-colors duration-150 focus:outline-none"
           />
         </div>
 
@@ -136,7 +136,7 @@ export function FormulaireRappel({
             name="message"
             rows={3}
             placeholder={placeholderMessage}
-            className="rounded-suiton border-mineral-dark focus:border-ocean mt-1.5 w-full border p-3 text-sm focus:outline-none"
+            className="rounded-suiton border-mineral-dark focus:border-ocean mt-1.5 w-full border p-3 text-sm transition-colors duration-150 focus:outline-none"
           />
         </div>
 
@@ -154,8 +154,10 @@ export function FormulaireRappel({
         type="submit"
         disabled={etat === 'envoi'}
         className={cn(
-          'rounded-suiton bg-abysse text-mineral mt-6 flex h-12 w-full items-center justify-center px-6 text-sm font-medium transition-colors',
-          etat === 'envoi' ? 'opacity-60' : 'hover:bg-abysse-90',
+          'rounded-suiton bg-abysse text-mineral mt-6 flex h-12 w-full items-center justify-center px-6 text-sm font-medium shadow-sm transition-[background-color,transform,box-shadow] duration-200',
+          etat === 'envoi'
+            ? 'opacity-60'
+            : 'hover:bg-abysse-90 hover:-translate-y-px hover:shadow-md active:translate-y-0',
         )}
       >
         {etat === 'envoi' ? 'Envoi…' : 'Demander un rappel'}

@@ -58,10 +58,14 @@ export function TitreSection({
       {surtitre ? (
         <p
           className={cn(
-            'text-xs font-medium tracking-[0.14em] uppercase',
+            'inline-flex items-center gap-2 text-xs font-medium tracking-[0.14em] uppercase',
             inverse ? 'text-aqua' : 'text-aqua-deep',
           )}
         >
+          <span
+            className={cn('h-1 w-1 shrink-0 rounded-full', inverse ? 'bg-aqua' : 'bg-aqua-deep')}
+            aria-hidden
+          />
           {surtitre}
         </p>
       ) : null}
@@ -149,7 +153,12 @@ export function ListePuces({
 
 export function Carte({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <div className={cn('rounded-suiton border-mineral-dark border bg-white p-6', className)}>
+    <div
+      className={cn(
+        'rounded-suiton border-mineral-dark border bg-white p-6 shadow-sm transition-shadow duration-200 hover:shadow-md',
+        className,
+      )}
+    >
       {children}
     </div>
   );
@@ -211,13 +220,13 @@ export function AppelFinal({
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
           <Link
             href="/reservation"
-            className="rounded-suiton bg-aqua text-abysse flex h-12 items-center justify-center px-6 text-sm font-semibold transition-opacity hover:opacity-90"
+            className="rounded-suiton bg-aqua text-abysse flex h-12 items-center justify-center px-6 text-sm font-semibold shadow-sm transition-[opacity,transform,box-shadow] duration-200 hover:-translate-y-px hover:opacity-90 hover:shadow-md active:translate-y-0"
           >
             Obtenir un devis gratuit
           </Link>
           <Link
             href="/contact"
-            className="rounded-suiton text-mineral flex h-12 items-center justify-center border border-white/25 px-6 text-sm font-medium transition-colors hover:bg-white/5"
+            className="rounded-suiton text-mineral flex h-12 items-center justify-center border border-white/25 px-6 text-sm font-medium transition-[background-color,transform] duration-200 hover:-translate-y-px hover:bg-white/5 active:translate-y-0"
           >
             Nous contacter
           </Link>

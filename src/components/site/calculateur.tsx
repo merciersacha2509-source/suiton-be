@@ -119,7 +119,7 @@ export function Calculateur({
   return (
     <div
       className={cn(
-        'rounded-suiton border-mineral-dark border bg-white',
+        'rounded-suiton border-mineral-dark border bg-white shadow-sm',
         compact ? 'p-5' : 'p-6 sm:p-8',
       )}
     >
@@ -136,10 +136,10 @@ export function Calculateur({
                 onClick={() => setService(s.valeur)}
                 aria-pressed={service === s.valeur}
                 className={cn(
-                  'h-touch rounded-suiton border px-2 text-[0.8125rem] font-medium transition-colors',
+                  'h-touch rounded-suiton border px-2 text-[0.8125rem] font-medium transition-[background-color,border-color,transform,box-shadow] duration-200',
                   service === s.valeur
-                    ? 'border-abysse bg-abysse text-mineral'
-                    : 'border-mineral-dark text-abysse hover:border-ardoise-clair bg-white',
+                    ? 'border-abysse bg-abysse text-mineral shadow-sm'
+                    : 'border-mineral-dark hover:border-aqua-deep/50 hover:-translate-y-px hover:shadow-sm active:translate-y-0 bg-white text-abysse',
                 )}
               >
                 {s.label}
@@ -160,10 +160,10 @@ export function Calculateur({
                 onClick={() => setBien(b.valeur)}
                 aria-pressed={bien === b.valeur}
                 className={cn(
-                  'h-touch rounded-suiton border px-1 text-[0.75rem] font-medium transition-colors',
+                  'h-touch rounded-suiton border px-1 text-[0.75rem] font-medium transition-[background-color,border-color,transform,box-shadow] duration-200',
                   bien === b.valeur
-                    ? 'border-abysse bg-abysse text-mineral'
-                    : 'border-mineral-dark text-abysse hover:border-ardoise-clair bg-white',
+                    ? 'border-abysse bg-abysse text-mineral shadow-sm'
+                    : 'border-mineral-dark hover:border-aqua-deep/50 hover:-translate-y-px hover:shadow-sm active:translate-y-0 bg-white text-abysse',
                 )}
               >
                 {b.label}
@@ -182,16 +182,26 @@ export function Calculateur({
             </label>
             <span className="font-heading tabular text-lg font-semibold">{surface} m²</span>
           </div>
-          <input
-            id="calc-surface"
-            type="range"
-            min={20}
-            max={500}
-            step={10}
-            value={surface}
-            onChange={(e) => setSurface(Number(e.target.value))}
-            className="bg-mineral-dark accent-ocean mt-3 h-2 w-full cursor-pointer appearance-none rounded-full"
-          />
+          <div className="relative mt-6 pt-6">
+            <div
+              className="rounded-suiton bg-abysse text-mineral tabular pointer-events-none absolute -top-1 flex h-7 -translate-x-1/2 items-center px-2 text-xs font-semibold shadow-sm transition-[left] duration-150"
+              style={{ left: `${((surface - 20) / (500 - 20)) * 100}%` }}
+              aria-hidden
+            >
+              {surface} m²
+              <span className="border-t-abysse absolute top-full left-1/2 h-0 w-0 -translate-x-1/2 border-x-4 border-t-4 border-x-transparent" />
+            </div>
+            <input
+              id="calc-surface"
+              type="range"
+              min={20}
+              max={500}
+              step={10}
+              value={surface}
+              onChange={(e) => setSurface(Number(e.target.value))}
+              className="curseur-suiton bg-mineral-dark accent-ocean h-1.5 w-full cursor-pointer rounded-full"
+            />
+          </div>
           <div className="text-ardoise-clair mt-1 flex justify-between text-[0.6875rem]">
             <span>20 m²</span>
             <span>500 m²</span>
@@ -210,18 +220,30 @@ export function Calculateur({
                 onClick={() => setSoil(s.valeur)}
                 aria-pressed={soil === s.valeur}
                 className={cn(
-                  'rounded-suiton flex w-full items-center gap-3 border px-3 py-2.5 text-left transition-colors',
+                  'rounded-suiton flex w-full items-center gap-3 border px-3 py-2.5 text-left transition-[background-color,border-color,transform,box-shadow] duration-200',
                   soil === s.valeur
-                    ? 'border-abysse bg-mineral'
-                    : 'border-mineral-dark hover:border-ardoise-clair bg-white',
+                    ? 'border-abysse bg-mineral shadow-sm'
+                    : 'border-mineral-dark hover:border-aqua-deep/50 hover:-translate-y-px hover:shadow-sm active:translate-y-0 bg-white',
                 )}
               >
                 <span
                   className={cn(
-                    'h-4 w-4 shrink-0 rounded-full border-2',
+                    'flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-2 transition-colors duration-200',
                     soil === s.valeur ? 'border-abysse bg-abysse' : 'border-mineral-dark',
                   )}
-                />
+                >
+                  {soil === s.valeur ? (
+                    <svg width="8" height="8" viewBox="0 0 16 16" fill="none" aria-hidden>
+                      <path
+                        d="M3 8.5l3.2 3.2L13 5"
+                        stroke="white"
+                        strokeWidth="2.4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  ) : null}
+                </span>
                 <span>
                   <span className="block text-sm font-medium">{s.label}</span>
                   <span className="text-ardoise block text-xs">{s.aide}</span>
@@ -245,7 +267,7 @@ export function Calculateur({
               maxLength={4}
               value={codePostal}
               onChange={(e) => setCodePostal(e.target.value.replace(/\D/g, ''))}
-              className="h-touch rounded-suiton border-mineral-dark tabular focus:border-ocean mt-2 w-full border px-3 text-sm focus:outline-none"
+              className="h-touch rounded-suiton border-mineral-dark tabular focus:border-ocean mt-2 w-full border px-3 text-sm transition-colors duration-150 focus:outline-none"
             />
           </div>
           <label className="flex cursor-pointer items-end gap-3 pb-1">
@@ -306,7 +328,7 @@ export function Calculateur({
 
         <Link
           href={lien}
-          className="h-touch rounded-suiton bg-abysse text-mineral hover:bg-abysse-90 mt-5 flex w-full items-center justify-center px-4 text-sm font-medium transition-colors"
+          className="h-touch rounded-suiton bg-abysse text-mineral hover:bg-abysse-90 mt-5 flex w-full items-center justify-center px-4 text-sm font-medium shadow-sm transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-md active:translate-y-0"
         >
           Obtenir un devis ferme sous 24 h
         </Link>

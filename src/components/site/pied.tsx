@@ -25,12 +25,18 @@ export function Pied() {
                 {ENTREPRISE.codePostal} {ENTREPRISE.commune}
               </div>
               <div className="pt-2">
-                <a href={`tel:${ENTREPRISE.telephoneE164}`} className="hover:text-aqua">
+                <a
+                  href={`tel:${ENTREPRISE.telephoneE164}`}
+                  className="hover:text-aqua transition-colors duration-150"
+                >
                   {ENTREPRISE.telephone}
                 </a>
               </div>
               <div>
-                <a href={`mailto:${ENTREPRISE.email}`} className="hover:text-aqua">
+                <a
+                  href={`mailto:${ENTREPRISE.email}`}
+                  className="hover:text-aqua transition-colors duration-150"
+                >
                   {ENTREPRISE.email}
                 </a>
               </div>
@@ -44,7 +50,7 @@ export function Pied() {
             <ul className="mt-4 space-y-2 text-sm">
               {SERVICES.map((s) => (
                 <li key={s.slug}>
-                  <Link href={`/${s.slug}`} className="text-mineral/80 hover:text-aqua">
+                  <Link href={`/${s.slug}`} className="text-mineral/80 hover:text-aqua transition-colors duration-150">
                     {s.nom}
                   </Link>
                 </li>
@@ -61,7 +67,7 @@ export function Pied() {
                 <li key={c.slug}>
                   <Link
                     href={`/nettoyage-fin-de-chantier/${c.slug}`}
-                    className="text-mineral/80 hover:text-aqua"
+                    className="text-mineral/80 hover:text-aqua transition-colors duration-150"
                   >
                     {c.nom}
                   </Link>
@@ -76,42 +82,42 @@ export function Pied() {
             </h2>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
-                <Link href="/realisations" className="text-mineral/80 hover:text-aqua">
+                <Link href="/realisations" className="text-mineral/80 hover:text-aqua transition-colors duration-150">
                   Réalisations
                 </Link>
               </li>
               <li>
-                <Link href="/professionnels" className="text-mineral/80 hover:text-aqua">
+                <Link href="/professionnels" className="text-mineral/80 hover:text-aqua transition-colors duration-150">
                   Professionnels
                 </Link>
               </li>
               <li>
-                <Link href="/a-propos" className="text-mineral/80 hover:text-aqua">
+                <Link href="/a-propos" className="text-mineral/80 hover:text-aqua transition-colors duration-150">
                   À propos
                 </Link>
               </li>
               <li>
-                <Link href="/devis" className="text-mineral/80 hover:text-aqua">
+                <Link href="/devis" className="text-mineral/80 hover:text-aqua transition-colors duration-150">
                   Devis gratuit
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-mineral/80 hover:text-aqua">
+                <Link href="/contact" className="text-mineral/80 hover:text-aqua transition-colors duration-150">
                   Contact
                 </Link>
               </li>
               <li className="pt-3">
-                <Link href="/mentions-legales" className="text-mineral/60 hover:text-aqua">
+                <Link href="/mentions-legales" className="text-mineral/60 hover:text-aqua transition-colors duration-150">
                   Mentions légales
                 </Link>
               </li>
               <li>
-                <Link href="/confidentialite" className="text-mineral/60 hover:text-aqua">
+                <Link href="/confidentialite" className="text-mineral/60 hover:text-aqua transition-colors duration-150">
                   Confidentialité
                 </Link>
               </li>
               <li>
-                <Link href="/conditions-generales" className="text-mineral/60 hover:text-aqua">
+                <Link href="/conditions-generales" className="text-mineral/60 hover:text-aqua transition-colors duration-150">
                   Conditions générales
                 </Link>
               </li>

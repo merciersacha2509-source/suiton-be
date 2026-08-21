@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { Calculateur } from '@/components/site/calculateur';
+import { EnVue } from '@/components/site/en-vue';
 import {
   AppelFinal,
   Carte,
@@ -92,27 +93,41 @@ export default async function Accueil() {
       {/* ---------------------------------------------------------------- */}
       {/* Premier ecran                                                     */}
       {/* ---------------------------------------------------------------- */}
-      <section className="border-mineral-dark bg-mineral border-b">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 lg:grid-cols-[1fr_26rem] lg:gap-16 lg:py-20">
+      <section className="border-mineral-dark bg-mineral relative overflow-hidden border-b">
+        {/* Motif discret : quelques lignes fines inspirees de l'onde du
+            logo. Opacite quasi imperceptible, jamais au-dessus du texte. */}
+        <svg
+          className="pointer-events-none absolute top-0 right-0 hidden h-full w-[28rem] opacity-[0.04] lg:block"
+          viewBox="0 0 400 500"
+          fill="none"
+          aria-hidden
+        >
+          <circle cx="380" cy="60" r="60" stroke="#0B2239" strokeWidth="1.5" />
+          <circle cx="380" cy="60" r="120" stroke="#0B2239" strokeWidth="1.5" />
+          <circle cx="380" cy="60" r="180" stroke="#0B2239" strokeWidth="1.5" />
+          <circle cx="380" cy="60" r="240" stroke="#0B2239" strokeWidth="1.5" />
+        </svg>
+
+        <div className="relative mx-auto grid max-w-6xl gap-10 px-4 py-12 lg:grid-cols-[1fr_26rem] lg:gap-16 lg:py-20">
           <div className="lg:pt-6">
-            <p className="border-aqua-deep/25 bg-aqua-wash text-aqua-deep inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium">
+            <p className="border-aqua-deep/25 bg-aqua-wash text-aqua-deep anime-apparition inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium">
               <span className="bg-aqua-deep h-1.5 w-1.5 rounded-full" aria-hidden />
               Enghien · Brabant wallon · Hainaut · Bruxelles
             </p>
 
-            <h1 className="mt-6 text-3xl leading-[1.15] font-semibold sm:text-4xl lg:text-[2.75rem]">
+            <h1 className="anime-apparition mt-6 text-3xl leading-[1.15] font-semibold [animation-delay:60ms] sm:text-4xl lg:text-[2.75rem]">
               Le chantier est fini.
               <br />
               Nous le rendons livrable.
             </h1>
 
-            <p className="text-ardoise mt-5 max-w-xl text-base leading-relaxed sm:text-lg">
+            <p className="text-ardoise anime-apparition mt-5 max-w-xl text-base leading-relaxed [animation-delay:120ms] sm:text-lg">
               Nettoyage de fin de chantier et d&apos;après-rénovation. Vitres et châssis
               compris, jamais en supplément. Rapport photo avant/après remis à chaque livraison.
               Devis ferme sous 24 heures.
             </p>
 
-            <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+            <ul className="anime-apparition mt-8 grid gap-3 [animation-delay:180ms] sm:grid-cols-2">
               {[
                 'Vitres et châssis compris',
                 'Devis ferme, pas une fourchette',
@@ -132,16 +147,16 @@ export default async function Accueil() {
               particulier le soir remplit un formulaire. Proposer un seul
               chemin, c'est perdre les deux autres.
             */}
-            <div className="mt-8 grid gap-3 sm:grid-cols-3">
+            <div className="anime-apparition mt-8 grid gap-3 [animation-delay:240ms] sm:grid-cols-3">
               <Link
                 href="/reservation"
-                className="rounded-suiton bg-abysse text-mineral hover:bg-abysse-90 flex h-12 items-center justify-center px-5 text-sm font-medium transition-colors"
+                className="rounded-suiton bg-abysse text-mineral hover:bg-abysse-90 flex h-12 items-center justify-center px-5 text-sm font-medium shadow-sm transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-md active:translate-y-0"
               >
                 Devis gratuit
               </Link>
               <a
                 href={`tel:${ENTREPRISE.telephoneE164}`}
-                className="rounded-suiton border-mineral-dark hover:border-ardoise-clair flex h-12 items-center justify-center gap-2 border bg-white px-5 text-sm font-medium transition-colors"
+                className="rounded-suiton border-mineral-dark hover:border-ardoise-clair flex h-12 items-center justify-center gap-2 border bg-white px-5 text-sm font-medium transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-sm active:translate-y-0"
               >
                 <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden>
                   <path
@@ -157,7 +172,7 @@ export default async function Accueil() {
                 href={`https://wa.me/${ENTREPRISE.whatsapp}?text=${MESSAGE_WHATSAPP}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-suiton border-mineral-dark hover:border-ardoise-clair flex h-12 items-center justify-center gap-2 border bg-white px-5 text-sm font-medium transition-colors"
+                className="rounded-suiton border-mineral-dark hover:border-ardoise-clair flex h-12 items-center justify-center gap-2 border bg-white px-5 text-sm font-medium transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-sm active:translate-y-0"
               >
                 <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden>
                   <path
@@ -180,7 +195,7 @@ export default async function Accueil() {
             </p>
           </div>
 
-          <div className="lg:sticky lg:top-24">
+          <div className="anime-apparition lg:sticky lg:top-24 [animation-delay:150ms]">
             <Calculateur settings={settings} />
           </div>
         </div>
@@ -212,7 +227,7 @@ export default async function Accueil() {
             </div>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <EnVue className="grid gap-4 sm:grid-cols-2">
             {[
               {
                 chiffre: '5 €',
@@ -241,7 +256,7 @@ export default async function Accueil() {
                 <p className="text-ardoise mt-2 text-xs leading-relaxed">{s.detail}</p>
               </Carte>
             ))}
-          </div>
+          </EnVue>
         </div>
       </Section>
 
@@ -254,12 +269,12 @@ export default async function Accueil() {
           titre="Cinq métiers, une seule exigence"
           chapeau="Chaque prestation a son protocole, ses produits et sa durée type. Nous ne facturons pas un nettoyage de fin de chantier au tarif d'un entretien, et l'inverse est vrai aussi."
         />
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <EnVue className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((s) => (
             <Link
               key={s.slug}
               href={`/${s.slug}`}
-              className="group rounded-suiton border-mineral-dark hover:border-ardoise-clair flex flex-col border bg-white p-6 transition-colors"
+              className="group rounded-suiton border-mineral-dark hover:border-aqua-deep/40 flex flex-col border bg-white p-6 shadow-sm transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-md"
             >
               <h3 className="font-heading group-hover:text-ocean text-lg font-semibold">
                 {s.nom}
@@ -274,7 +289,7 @@ export default async function Accueil() {
               <p className="text-ardoise mt-1 text-xs">{s.dureeType}</p>
             </Link>
           ))}
-        </div>
+        </EnVue>
       </Section>
 
       {/* ---------------------------------------------------------------- */}
@@ -286,7 +301,7 @@ export default async function Accueil() {
           titre="Quatre promesses écrites sur le devis"
           chapeau="Une promesse qui n'apparaît que sur le site n'engage personne. Celles-ci figurent sur chaque devis SUITON, à la ligne."
         />
-        <div className="mt-10 grid gap-4 sm:grid-cols-2">
+        <EnVue className="mt-10 grid gap-4 sm:grid-cols-2">
           {GARANTIES.map((g) => (
             <Carte key={g.titre}>
               <div className="flex gap-3">
@@ -298,7 +313,7 @@ export default async function Accueil() {
               </div>
             </Carte>
           ))}
-        </div>
+        </EnVue>
       </Section>
 
       {/* ---------------------------------------------------------------- */}
@@ -350,7 +365,7 @@ export default async function Accueil() {
             </div>
             <Link
               href="/realisations"
-              className="h-touch rounded-suiton border-mineral-dark hover:border-ardoise-clair mt-8 inline-flex items-center border bg-white px-5 text-sm font-medium transition-colors"
+              className="h-touch rounded-suiton border-mineral-dark hover:border-ardoise-clair mt-8 inline-flex items-center border bg-white px-5 text-sm font-medium transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-sm active:translate-y-0"
             >
               Voir nos réalisations
             </Link>
@@ -400,7 +415,7 @@ export default async function Accueil() {
             <li key={c.slug}>
               <Link
                 href={`/nettoyage-fin-de-chantier/${c.slug}`}
-                className="group rounded-suiton border-mineral-dark hover:border-ardoise-clair flex h-full flex-col border p-4 transition-colors"
+                className="group rounded-suiton border-mineral-dark hover:border-aqua-deep/40 flex h-full flex-col border bg-white p-4 shadow-sm transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-md"
               >
                 <span className="font-heading group-hover:text-ocean text-base font-medium">
                   {c.nom}
@@ -441,7 +456,7 @@ export default async function Accueil() {
             </div>
             <Link
               href="/professionnels"
-              className="h-touch rounded-suiton bg-abysse text-mineral hover:bg-abysse-90 mt-8 inline-flex items-center px-5 text-sm font-medium transition-colors"
+              className="h-touch rounded-suiton bg-abysse text-mineral hover:bg-abysse-90 mt-8 inline-flex items-center px-5 text-sm font-medium shadow-sm transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-md active:translate-y-0"
             >
               Espace professionnels
             </Link>

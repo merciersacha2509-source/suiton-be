@@ -141,7 +141,10 @@ export function PageService({
         />
         <ol className="rounded-suiton border-mineral-dark bg-mineral-dark mt-10 grid gap-px overflow-hidden border sm:grid-cols-2 lg:grid-cols-3">
           {service.deroulement.map((e, i) => (
-            <li key={e.titre} className="bg-white p-6">
+            <li
+              key={e.titre}
+              className="hover:bg-mineral bg-white p-6 transition-colors duration-200"
+            >
               <span className="font-heading tabular text-aqua-deep text-sm font-semibold">
                 {String(i + 1).padStart(2, '0')}
               </span>
@@ -188,9 +191,9 @@ export function PageService({
                   <li key={s.slug}>
                     <Link
                       href={`/${s.slug}`}
-                      className="group border-mineral-dark flex items-baseline justify-between gap-4 border-b pb-3"
+                      className="group border-mineral-dark hover:border-aqua-deep/50 flex items-baseline justify-between gap-4 border-b pb-3 transition-colors duration-200"
                     >
-                      <span className="group-hover:text-ocean text-sm font-medium">
+                      <span className="group-hover:text-ocean text-sm font-medium transition-colors duration-200">
                         {s.nom}
                       </span>
                       <span className="text-ardoise shrink-0 text-xs">
@@ -210,7 +213,7 @@ export function PageService({
                 <li key={c.slug}>
                   <Link
                     href={`/nettoyage-fin-de-chantier/${c.slug}`}
-                    className="rounded-suiton border-mineral-dark hover:border-ardoise-clair inline-flex h-9 items-center border bg-white px-3 text-sm transition-colors"
+                    className="rounded-suiton border-mineral-dark hover:border-ardoise-clair inline-flex h-9 items-center border bg-white px-3 text-sm transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-sm active:translate-y-0"
                   >
                     {c.nom}
                   </Link>
