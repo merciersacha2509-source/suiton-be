@@ -1,0 +1,106 @@
+@import 'tailwindcss';
+
+/* Les polices sont chargees par next/font/local (voir src/app/fonts.ts) :
+   sous-ensembles latins uniquement, preload automatique et metriques de
+   repli ajustees. Aucune requete vers un domaine tiers dans le chemin de
+   rendu — c'est ce qui tient le LCP sous 1,8 s et le CLS a zero. */
+
+/* ==========================================================================
+   Design system SUITON
+   --------------------------------------------------------------------------
+   Quatre couleurs d'identite, issues du brand book :
+     abysse  #0B2239   fonds sombres, texte principal
+     ocean   #14415F   surfaces secondaires, liens
+     aqua    #5FC2CE   RESERVE A LA PREUVE (photos, rapports, garanties)
+     mineral #F4F6F5   fond clair
+     aqua profond #1E6E78  aqua sur fond clair, pour le contraste
+
+   Les couleurs d'etat (succes, alerte, danger) sont STRICTEMENT reservees
+   aux etats systeme. Elles ne font pas partie de l'identite.
+
+   Regle d'or : AUCUN degrade decoratif.
+   ========================================================================== */
+
+@theme {
+  --color-abysse: #0b2239;
+  --color-abysse-90: #142e46;
+  --color-abysse-80: #1d3a53;
+  --color-ocean: #14415f;
+  --color-ocean-70: #3c6a86;
+  --color-aqua: #5fc2ce;
+  --color-aqua-deep: #1e6e78;
+  --color-aqua-wash: #e8f6f8;
+  --color-mineral: #f4f6f5;
+  --color-mineral-dark: #e2e7e6;
+  --color-ardoise: #64748b;
+  --color-ardoise-clair: #94a3b8;
+
+  --color-succes: #15803d;
+  --color-succes-wash: #ecfdf3;
+  --color-alerte: #b45309;
+  --color-alerte-wash: #fffaeb;
+  --color-danger: #b03a2e;
+  --color-danger-wash: #fef3f2;
+
+  --font-heading: var(--police-titre), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--police-texte), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-suiton: 0.5rem;
+
+  /* Cible tactile minimale. Utilisable avec des gants sur un chantier. */
+  --spacing-touch: 2.75rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-mineral-dark);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-mineral);
+    color: var(--color-abysse);
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-abysse);
+  }
+
+  /* Focus visible partout. Le parcours doit etre franchissable au clavier
+     seul : c'est un critere d'acceptation, pas une option. */
+  :focus-visible {
+    outline: 2px solid var(--color-aqua-deep);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Chiffres alignes dans les tableaux de montants. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+project_id = "suiton-os"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "storage", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+major_version = 15
+
+[studio]
+enabled = true
+port = 54323
+
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["http://localhost:3000/auth/callback"]
+jwt_expiry = 3600
+enable_signup = false
+
+[auth.email]
+# NE PAS mettre a false : dans le CLI Supabase, ce drapeau desactive le
+# fournisseur email dans son ensemble, connexion par mot de passe comprise —
+# pas seulement l'auto-inscription. Le blocage de l'auto-inscription est deja
+# assure par `enable_signup = false` sous [auth] ci-dessus ; l'application
+# n'expose de toute facon aucune route d'inscription publique.
+enable_signup = true
+enable_confirmations = false
+
+[storage]
+enabled = true
+file_size_limit = "20MiB"

@@ -1,0 +1,26 @@
+
+Jeu de demonstration
+--------------------
+  ok     le seed refuse de s’executer avec APP_ENV=production
+  ok     le seed refuse une base distante sans autorisation explicite
+  ok     le message de refus ne divulgue pas le mot de passe de la chaine de connexion
+  ok     le seed s’applique
+  ok     clients de demonstration crees — 5
+  ok     tous les noms portent le prefixe DÉMO
+  ok     toutes les adresses sont sur un domaine qui ne se resout jamais (.invalid, RFC 2606)
+  ok     tous les numeros sont dans une plage non attribuee
+  ok     le pipeline contient l’etape « nouveau »
+  ok     le pipeline contient l’etape « devis_envoye »
+  ok     le pipeline contient l’etape « planifie »
+  ok     le pipeline contient l’etape « termine »
+  ok     le pipeline contient l’etape « perdu »
+  ok     des devis existent — 2
+  ok     un rapport de chantier existe — 1
+  ok     une facture existe — 1
+  ok     une realisation est publiee — 1
+  ok     la facture professionnelle est en autoliquidation, sans TVA — autoliquidation, TVA 0.00
+  ok     la facture porte un identifiant Peppol — 9925:BE0999999999
+  ok     le seed est rejouable sans dupliquer — 5 clients apres deux executions
+  ok     reset-demo supprime tout, cascades comprises — 0 client(s), 0 chantier(s)
+
+  21 ok, 0 echec(s)

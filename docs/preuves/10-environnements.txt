@@ -1,0 +1,45 @@
+
+A. Environnement de developpement
+---------------------------------
+  ok     robots.txt interdit tout le site — User-Agent: * · Disallow: /
+  ok     les pages portent noindex
+  ok     le bandeau d’environnement est visible
+  ok     la canonique ne pointe pas sur le domaine de production
+
+B. Environnement de preview
+---------------------------
+  ok     robots.txt interdit tout le site
+  ok     les pages portent noindex
+  ok     le bandeau signale la preview
+  ok     l’en-tete X-Robots-Tag est configure hors production
+
+C. Environnement de production
+------------------------------
+  ok     robots.txt autorise l’exploration
+  ok     les pages sont indexables
+  ok     aucun bandeau d’environnement
+  ok     la canonique pointe sur https://suiton.be
+  ok     le portail client reste interdit aux robots
+
+D. Garde-fous
+-------------
+  ok     garde-fou : « oui » annule — code 1
+  ok     garde-fou : « GO PRODUCTION » annule — code 1
+  ok     garde-fou : « GO PRODUCTION SUITON » confirme — code 0
+  ok     apres confirmation, il affiche la marche a suivre
+  ok     le garde-fou ne peut executer aucune commande — il n’importe aucun lanceur de processus
+  ok     le seed de demonstration refuse APP_ENV=production
+
+E. Secrets
+----------
+  ok     .env.example ne contient aucune valeur pour SUPABASE_SERVICE_ROLE_KEY — SUPABASE_SERVICE_ROLE_KEY=
+  ok     .env.example ne contient aucune valeur pour PORTAL_TOKEN_PEPPER — PORTAL_TOKEN_PEPPER=
+  ok     .env.example ne contient aucune valeur pour CRON_SECRET — CRON_SECRET=
+  ok     .env.example ne contient aucune valeur pour RESEND_API_KEY — RESEND_API_KEY=
+  ok     .env.local est ignore par Git
+  ok     .env.preview est ignore par Git
+  ok     .env.production est ignore par Git
+  ok     .emails/ est ignore par Git
+
+============================================================
+27 controles reussis, 0 echec(s)

@@ -1,0 +1,78 @@
+
+A. En-tetes HTTP
+----------------
+  ok     x-content-type-options: nosniff — nosniff
+  ok     x-frame-options: DENY — DENY
+  ok     referrer-policy: no-referrer — no-referrer
+  ok     strict-transport-security: max-age=63072000 — max-age=63072000; includeSubDomains; preload
+  ok     cross-origin-opener-policy: same-origin — same-origin
+  ok     CSP default-src 'self'
+  ok     CSP object-src 'none'
+  ok     CSP base-uri 'self'
+  ok     CSP frame-ancestors 'none'
+  ok     CSP form-action 'self'
+  ok     CSP upgrade-insecure-requests
+  ok     CSP connect-src restreint — connect-src 'self' http://127.0.0.1:54321
+  ok     aucun en-tete x-powered-by
+  ok     Referrer-Policy no-referrer — le jeton de portail ne fuit pas par referer
+
+B. Isolation des donnees
+------------------------
+  ok     « anon » ne lit rien dans clients — 0 ligne(s)
+  ok     « anon » ne lit rien dans jobs — acces refuse
+  ok     « anon » ne lit rien dans quotes — acces refuse
+  ok     « anon » ne lit rien dans invoices — acces refuse
+  ok     « anon » ne lit rien dans portal_tokens — acces refuse
+  ok     « anon » ne lit rien dans photos — acces refuse
+  ok     « anon » ne lit rien dans messages — acces refuse
+  ok     « anon » ne lit rien dans reports — acces refuse
+  ok     « anon » ne lit rien dans documents — acces refuse
+  ok     « anon » ne lit rien dans settings_history — acces refuse
+  ok     « anon » ne lit rien dans audit_logs — acces refuse
+  ok     « anon » ne lit rien dans events — acces refuse
+  ok     « anon » ne lit rien dans job_metrics — acces refuse
+  ok     « anon » ne lit rien dans recommandations — acces refuse
+  ok     « authenticated » ne lit rien dans clients — 0 ligne(s)
+  ok     « authenticated » ne lit rien dans jobs — acces refuse
+  ok     « authenticated » ne lit rien dans quotes — acces refuse
+  ok     « authenticated » ne lit rien dans invoices — acces refuse
+  ok     « authenticated » ne lit rien dans portal_tokens — acces refuse
+  ok     « authenticated » ne lit rien dans photos — acces refuse
+  ok     « authenticated » ne lit rien dans messages — acces refuse
+  ok     « authenticated » ne lit rien dans reports — acces refuse
+  ok     « authenticated » ne lit rien dans documents — acces refuse
+  ok     « authenticated » ne lit rien dans settings_history — acces refuse
+  ok     « authenticated » ne lit rien dans audit_logs — acces refuse
+  ok     « authenticated » ne lit rien dans events — acces refuse
+  ok     « authenticated » ne lit rien dans job_metrics — acces refuse
+  ok     « authenticated » ne lit rien dans recommandations — acces refuse
+  ok     « anon » ne peut pas creer de chantier en direct
+
+C. Surface exposee
+------------------
+  ok     aucun jeton stocke en clair
+  ok     jetons haches en SHA-256 avec poivre
+  ok     jetons de 32 octets tires au hasard cryptographique
+  ok     robots.txt interdit le portail client — tout le site est interdit (hors production)
+  ok     robots.txt interdit les routes API — tout le site est interdit (hors production)
+  ok     aucune URL de portail dans le sitemap
+  ok     /portail porte noindex
+  ok     /mentions-legales porte noindex
+  ok     /confidentialite porte noindex
+  ok     aucun secret serveur dans les 69 fichiers envoyes au navigateur
+  ok     aucune cle de service dans le HTML
+  ok     upload : types MIME restreints
+  ok     upload : taille plafonnee
+  ok     upload : images re-encodees par sharp
+  ok     image de test porteuse d’EXIF — 228 octets
+  ok     EXIF/GPS reellement supprimes a l’ingestion — aucune metadonnee
+  ok     image reencodee en webp — webp
+  ok     un fichier renomme en .jpg est rejete par le traitement
+  ok     /api/booking applique une limitation de debit
+  ok     /api/slots applique une limitation de debit
+  ok     /api/photos/upload applique une limitation de debit
+  ok     /api/rappel applique une limitation de debit
+  ok     aucun composant client n’importe le client admin
+
+============================================================
+66 controles reussis, 0 echec(s)

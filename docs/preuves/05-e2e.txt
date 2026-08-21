@@ -1,0 +1,120 @@
+
+1. Pages publiques
+------------------
+  ok     /                                      200 — 12 ms
+  ok     /nettoyage-fin-de-chantier             200 — 6 ms
+  ok     /nettoyage-fin-de-chantier/enghien     200 — 5 ms
+  ok     /nettoyage-de-vitres                   200 — 6 ms
+  ok     /devis                                 200 — 4 ms
+  ok     /professionnels                        200 — 4 ms
+  ok     /realisations                          200 — 4 ms
+  ok     /contact                               200 — 5 ms
+  ok     /a-propos                              200 — 5 ms
+  ok     /reservation                           200 — 27 ms
+  ok     /mentions-legales                      200 — 4 ms
+  ok     /sitemap.xml                           200 — 3 ms
+  ok     /robots.txt                            200 — 3 ms
+  ok     /nettoyage-de-piscine                  404 — attendu 404
+  ok     /nettoyage-fin-de-chantier/paris       404 — attendu 404
+
+2. Espace de gestion — redirection vers la connexion
+----------------------------------------------------
+  ok     /tableau-de-bord protege — 307 -> /connexion
+  ok     /chantiers protege — 307 -> /connexion
+  ok     /facturation protege — 307 -> /connexion
+  ok     /intelligence protege — 307 -> /connexion
+
+3. Portail client — aucune fuite sans jeton valide
+--------------------------------------------------
+  ok     /portail sans jeton ne revele aucune donnee client
+  ok     jeton invente -> 404 — 404
+
+4. Validation de la reservation
+-------------------------------
+  ok     corps vide                       422
+  ok     montant impose par le client     201
+  ok     surface negative                 422
+  ok     surface absurde                  422
+  ok     courriel invalide                422
+  ok     code postal non belge            422
+  ok     service inconnu                  422
+  ok     CGV non acceptees                422
+  ok     champ piege rempli               422
+  ok     le montant envoye par le client est ignore — estimation recalculee : 980.00–1120.00 €
+
+5. Reservation nominale — chaine complete
+-----------------------------------------
+  ok     POST /api/booking -> 201 — 7 ms
+  ok     reference attribuee — SUITON-2026-0012
+  ok     lien de portail renvoye
+  ok     estimation renvoyee — 980–1120 €
+  ok     ni score ni identifiant interne dans la reponse publique
+  ok     un client cree — marie.dupont@example.be
+  ok     un chantier cree — SUITON-2026-0012
+  ok     jeton de portail hache en base — sha256, 64 caracteres
+  ok     consentement photo date
+  ok     score et bande calcules par la base — score 50, bande C
+  ok     evenements journalises — booking.created, booking.notified
+  ok     prix en base = grille × surface — 980.00–1120.00 € pour 140 m² à 7–8 €/m²
+
+6. Portail client avec le vrai jeton
+------------------------------------
+  ok     le portail s’ouvre avec le jeton emis — 200
+  ok     le portail affiche la bonne reference
+  ok     le portail est en noindex
+  ok     la visite du portail est tracee — hits=1
+  ok     un jeton modifie d’un caractere est refuse — 404
+
+7. Limitation de debit
+----------------------
+  ok     la limitation coupe le flot — refus a la tentative n° 11
+  ok     la limitation est bien par IP — 201
+
+8. Creneaux et methodes HTTP
+----------------------------
+  ok     GET /api/slots renvoie des creneaux reellement libres — 40 creneaux, duree 280–390 min
+  ok     GET /api/slots sans surface -> 422 — 422
+  ok     le premier creneau propose est acceptable par la base — 2026-08-21T06:00:00.000Z -> 2026-08-21T12:30:00.000Z
+  ok     GET /api/booking -> 405 — 405
+  ok     GET /api/health -> 200 — {"ok":true,"data":{"service":"suiton-os","version":"1.0.0-sp
+
+9. Chantier professionnel — autoliquidation
+-------------------------------------------
+  ok     reservation professionnelle acceptee — 201
+  ok     client enregistre comme professionnel — professionnel, BE0123456789
+
+10. Le calculateur du site et le devis donnent le meme prix
+-----------------------------------------------------------
+  ok     le prix de depart affiche vient bien de la grille — grille : 5 €/m²
+
+11. Demande de rappel
+---------------------
+  ok     rappel sans nom ni numero -> 422 — 422
+  ok     rappel avec champ piege rempli -> 422 — 422
+  ok     numero invalide -> 422 — 422
+  ok     rappel valide -> 201 — 201
+  ok     le formulaire de rappel est limite en debit — refus a la tentative n° 6
+
+12. Realisations
+----------------
+  ok     /realisations repond — 200
+  ok     galerie vide : elle annonce l’ouverture au lieu d’inventer des references
+  ok     fiche inconnue -> 404 — 404
+  ok     un chantier publie en base — maison-140m2-enghien
+  ok     la fiche du chantier publie repond 200 — 200
+  ok     la fiche affiche la surface et la commune reelles
+  ok     la fiche porte un JSON-LD Article
+  ok     la fiche renvoie vers un devis pre-rempli
+  ok     le chantier publie est bien la source du sitemap et de la galerie — 1 chantier(s) publie(s)
+  ok     publication sans resume redige refusee par la base
+
+13. Calculateur — type de bien
+------------------------------
+  ok     le calculateur demande le type de bien
+  ok     la page affirme que les vitres sont comprises
+  ok     les coefficients par type de bien restent neutres tant que le dirigeant ne les touche pas
+  ok     le parcours accepte un pre-remplissage depuis le calculateur
+  ok     un pre-remplissage invalide est ignore, pas fatal
+
+============================================================
+78 controles reussis, 0 echec(s)

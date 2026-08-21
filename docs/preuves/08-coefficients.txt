@@ -1,0 +1,7 @@
+  ok     coefficients crees a 1.000 — aucun prix ne change — {"autre":1,"villa":1,"maison":1,"studio":1,"bureaux":1,"commerce":1,"appartement":1}
+  ok     coefficient 1,20 accepte
+  ok     coefficient 12 rejete (faute de frappe)
+  ok     coefficient 0,10 rejete
+  ok     grille incomplete rejetee
+
+  5 ok, 0 echec(s)

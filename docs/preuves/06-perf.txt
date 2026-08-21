@@ -1,0 +1,41 @@
+
+1. TTFB de rendu — 15 requetes par page, apres chauffe
+──────────────────────────────────────────────────────────────────────────────
+page                                mediane     p95     min     max  HTML gzip
+Accueil                              2.7 ms     4.2     2.3     4.2  135.8 ko
+Service principal                    2.0 ms     4.2     1.8     4.2  99.6 ko
+Page locale                          1.8 ms     2.2     1.6     2.2  86.3 ko
+Service secondaire                   1.8 ms     2.1     1.7     2.1  91.3 ko
+Devis                                1.5 ms     3.3     1.4     3.3  76.5 ko
+Professionnels                       1.6 ms     2.8     1.4     2.8  82.2 ko
+Reservation (dynamique)              6.3 ms    11.1     5.5    11.1  43.0 ko
+
+2. Poids transfere — page d’accueil, premiere visite
+──────────────────────────────────────────────────────────────────────────────
+ressource                        brut       gzip     brotli
+HTML                         135.8 ko    22.8 ko    14.6 ko
+CSS bloquant                  40.6 ko     8.1 ko          —
+JS (12 fichiers)             514.8 ko   160.6 ko          —
+Polices woff2 (5)             98.4 ko    98.4 ko          —
+───────────────────────────────────────────────────────────
+CHEMIN CRITIQUE              274.8 ko   129.3 ko
+
+  Le chemin critique est ce qui doit arriver avant le premier rendu :
+  HTML + CSS bloquant + polices prechargees. Le JS arrive apres et
+  n'entre pas dans le LCP d'une page dont le plus grand element est
+  un bloc de texte.
+
+3. Regeneration incrementale
+──────────────────────────────────────────────────────────────────────────────
+  /                                      HIT
+  /nettoyage-fin-de-chantier/enghien     HIT
+
+4. Tenue sous charge — 100 requetes, 20 en parallele
+──────────────────────────────────────────────────────────────────────────────
+  Accueil (statique)          855 req/s  mediane 22.9 ms  p95 23.9 ms  0 erreur(s)
+  Reservation (dynamique)     256 req/s  mediane 76.0 ms  p95 95.6 ms  0 erreur(s)
+
+5. Routes API
+──────────────────────────────────────────────────────────────────────────────
+  /api/health                                    mediane 1.2 ms  p95 2.3 ms
+  /api/slots?surface_m2=140&soil=standard&jour   mediane 3.3 ms  p95 7.0 ms

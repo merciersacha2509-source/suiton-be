@@ -1,0 +1,191 @@
+
+Numerotation
+  ok     numerotation continue SUITON-2026-0026 -> SUITON-2026-0027
+
+Score — la bande est calculee par la base
+  ok     les 8 seuils correspondent a lib/scoring.ts
+  ok     score hors bornes rejete [clients_score_borne]
+
+Interventions — chevauchement, tampon de trajet compris
+  ok     08:00-12:00 acceptee
+  ok     12:15 — dans le tampon de 30 min — rejetee [pas_de_chevauchement]
+  ok     12:45 — apres le tampon — acceptee
+
+Facturation — obligation Peppol B2B (1er janvier 2026)
+  ok     identifiant Peppol derive de la TVA
+  ok     B2B en brouillon sans Peppol acceptee
+  ok     B2B EMISE sans Peppol REJETEE [b2b_peppol]
+  ok     B2B emise avec Peppol acceptee
+  ok     TTC incoherent rejete [invoices_ttc_coherent]
+  ok     autoliquidation avec TVA non nulle rejetee [invoices_autoliquidation_sans_tva]
+
+RGPD — EXIF et consentement
+  ok     photo publiee sans purge EXIF rejetee [pas_de_publication_avec_exif]
+  ok     photo publiee avec EXIF purge acceptee
+  ok     consentement photo sans date rejete [clients_consent_date]
+  ok     consentement photo date accepte
+
+Rapports
+  ok     observations vides rejetees [reports_observations_non_vides]
+  ok     checklist incomplete rejetee [reports_checklist_complete]
+  ok     rapport complet accepte
+
+Realisations — resume obligatoire
+  ok     publication sans resume rejetee [jobs_publie_a_un_resume]
+  ok     publication avec resume redige acceptee
+
+Reglages — historique ecrit par trigger
+  ok     une ligne d’historique ecrite par la base
+
+Reservation — atomicite de create_booking
+  ok     chantier + client + jeton crees SUITON-2026-0028
+  ok     evenement et score journalises
+  ok     une donnee invalide n’ecrit RIEN [jobs_surface_plage]
+  ok     aucun chantier ni client orphelin laisse
+
+Portail — un seul jeton actif a la fois
+  ok     second jeton actif rejete [portal_tokens_un_actif_par_job]
+  ok     nouveau jeton accepte apres revocation
+  ok     empreinte non hexadecimale rejetee [portal_tokens_hash_format]
+
+Limitation de debit
+  ok     11e requete bloquee, autre IP intacte, Retry-After renseigne
+
+Creneaux libres
+  ok     38 creneaux, aucun sous 24 h, aucun dimanche
+  ok     creneau occupe retire (38 -> 33)
+
+Photos deposees sans chantier
+  ok     orpheline de plus de 24 h purgee, recente conservee
+
+Communication structuree belge (modulo 97)
+  ok     format et clé de contrôle corrects +++202/6000/14845+++
+  ok     attribuée automatiquement à la création +++202/6000/00596+++
+
+Terrain — verrous du rapport
+  ok     rapport refusé si l’intervention n’a pas commencé [23514]
+  ok     rapport refusé si la checklist est incomplète [23514]
+  ok     rapport accepté une fois les 6 étapes cochées
+
+Photos — appariement avant/après
+  ok     une photo « avant » par paire
+  ok     deux « avant » dans la même paire refusés [photos_paire_unique]
+  ok     un « après » dans la même paire accepté
+
+Clôture — durée réelle et avancement du chantier
+  ok     chantier terminé, durée réelle 300 min
+
+Registre documentaire — versionnement
+  ok     la version suivante est calculée par la base
+  ok     la version 1 est marquée remplacée automatiquement
+  ok     deux fois la même version rejetée [documents_version_unique]
+  ok     empreinte non hexadécimale rejetée [documents_hash_format]
+
+Archive de chantier
+  ok     archive écrite avec son instantané dénormalisé
+  ok     contenu d’archive non objet rejeté [archives_contenu_non_vide]
+
+Références — refus de mentir avec peu de données
+  ok     sans historique, la référence vient du catalogue 2.40 min/m²
+  ok     3 chantiers : confiance faible, catalogue conservé
+  ok     5 chantiers : la médiane observée prend le relais 2.50 min/m²
+  ok     la médiane résiste à un chantier aberrant 2.5 → 2.50 min/m²
+
+Bandes de surface
+  ok     cinq bandes, un studio n’est pas comparé à une villa
+
+Extraction automatique des métriques
+  ok     métriques extraites et idempotentes
+  ok     cadence min/m² calculée 2.36
+
+Vues d’agrégation
+  ok     les cinq vues répondent, même sur une base quasi vide
+
+Cockpit — les vues répondent sur une base vide
+  ok     les 8 vues du cockpit répondent
+  ok     perf_globale renvoie une ligne unique, même sans donnée
+  ok     105 gabarits couverts par le catalogue
+  ok     aucun gabarit sans référence exploitable
+
+Chantiers comparables
+  ok     6 chantiers comparables retrouvés
+  ok     seuls les chantiers de la même bande de surface remontent
+
+Intelligence — traçabilité des décisions
+  ok     un rejet sans motif est refusé [recommandations_rejet_motive]
+  ok     un rejet motivé est accepté
+  ok     une décision sans date est refusée [recommandations_decidee_datee]
+  ok     une fourchette de gain inversée est refusée [recommandations_gain_ordre]
+  ok     deux recommandations actives de même code sont refusées [recommandations_active_unique]
+
+Expériences contrôlées
+  ok     une période de test antérieure à la référence est refusée [experiences_ordre]
+  ok     un indicateur inconnu est refusé [experiences_indicateur]
+  ok     une clôture sans conclusion est refusée [experiences_conclusion]
+  ok     mesure d'expérience exécutable (0 période(s) trouvée(s))
+  ok     les chantiers à checklist suspecte sont exclus de la mesure
+
+Vues intelligence
+  ok     saisonnalité et volume par segment répondent
+  ok     jours_couverts toujours ≥ 1 — pas de division par zéro
+
+Playbook — modèles et boucle fermée
+  ok     5 playbooks réutilisables disponibles
+  ok     les playbooks portent leurs prérequis
+  ok     une décision finale sans date est refusée [experiences_decision_datee]
+
+Valeur créée — seules les généralisations comptent
+  ok     la valeur d’une expérience arrêtée n’est PAS comptabilisée 4200.00 €
+  ok     les expériences arrêtées sont comptées, sans valeur
+
+Mémoire d’entreprise
+  ok     chaque expérience close laisse un récit relisible
+  ok     seules les expériences closes entrent dans la mémoire
+
+Report de décision
+  ok     une recommandation peut être reportée
+  ok     les reports sont comptés séparément des rejets
+
+RLS
+  ok     RLS active sur toutes les tables publiques
+         64 politiques
+
+=== 84 verifications passees, 0 echec(s) ===
+
+--- controles de mise en production ---
+  ok     Tables en deny-all limitees aux compteurs internes — counters, rate_limits
+  ok     counters illisible par « authenticated » — 4 ligne(s) en base, 0 visible(s)
+  ok     rate_limits illisible par « authenticated » — 5 ligne(s) en base, 0 visible(s)
+  ok     SECURITY DEFINER chantiers_comparables fixe son search_path
+  ok     SECURITY DEFINER cloturer_intervention fixe son search_path
+  ok     SECURITY DEFINER consume_rate_limit fixe son search_path
+  ok     SECURITY DEFINER create_booking fixe son search_path
+  ok     SECURITY DEFINER current_role_of fixe son search_path
+  ok     SECURITY DEFINER free_slots fixe son search_path
+  ok     SECURITY DEFINER handle_new_user fixe son search_path
+  ok     SECURITY DEFINER is_admin fixe son search_path
+  ok     SECURITY DEFINER is_staff fixe son search_path
+  ok     SECURITY DEFINER log_settings_change fixe son search_path
+  ok     SECURITY DEFINER mesurer_experience fixe son search_path
+  ok     SECURITY DEFINER my_team_ids fixe son search_path
+  ok     SECURITY DEFINER next_number fixe son search_path
+  ok     SECURITY DEFINER prochaine_version_document fixe son search_path
+  ok     SECURITY DEFINER purge_photos_orphelines fixe son search_path
+  ok     SECURITY DEFINER purge_rate_limits fixe son search_path
+  ok     SECURITY DEFINER rafraichir_metriques fixe son search_path
+  ok     SECURITY DEFINER reference_effective fixe son search_path
+  ok     SECURITY DEFINER remplacer_version_precedente fixe son search_path
+  ok     SECURITY DEFINER set_invoice_numero fixe son search_path
+  ok     SECURITY DEFINER set_job_reference fixe son search_path
+  ok     SECURITY DEFINER set_quote_numero fixe son search_path
+  ok     SECURITY DEFINER set_report_numero fixe son search_path
+  ok     SECURITY DEFINER touch_portal_token fixe son search_path
+  ok     SECURITY DEFINER verifier_rapport fixe son search_path
+  (25 fonctions SECURITY DEFINER)
+  ok     Toutes les cles etrangeres sont indexees
+  ok     portal_tokens ne contient aucune colonne « token » en clair — created_at, expires_at, hits, id, job_id, last_seen_at, revoked_at, token_hash
+  ok     portal_tokens stocke une empreinte
+  ok     next_number incremente sans trou — 5 -> 6
+  ok     Toutes les vues sont en security_invoker
+
+  complementaires : 33 ok, 0 echec(s)
