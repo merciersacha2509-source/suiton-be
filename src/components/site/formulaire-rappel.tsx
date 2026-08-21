@@ -14,7 +14,19 @@ import { cn } from '@/lib/cn';
  * d'envoi est annonce aux lecteurs d'ecran par `aria-live`. Une confirmation
  * qui n'existe que visuellement n'est pas une confirmation.
  */
-export function FormulaireRappel() {
+export function FormulaireRappel({
+  titre = 'Faites-vous rappeler',
+  description = 'Deux champs. Nous rappelons le jour même en semaine.',
+  libelleMessage = 'Votre chantier',
+  placeholderMessage = 'Maison de 140 m² à Enghien, fin de chantier, réception le 12.',
+  id,
+}: {
+  titre?: string;
+  description?: string;
+  libelleMessage?: string;
+  placeholderMessage?: string;
+  id?: string;
+}) {
   const [etat, setEtat] = useState<'saisie' | 'envoi' | 'ok' | 'erreur'>('saisie');
   const [erreur, setErreur] = useState<string | null>(null);
 
@@ -78,13 +90,12 @@ export function FormulaireRappel() {
 
   return (
     <form
+      id={id}
       onSubmit={soumettre}
       className="rounded-suiton border-mineral-dark border bg-white p-6"
     >
-      <h3 className="font-heading text-base font-semibold">Faites-vous rappeler</h3>
-      <p className="text-ardoise mt-1.5 text-sm">
-        Deux champs. Nous rappelons le jour même en semaine.
-      </p>
+      <h3 className="font-heading text-base font-semibold">{titre}</h3>
+      <p className="text-ardoise mt-1.5 text-sm">{description}</p>
 
       <div className="mt-5 space-y-4">
         <div>
@@ -118,13 +129,13 @@ export function FormulaireRappel() {
 
         <div>
           <label htmlFor="rappel-message" className="block text-sm font-medium">
-            Votre chantier <span className="text-ardoise font-normal">— facultatif</span>
+            {libelleMessage} <span className="text-ardoise font-normal">— facultatif</span>
           </label>
           <textarea
             id="rappel-message"
             name="message"
             rows={3}
-            placeholder="Maison de 140 m² à Enghien, fin de chantier, réception le 12."
+            placeholder={placeholderMessage}
             className="rounded-suiton border-mineral-dark focus:border-ocean mt-1.5 w-full border p-3 text-sm focus:outline-none"
           />
         </div>

@@ -22,6 +22,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/devis`, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${SITE_URL}/reservation`, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${SITE_URL}/professionnels`, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE_URL}/nettoyage-auto`, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${SITE_URL}/nettoyage-textile`, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE_URL}/realisations`, changeFrequency: 'weekly', priority: 0.7 },
     { url: `${SITE_URL}/a-propos`, changeFrequency: 'yearly', priority: 0.5 },
     { url: `${SITE_URL}/contact`, changeFrequency: 'yearly', priority: 0.6 },

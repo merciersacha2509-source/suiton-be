@@ -11,6 +11,8 @@ const LIENS = [
   { href: '/nettoyage-fin-de-chantier', label: 'Fin de chantier' },
   { href: '/nettoyage-apres-renovation', label: 'Après rénovation' },
   { href: '/nettoyage-de-vitres', label: 'Vitres' },
+  { href: '/nettoyage-auto', label: 'Auto' },
+  { href: '/nettoyage-textile', label: 'Textile' },
   { href: '/realisations', label: 'Réalisations' },
   { href: '/professionnels', label: 'Professionnels' },
 ];
