@@ -9,6 +9,7 @@ import {
   Section,
   TitreSection,
 } from '@/components/site/blocs';
+import { FormulaireProfessionnel } from '@/components/site/formulaire-professionnel';
 import { ENTREPRISE } from '@/lib/site/entreprise';
 import { Jsonld, jsonldFaq, jsonldFilAriane, metadonnees } from '@/lib/site/seo';
 
@@ -96,7 +97,7 @@ export default function PageProfessionnels() {
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <a
-              href={`mailto:${ENTREPRISE.email}?subject=Demande%20de%20grille%20professionnelle`}
+              href="#compte-pro"
               className="rounded-suiton bg-aqua text-abysse flex h-12 items-center justify-center px-6 text-sm font-semibold transition-opacity hover:opacity-90"
             >
               Demander une grille annuelle
@@ -177,6 +178,26 @@ export default function PageProfessionnels() {
       </Section>
 
       <Section fond="mineral">
+        <TitreSection
+          surtitre="Volume"
+          titre="Pour les entreprises qui ont plusieurs chantiers par mois"
+          chapeau="Un devis par chantier devient vite plus de travail administratif que le nettoyage lui-même. La grille annuelle règle la question une fois pour toutes."
+        />
+        <div className="mt-10">
+          <ListePuces
+            items={[
+              'Tarifs négociés au volume, valables douze mois',
+              'Priorité de planning sur les créneaux disponibles',
+              'Processus standardisé, identique d’un chantier à l’autre',
+              'Interlocuteur unique, qui connaît vos chantiers',
+              'Moins d’administratif : plus de devis à valider un par un',
+              'Interventions planifiables à l’avance sur votre calendrier de livraison',
+            ]}
+          />
+        </div>
+      </Section>
+
+      <Section fond="mineral">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
             <TitreSection
@@ -211,28 +232,24 @@ export default function PageProfessionnels() {
         <Faq items={FAQ} titre="Questions des professionnels" />
       </Section>
 
-      <Section fond="mineral">
+      <Section id="compte-pro">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-2xl font-semibold sm:text-3xl">Ouvrir un compte professionnel</h2>
           <p className="text-ardoise mt-4 text-base leading-relaxed">
-            Dites-nous votre volume annuel estimé et vos communes d&apos;intervention. Nous vous
-            envoyons une grille sous 48 heures.
+            Dites-nous votre volume approximatif et vos communes d&apos;intervention. Nous vous
+            envoyons une grille sous 24 heures ouvrées.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <a
-              href={`mailto:${ENTREPRISE.email}?subject=Ouverture%20de%20compte%20professionnel`}
-              className="rounded-suiton bg-abysse text-mineral hover:bg-abysse-90 flex h-12 items-center justify-center px-6 text-sm font-medium transition-colors"
-            >
-              {ENTREPRISE.email}
-            </a>
-            <Link
-              href="/reservation"
-              className="rounded-suiton border-mineral-dark hover:border-ardoise-clair flex h-12 items-center justify-center border bg-white px-6 text-sm font-medium transition-colors"
-            >
-              Ou demander un devis ponctuel
-            </Link>
-          </div>
         </div>
+        <div className="mt-8">
+          <FormulaireProfessionnel />
+        </div>
+        <p className="text-ardoise mt-4 text-center text-xs">
+          Un besoin ponctuel plutôt qu&apos;un volume régulier ?{' '}
+          <Link href="/reservation" className="text-ocean underline">
+            Passez directement par le devis en ligne
+          </Link>
+          .
+        </p>
       </Section>
 
       <AppelFinal

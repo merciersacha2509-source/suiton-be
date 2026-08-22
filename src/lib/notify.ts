@@ -235,6 +235,55 @@ ${params.message ? `<p style="white-space:pre-wrap">${params.message}</p>` : '<p
   );
 }
 
+/**
+ * Demande professionnelle depuis la page /professionnels.
+ *
+ * Le sujet porte la societe et le type de besoin : c'est ce qui permet de
+ * trier "grille annuelle" (a chiffrer) de "devis ponctuel" (a traiter comme
+ * une reservation classique) sans ouvrir le message.
+ */
+export async function notifierDemandePro(params: {
+  societe: string;
+  contact: string;
+  email: string;
+  telephone: string;
+  besoin: 'ponctuel' | 'annuel';
+  chantiersParMois: string;
+  surfaceMoyenne: string;
+  frequence: string;
+  zone: string;
+  message: string;
+  ip: string;
+}): Promise<ResultatEnvoi> {
+  const destinataire = serverEnv().NOTIFY_EMAIL;
+  if (!destinataire) return { envoye: false, erreur: 'NOTIFY_EMAIL absente' };
+
+  const tel = params.telephone.replace(/\s/g, '');
+  const libelleBesoin = params.besoin === 'annuel' ? 'Grille annuelle' : 'Devis ponctuel';
+
+  const lignes: [string, string][] = [
+    ['Société', params.societe],
+    ['Contact', params.contact],
+    ['Besoin', libelleBesoin],
+    ['Chantiers / mois', params.chantiersParMois || '—'],
+    ['Surface moyenne', params.surfaceMoyenne || '—'],
+    ['Fréquence', params.frequence || '—'],
+    ['Zone d’intervention', params.zone || '—'],
+  ];
+
+  const corps = `<p><strong>${params.societe}</strong> — ${libelleBesoin}</p>
+<p>${lignes.map(([k, v]) => `${k} : ${v}`).join('<br>')}</p>
+<p><a href="tel:${tel}">${params.telephone}</a> · <a href="mailto:${params.email}">${params.email}</a></p>
+${params.message ? `<p style="white-space:pre-wrap">${params.message}</p>` : ''}`;
+
+  return envoyer(
+    destinataire,
+    `${libelleBesoin} — ${params.societe}`,
+    gabarit('Demande professionnelle', corps, { libelle: 'Appeler', url: `tel:${tel}` }),
+    `${params.societe} — ${libelleBesoin}\n${lignes.map(([k, v]) => `${k}: ${v}`).join('\n')}\n${params.telephone} ${params.email}\n\n${params.message || '(aucun message)'}`,
+  );
+}
+
 /** Alerte technique. Volontairement seche : elle sert a reagir, pas a lire. */
 export async function alerterPanne(sujet: string, detail: string): Promise<ResultatEnvoi> {
   const destinataire = serverEnv().NOTIFY_EMAIL;

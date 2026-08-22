@@ -182,6 +182,20 @@ export default async function PageRealisations() {
               .
             </p>
           </Carte>
+
+          <ul className="mt-6 grid gap-4 sm:grid-cols-3">
+            {['Fin de chantier', 'Après rénovation', 'Vitres & châssis'].map((categorie) => (
+              <li
+                key={categorie}
+                className="rounded-suiton border-mineral-dark flex h-full flex-col overflow-hidden border bg-white"
+              >
+                <span className="border-mineral-dark text-ardoise-clair flex aspect-[4/3] w-full items-center justify-center border-b text-xs">
+                  Photo à venir
+                </span>
+                <p className="px-5 py-4 text-sm font-medium">{categorie}</p>
+              </li>
+            ))}
+          </ul>
         </Section>
       ) : null}
 

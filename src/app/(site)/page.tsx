@@ -77,9 +77,9 @@ const FAQ_ACCUEIL = [
 ];
 
 export const metadata: Metadata = metadonnees({
-  title: 'Nettoyage de fin de chantier à Enghien et en Brabant wallon',
+  title: 'Nettoyage de fin de chantier et après rénovation à Enghien',
   description:
-    'Nettoyage de fin de chantier à Enghien, Hal, Nivelles, Waterloo et Bruxelles. Vitres comprises, rapport photo avant/après, devis ferme sous 24 h. Dès 5 €/m².',
+    'Nettoyage de fin de chantier et après rénovation à Enghien, Hal, Nivelles, Waterloo et Bruxelles. Vitres comprises, rapport photo avant/après, devis ferme sous 24 h. Dès 5 €/m².',
   chemin: '/',
 });
 
@@ -191,7 +191,7 @@ export default async function Accueil() {
             </div>
 
             <p className="text-ardoise mt-4 text-xs">
-              Réponse le jour même en semaine · Sans engagement · Devis ferme sous 24 h
+              Réponse sous 24 h · Devis ferme · Rapport photo avant/après
             </p>
           </div>
 

@@ -155,6 +155,36 @@ export function PageService({
         </ol>
       </Section>
 
+      {/* Controle qualite ------------------------------------------------ */}
+      <Section fond="mineral">
+        <TitreSection
+          surtitre="Contrôle qualité"
+          titre="Chaque chantier est contrôlé avant livraison"
+          chapeau="Vous ne devez pas envoyer quelqu'un derrière nous pour vérifier. Le contrôle fait partie de l'intervention, pas de l'après-vente."
+        />
+        <ol className="mt-10 grid gap-px sm:grid-cols-3 lg:grid-cols-6">
+          {[
+            { titre: 'Préparation', detail: 'Repérage des zones sensibles et protection.' },
+            { titre: 'Nettoyage', detail: 'Sept postes, toujours dans le même ordre.' },
+            { titre: 'Contrôle pièce par pièce', detail: 'Relecture, pas un coup d’œil global.' },
+            {
+              titre: 'Vitrages et châssis',
+              detail: 'Vérifiés en lumière rasante, seul angle révélateur.',
+            },
+            { titre: 'Photos avant/après', detail: 'Même cadrage, horodatées sur place.' },
+            { titre: 'Livraison', detail: 'Rapport remis, réserves consignées s’il y en a.' },
+          ].map((e, i) => (
+            <li key={e.titre} className="border-mineral-dark border bg-white p-5">
+              <span className="font-heading tabular text-aqua-deep text-sm font-semibold">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 className="font-heading mt-3 text-sm font-semibold">{e.titre}</h3>
+              <p className="text-ardoise mt-1.5 text-xs leading-relaxed">{e.detail}</p>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
       {/* Garanties ------------------------------------------------------ */}
       <Section fond="abysse">
         <TitreSection

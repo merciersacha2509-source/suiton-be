@@ -25,6 +25,7 @@ export const QUOTAS = {
   // Un rappel se demande une fois, pas dix. Une limite basse suffit et rend
   // le formulaire inutile comme relais de spam.
   rappel: { limite: 5, fenetreSecondes: 3600 },
+  pro: { limite: 5, fenetreSecondes: 3600 },
   portail: { limite: 60, fenetreSecondes: 3600 },
   portail_action: { limite: 10, fenetreSecondes: 3600 },
 } as const satisfies Record<string, Quota>;
