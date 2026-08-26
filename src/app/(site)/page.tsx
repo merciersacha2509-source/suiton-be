@@ -262,7 +262,7 @@ export default async function Accueil() {
         <TitreSection
           surtitre="Nos prestations"
           titre="Cinq métiers, une seule exigence"
-          chapeau="Chaque prestation a son protocole, ses produits et sa durée type. Nous ne facturons pas un nettoyage de fin de chantier au tarif d'un entretien, et l'inverse est vrai aussi."
+          chapeau="Chaque prestation a son protocole et ses produits propres. Nous ne facturons pas un nettoyage de fin de chantier au tarif d'un entretien, et l'inverse est vrai aussi."
         />
         <EnVue className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((s) => (
@@ -287,7 +287,6 @@ export default async function Accueil() {
                   </>
                 )}
               </p>
-              <p className="text-ardoise mt-1 text-xs">{s.dureeType}</p>
             </Link>
           ))}
         </EnVue>

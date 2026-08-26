@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { cn } from '@/lib/cn';
-import { formatDuration } from '@/lib/format';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Alert } from '@/components/ui/alert';
 import type { Creneau } from './types';
@@ -36,7 +35,6 @@ export function SlotPicker({
   onChange: (c: Creneau | null) => void;
 }) {
   const [creneaux, setCreneaux] = useState<Creneau[] | null>(null);
-  const [duree, setDuree] = useState<{ min: number; max: number } | null>(null);
   const [erreur, setErreur] = useState(false);
 
   useEffect(() => {
@@ -50,7 +48,6 @@ export function SlotPicker({
 
         if (reponse.ok && json.ok) {
           setCreneaux(json.data.creneaux);
-          setDuree({ min: json.data.duree_min, max: json.data.duree_max });
         } else {
           setErreur(true);
           setCreneaux([]);
@@ -93,13 +90,9 @@ export function SlotPicker({
 
   return (
     <div className="flex flex-col gap-4">
-      {duree ? (
-        <p className="text-ardoise text-sm">
-          Durée estimée pour {surface} m² : {formatDuration(duree.min)} à{' '}
-          {formatDuration(duree.max)}. Choisissez une date qui vous arrange — vous pourrez la
-          modifier.
-        </p>
-      ) : null}
+      <p className="text-ardoise text-sm">
+        Choisissez une date qui vous arrange — vous pourrez la modifier.
+      </p>
 
       {erreur || parJour.length === 0 ? (
         <Alert ton="alerte" titre="Aucun créneau à afficher">

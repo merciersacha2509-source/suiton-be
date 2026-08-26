@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { estimate, estimateDuration, type GrillePublique } from '@/lib/pricing';
+import { estimate, type GrillePublique } from '@/lib/pricing';
 import { zonePourCodePostal } from '@/lib/zones';
 import type { ServiceType, SoilLevel, PropertyType } from '@/types/database';
 import { cn } from '@/lib/cn';
@@ -97,7 +97,6 @@ export function Calculateur({
           { service: SERVICE_UNIQUE, soil, surface_m2: surface, zone, urgent, property_type: bien },
           settings,
         ),
-        duree: estimateDuration({ surface_m2: surface, soil }),
       };
     } catch {
       return null;
@@ -107,12 +106,6 @@ export function Calculateur({
   const lien =
     `/reservation?service=${SERVICE_UNIQUE}&surface=${surface}&salissure=${soil}` +
     `&cp=${codePostal}&bien=${bien}${urgent ? '&urgent=1' : ''}`;
-
-  const heures = (minutes: number) => {
-    const h = Math.floor(minutes / 60);
-    const m = minutes % 60;
-    return m === 0 ? `${h} h` : `${h} h ${String(m).padStart(2, '0')}`;
-  };
 
   return (
     <div
@@ -292,9 +285,7 @@ export function Calculateur({
               {euros(resultat.prix.min)} – {euros(resultat.prix.max)}
             </p>
             <p className="text-ardoise mt-1 text-xs">
-              Hors TVA · {heures(resultat.duree.min)} à {heures(resultat.duree.max)}{' '}
-              d&apos;intervention
-              {zone === 'secondaire' ? ' · frais de déplacement inclus' : ''}
+              Hors TVA{zone === 'secondaire' ? ' · frais de déplacement inclus' : ''}
             </p>
             <p className="border-aqua-deep/25 bg-aqua-wash text-aqua-deep rounded-suiton mt-3 flex items-start gap-2 border p-2.5 text-xs leading-relaxed">
               <Coche />

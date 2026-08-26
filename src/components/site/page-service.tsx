@@ -100,10 +100,6 @@ export function PageService({
                 </dd>
               </div>
               <div>
-                <dt className="text-ardoise text-xs tracking-[0.1em] uppercase">Durée type</dt>
-                <dd className="font-heading mt-1 text-base font-medium">{service.dureeType}</dd>
-              </div>
-              <div>
                 <dt className="text-ardoise text-xs tracking-[0.1em] uppercase">Devis</dt>
                 <dd className="font-heading mt-1 text-base font-medium">
                   {surDevisApresVisite ? 'Après visite sur place' : 'Ferme, sous 24 h'}

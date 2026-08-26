@@ -30,7 +30,6 @@ export interface Service {
   deroulement: { titre: string; detail: string }[];
   /** Prix indicatif au m², repris de la grille. Affiche « a partir de ». */
   prixDepuis: number;
-  dureeType: string;
   faq: { question: string; reponse: string }[];
   /** Services connexes, pour le maillage interne. */
   connexes: string[];
@@ -95,7 +94,6 @@ export const SERVICES: Service[] = [
       },
     ],
     prixDepuis: 7,
-    dureeType: '4 à 7 h selon la surface et le type de bien',
     faq: [
       {
         question: 'Les vitres sont-elles comprises dans le prix ?',
@@ -177,7 +175,6 @@ export const SERVICES: Service[] = [
       { titre: 'Sols et contrôle final', detail: 'Lavage, puis relecture pièce par pièce.' },
     ],
     prixDepuis: 7,
-    dureeType: '3 à 5 h pour un appartement de 80 m²',
     faq: [
       {
         question: 'Faut-il prévenir le syndic ?',
@@ -241,7 +238,6 @@ export const SERVICES: Service[] = [
       { titre: 'Sols et contrôle final', detail: 'Lavage, puis relecture pièce par pièce.' },
     ],
     prixDepuis: 7,
-    dureeType: '5 à 7 h pour une maison de 140 m²',
     faq: [
       {
         question: 'Le garage est-il compris ?',
@@ -296,7 +292,6 @@ export const SERVICES: Service[] = [
       { titre: 'Contrôle en lumière rasante', detail: 'Les traces ne se voient que de biais.' },
     ],
     prixDepuis: 4,
-    dureeType: '2 à 3 h pour une maison de 140 m²',
     faq: [
       {
         question: 'Pourquoi pas de prix affiché directement en ligne ?',
