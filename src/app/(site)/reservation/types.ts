@@ -1,16 +1,12 @@
 import type { ServiceType, SoilLevel, PropertyType } from '@/types/database';
+import type { PhotoDeposee } from '@/components/site/photo-uploader';
 
 export type { GrillePublique } from '@/lib/pricing';
+export type { PhotoDeposee } from '@/components/site/photo-uploader';
 
 export interface Creneau {
   debut: string;
   fin: string;
-}
-
-export interface PhotoDeposee {
-  id: string;
-  apercu: string | null;
-  nom: string;
 }
 
 export interface EtatReservation {
@@ -57,33 +53,20 @@ export const ETAT_INITIAL: EtatReservation = {
   consent_cgv: false,
 };
 
+/*
+ * Une seule prestation passe par ce parcours : le nettoyage de fin de
+ * travaux (construction neuve ou renovation confondues). Les vitres seules
+ * suivent un parcours dedie sur /nettoyage-de-vitres (visite sur place,
+ * pas d'estimation automatique) — il n'y a donc plus d'etape "Service" a
+ * choisir ici, le client ne peut pas hesiter sur la prestation.
+ */
 export const ETAPES = [
-  { numero: 1, titre: 'Service', court: 'Service' },
-  { numero: 2, titre: 'Où se trouve le chantier ?', court: 'Lieu' },
-  { numero: 3, titre: 'Surface et état', court: 'Surface' },
-  { numero: 4, titre: 'Photos', court: 'Photos' },
-  { numero: 5, titre: 'Créneau', court: 'Créneau' },
-  { numero: 6, titre: 'Vos coordonnées', court: 'Contact' },
+  { numero: 1, titre: 'Où se trouve le chantier ?', court: 'Lieu' },
+  { numero: 2, titre: 'Surface et état', court: 'Surface' },
+  { numero: 3, titre: 'Photos', court: 'Photos' },
+  { numero: 4, titre: 'Créneau', court: 'Créneau' },
+  { numero: 5, titre: 'Vos coordonnées', court: 'Contact' },
 ] as const;
-
-export const SERVICES: { code: ServiceType; titre: string; description: string }[] = [
-  {
-    code: 'fin_de_chantier',
-    titre: 'Fin de chantier',
-    description:
-      'Après gros œuvre ou construction neuve. Poussière de découpe, résidus, vitres.',
-  },
-  {
-    code: 'apres_renovation',
-    titre: 'Après rénovation',
-    description: 'Après travaux dans un bien occupé ou remis en location.',
-  },
-  {
-    code: 'vitres',
-    titre: 'Vitres uniquement',
-    description: 'Vitres, châssis et encadrements. Intérieur et extérieur accessible.',
-  },
-];
 
 export const BIENS: { code: PropertyType; titre: string }[] = [
   { code: 'studio', titre: 'Studio' },
@@ -96,11 +79,6 @@ export const BIENS: { code: PropertyType; titre: string }[] = [
 ];
 
 export const SALISSURES: { code: SoilLevel; titre: string; description: string }[] = [
-  {
-    code: 'leger',
-    titre: 'Légère',
-    description: 'Poussière fine, chantier propre, peu de résidus.',
-  },
   {
     code: 'standard',
     titre: 'Standard',

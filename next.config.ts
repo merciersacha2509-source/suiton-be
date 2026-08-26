@@ -109,6 +109,17 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: '/:path*', headers: [...securityHeaders, ...entetesEnvironnement] }];
   },
+  async redirects() {
+    return [
+      // "Apres renovation" est fusionne dans "Fin de travaux" — l'ancienne
+      // URL ne doit plus rendre un 404.
+      {
+        source: '/nettoyage-apres-renovation',
+        destination: '/nettoyage-fin-de-chantier',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

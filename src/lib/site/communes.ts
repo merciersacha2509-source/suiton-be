@@ -76,7 +76,7 @@ export const COMMUNES: Commune[] = [
     ],
     quartiers: ['Centre', 'Petit-Enghien', 'Marcq', 'Labliau', 'Parc d’Enghien'],
     voisines: ['hal', 'tubize', 'saint-pieters-leeuw'],
-    servicesPhares: ['nettoyage-fin-de-chantier', 'nettoyage-apres-renovation'],
+    servicesPhares: ['nettoyage-fin-de-chantier', 'nettoyage-de-vitres'],
   },
 
   {
@@ -91,7 +91,7 @@ export const COMMUNES: Commune[] = [
     trajet: '30 minutes',
     titleSeo: 'Nettoyage fin de chantier Nivelles | Devis 24 h — SUITON',
     metaDescription:
-      'Nettoyage de fin de chantier et après rénovation à Nivelles. Constructions neuves, rénovations du centre historique. Vitres comprises, garantie 48 h.',
+      'Nettoyage de fin de travaux à Nivelles. Constructions neuves, rénovations du centre historique. Vitres comprises, garantie 48 h.',
     h1: 'Nettoyage de fin de chantier à Nivelles',
     contexte: [
       "Nivelles est l'une des communes du Brabant wallon où l'on construit le plus. Les nouveaux quartiers résidentiels au sud et à l'est de la ville produisent un flux régulier de chantiers à livrer, et les délais y sont serrés : la réception provisoire tombe souvent quelques jours après la fin du gros œuvre.",
@@ -167,7 +167,7 @@ export const COMMUNES: Commune[] = [
     trajet: '40 minutes',
     titleSeo: 'Nettoyage fin de chantier Waterloo | Villas et rénovations',
     metaDescription:
-      'Nettoyage après chantier et après rénovation à Waterloo. Villas, biens de standing, remises en location. Rapport photo, garantie retouche 48 h.',
+      'Nettoyage de fin de travaux à Waterloo. Villas, biens de standing, remises en location. Rapport photo, garantie retouche 48 h.',
     h1: 'Nettoyage de fin de chantier à Waterloo',
     contexte: [
       "Waterloo compte une proportion inhabituelle de biens haut de gamme et de locations meublées, liée à la présence d'une population internationale. Les rotations locatives y sont fréquentes, et avec elles les remises en état entre deux occupants.",
@@ -183,7 +183,7 @@ export const COMMUNES: Commune[] = [
     ],
     quartiers: ['Centre', 'Chenois', 'Mont-Saint-Jean', 'Joli-Bois', 'Butte du Lion'],
     voisines: ['braine-lalleud', 'bruxelles', 'nivelles'],
-    servicesPhares: ['nettoyage-apres-renovation', 'nettoyage-maison'],
+    servicesPhares: ['nettoyage-fin-de-chantier', 'nettoyage-maison'],
   },
 
   {
@@ -222,7 +222,7 @@ export const COMMUNES: Commune[] = [
       'Forest',
     ],
     voisines: ['saint-pieters-leeuw', 'hal', 'waterloo'],
-    servicesPhares: ['nettoyage-appartement', 'nettoyage-apres-renovation'],
+    servicesPhares: ['nettoyage-appartement', 'nettoyage-fin-de-chantier'],
   },
 
   {

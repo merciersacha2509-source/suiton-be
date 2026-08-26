@@ -80,7 +80,7 @@ describe('estimate', () => {
     const r = estimate(
       {
         service: 'vitres',
-        soil: 'leger',
+        soil: 'standard',
         surface_m2: 40,
         zone: 'exceptionnelle',
         urgent: false,
@@ -115,15 +115,15 @@ describe('estimate', () => {
     const casse = { ...SETTINGS, prix_m2: { ...SETTINGS.prix_m2, vitres: undefined } } as never;
     expect(() =>
       estimate(
-        { service: 'vitres', soil: 'leger', surface_m2: 50, zone: 'principale', urgent: false },
+        { service: 'vitres', soil: 'standard', surface_m2: 50, zone: 'principale', urgent: false },
         casse,
       ),
     ).toThrow(/Grille tarifaire incomplete/);
   });
 
   it('produit une fourchette croissante sur tous les services et niveaux', () => {
-    const services = ['fin_de_chantier', 'apres_renovation', 'vitres'] as const;
-    const niveaux = ['leger', 'standard', 'lourd'] as const;
+    const services = ['fin_de_chantier', 'vitres'] as const;
+    const niveaux = ['standard', 'lourd'] as const;
     for (const service of services) {
       for (const soil of niveaux) {
         const r = estimate(
@@ -138,9 +138,9 @@ describe('estimate', () => {
 
 describe('estimateDuration', () => {
   it('croit avec la salissure', () => {
-    const leger = estimateDuration({ surface_m2: 140, soil: 'leger' });
+    const standard = estimateDuration({ surface_m2: 140, soil: 'standard' });
     const lourd = estimateDuration({ surface_m2: 140, soil: 'lourd' });
-    expect(lourd.min).toBeGreaterThan(leger.min);
+    expect(lourd.min).toBeGreaterThan(standard.min);
   });
 });
 

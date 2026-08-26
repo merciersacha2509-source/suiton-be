@@ -218,20 +218,34 @@ export async function notifierRappel(params: {
   telephone: string;
   message: string;
   ip: string;
+  /** Liens signes vers les photos deposees, deja resolus (voir lib/storage.ts). */
+  urlsPhotos?: string[];
 }): Promise<ResultatEnvoi> {
   const destinataire = serverEnv().NOTIFY_EMAIL;
   if (!destinataire) return { envoye: false, erreur: 'NOTIFY_EMAIL absente' };
 
   const tel = params.telephone.replace(/\s/g, '');
+  const photosHtml =
+    params.urlsPhotos && params.urlsPhotos.length > 0
+      ? `<p><strong>${params.urlsPhotos.length} photo${params.urlsPhotos.length > 1 ? 's' : ''} jointe${params.urlsPhotos.length > 1 ? 's' : ''}</strong><br>${params.urlsPhotos
+          .map((u, i) => `<a href="${u}">Photo ${i + 1}</a>`)
+          .join(' · ')}</p>`
+      : '';
   const corps = `<p><strong>${params.nom}</strong><br>
 <a href="tel:${tel}">${params.telephone}</a></p>
-${params.message ? `<p style="white-space:pre-wrap">${params.message}</p>` : '<p><em>Aucun message.</em></p>'}`;
+${params.message ? `<p style="white-space:pre-wrap">${params.message}</p>` : '<p><em>Aucun message.</em></p>'}
+${photosHtml}`;
+
+  const photosTexte =
+    params.urlsPhotos && params.urlsPhotos.length > 0
+      ? `\n\nPhotos :\n${params.urlsPhotos.join('\n')}`
+      : '';
 
   return envoyer(
     destinataire,
     `Rappel demandé — ${params.nom} — ${params.telephone}`,
     gabarit('Demande de rappel', corps, { libelle: 'Appeler', url: `tel:${tel}` }),
-    `${params.nom}\n${params.telephone}\n\n${params.message || '(aucun message)'}`,
+    `${params.nom}\n${params.telephone}\n\n${params.message || '(aucun message)'}${photosTexte}`,
   );
 }
 

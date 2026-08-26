@@ -13,13 +13,11 @@ import { updateSettingsAction, type SettingsState } from './actions';
 import type { SettingsRow, ServiceType, SoilLevel } from '@/types/database';
 
 const SERVICES: { code: ServiceType; label: string }[] = [
-  { code: 'fin_de_chantier', label: 'Fin de chantier' },
-  { code: 'apres_renovation', label: 'Après rénovation' },
-  { code: 'vitres', label: 'Vitres' },
+  { code: 'fin_de_chantier', label: 'Fin de travaux' },
+  { code: 'vitres', label: 'Vitres (grille interne — non affichée publiquement)' },
 ];
 
 const NIVEAUX: { code: SoilLevel; label: string }[] = [
-  { code: 'leger', label: 'Léger' },
   { code: 'standard', label: 'Standard' },
   { code: 'lourd', label: 'Lourd' },
 ];

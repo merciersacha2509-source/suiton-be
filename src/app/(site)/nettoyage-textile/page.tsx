@@ -123,7 +123,7 @@ export default function PageNettoyageTextile() {
               chiffrage précis.
             </p>
             <p className="text-ardoise mt-5 text-sm">
-              Besoin d&apos;un nettoyage de fin de chantier ou après rénovation ? Le{' '}
+              Besoin d&apos;un nettoyage de fin de travaux ? Le{' '}
               <Link href="/reservation" className="text-ocean font-medium underline">
                 parcours en ligne
               </Link>{' '}

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { ENTREPRISE } from '@/lib/site/entreprise';
 import { cn } from '@/lib/cn';
+import { PhotoUploader, type PhotoDeposee } from '@/components/site/photo-uploader';
 
 /**
  * Formulaire de rappel.
@@ -19,16 +20,22 @@ export function FormulaireRappel({
   description = 'Deux champs. Nous rappelons le jour même en semaine.',
   libelleMessage = 'Votre chantier',
   placeholderMessage = 'Maison de 140 m² à Enghien, fin de chantier, réception le 12.',
+  libelleSubmit = 'Demander un rappel',
+  avecPhotos = false,
   id,
 }: {
   titre?: string;
   description?: string;
   libelleMessage?: string;
   placeholderMessage?: string;
+  libelleSubmit?: string;
+  /** Ajoute une zone de depot de photos reelle (Supabase Storage), pas simulee. */
+  avecPhotos?: boolean;
   id?: string;
 }) {
   const [etat, setEtat] = useState<'saisie' | 'envoi' | 'ok' | 'erreur'>('saisie');
   const [erreur, setErreur] = useState<string | null>(null);
+  const [photos, setPhotos] = useState<PhotoDeposee[]>([]);
 
   async function soumettre(evenement: React.FormEvent<HTMLFormElement>) {
     evenement.preventDefault();
@@ -44,6 +51,7 @@ export function FormulaireRappel({
           nom: String(donnees.get('nom') ?? ''),
           telephone: String(donnees.get('telephone') ?? ''),
           message: String(donnees.get('message') ?? ''),
+          photos: photos.map((p) => p.id),
           honeypot: String(donnees.get('societe') ?? ''),
         }),
       });
@@ -134,11 +142,20 @@ export function FormulaireRappel({
           <textarea
             id="rappel-message"
             name="message"
-            rows={3}
+            rows={avecPhotos ? 5 : 3}
             placeholder={placeholderMessage}
             className="rounded-suiton border-mineral-dark focus:border-ocean mt-1.5 w-full border p-3 text-sm transition-colors duration-150 focus:outline-none"
           />
         </div>
+
+        {avecPhotos ? (
+          <div>
+            <p className="mb-1.5 block text-sm font-medium">
+              Ajouter des photos <span className="text-ardoise font-normal">— facultatif</span>
+            </p>
+            <PhotoUploader photos={photos} onChange={setPhotos} onErreur={setErreur} />
+          </div>
+        ) : null}
 
         {/*
           Champ piege. Cache aux humains par la position, pas par display:none
@@ -160,11 +177,11 @@ export function FormulaireRappel({
             : 'hover:bg-abysse-90 hover:-translate-y-px hover:shadow-md active:translate-y-0',
         )}
       >
-        {etat === 'envoi' ? 'Envoi…' : 'Demander un rappel'}
+        {etat === 'envoi' ? 'Envoi…' : libelleSubmit}
       </button>
 
       <p aria-live="polite" className="mt-3 min-h-5 text-xs">
-        {etat === 'erreur' && erreur ? (
+        {erreur ? (
           <span className="text-danger">{erreur}</span>
         ) : (
           <span className="text-ardoise">

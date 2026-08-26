@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Calculateur } from '@/components/site/calculateur';
+import { FormulaireRappel } from '@/components/site/formulaire-rappel';
 import {
   AppelFinal,
   Carte,
@@ -14,6 +15,14 @@ import { GARANTIES } from '@/lib/site/entreprise';
 import { parSlug, type Service } from '@/lib/site/services';
 import { COMMUNES } from '@/lib/site/communes';
 import type { GrillePublique } from '@/lib/pricing';
+
+/*
+ * Les vitres seules n'ont plus de prix automatique : l'accessibilite, le
+ * nombre de faces et l'etat des chassis pesent trop pour qu'une fourchette
+ * en ligne reste honnete. Cette page bascule donc sur une demande de visite
+ * avec photos plutot que sur le simulateur.
+ */
+const SUR_DEVIS_APRES_VISITE = 'nettoyage-de-vitres';
 
 /**
  * Gabarit des pages de service.
@@ -32,6 +41,7 @@ export function PageService({
   settings: GrillePublique;
 }) {
   const connexes = service.connexes.map(parSlug).filter((s): s is Service => Boolean(s));
+  const surDevisApresVisite = service.slug === SUR_DEVIS_APRES_VISITE;
 
   return (
     <>
@@ -41,7 +51,7 @@ export function PageService({
             nom: service.nom,
             description: service.metaDescription,
             chemin: `/${service.slug}`,
-            prixDepuis: service.prixDepuis,
+            prixDepuis: surDevisApresVisite ? undefined : service.prixDepuis,
             communes: COMMUNES,
           }),
           jsonldFaq(service.faq),
@@ -72,9 +82,16 @@ export function PageService({
 
             <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-4">
               <div>
-                <dt className="text-ardoise text-xs tracking-[0.1em] uppercase">À partir de</dt>
+                <dt className="text-ardoise text-xs tracking-[0.1em] uppercase">Prix</dt>
                 <dd className="font-heading tabular mt-1 text-2xl font-semibold">
-                  {service.prixDepuis} € <span className="text-sm font-normal">/ m² HTVA</span>
+                  {surDevisApresVisite ? (
+                    'Sur devis après visite'
+                  ) : (
+                    <>
+                      {service.prixDepuis} €{' '}
+                      <span className="text-sm font-normal">/ m² HTVA</span>
+                    </>
+                  )}
                 </dd>
               </div>
               <div>
@@ -83,7 +100,9 @@ export function PageService({
               </div>
               <div>
                 <dt className="text-ardoise text-xs tracking-[0.1em] uppercase">Devis</dt>
-                <dd className="font-heading mt-1 text-base font-medium">Ferme, sous 24 h</dd>
+                <dd className="font-heading mt-1 text-base font-medium">
+                  {surDevisApresVisite ? 'Après visite sur place' : 'Ferme, sous 24 h'}
+                </dd>
               </div>
             </dl>
 
@@ -96,11 +115,19 @@ export function PageService({
           </div>
 
           <div className="lg:pt-2">
-            <Calculateur
-              settings={settings}
-              serviceInitial={service.type ?? 'fin_de_chantier'}
-              compact
-            />
+            {surDevisApresVisite ? (
+              <FormulaireRappel
+                id="devis-vitres"
+                titre="Demander une visite"
+                description="Le prix dépend de l'accessibilité, du nombre de faces et de l'état des châssis : nous préférons voir avant de chiffrer."
+                libelleMessage="Décrivez votre besoin"
+                placeholderMessage="Type de bien, nombre de fenêtres approximatif, accessibilité, hauteur, état des châssis…"
+                libelleSubmit="Demander mon devis"
+                avecPhotos
+              />
+            ) : (
+              <Calculateur settings={settings} compact />
+            )}
           </div>
         </div>
       </section>
@@ -227,7 +254,9 @@ export function PageService({
                         {s.nom}
                       </span>
                       <span className="text-ardoise shrink-0 text-xs">
-                        dès {s.prixDepuis} €/m²
+                        {s.slug === SUR_DEVIS_APRES_VISITE
+                          ? 'Sur devis'
+                          : `dès ${s.prixDepuis} €/m²`}
                       </span>
                     </Link>
                   </li>

@@ -8,15 +8,15 @@ import { ENTREPRISE } from '@/lib/site/entreprise';
 import { cn } from '@/lib/cn';
 
 /*
- * SUITON se positionne d'abord comme le specialiste du nettoyage de fin de
- * chantier / apres renovation, avec une cible B2B prioritaire. Auto et
- * Textile sont des prestations reelles mais secondaires : leur presence a
- * egalite dans le menu principal brouillait ce positionnement, d'ou le
- * regroupement sous un sous-menu plutot qu'une suppression.
+ * SUITON se positionne comme le specialiste du nettoyage de fin de travaux
+ * (construction neuve ou renovation, un seul et meme parcours), avec une
+ * cible B2B prioritaire. Auto et Textile sont des prestations reelles mais
+ * secondaires : leur presence a egalite dans le menu principal brouillait ce
+ * positionnement, d'ou le regroupement sous un sous-menu plutot qu'une
+ * suppression.
  */
 const LIENS = [
-  { href: '/nettoyage-fin-de-chantier', label: 'Fin de chantier' },
-  { href: '/nettoyage-apres-renovation', label: 'Après rénovation' },
+  { href: '/nettoyage-fin-de-chantier', label: 'Fin de travaux' },
   { href: '/professionnels', label: 'Professionnels' },
   { href: '/nettoyage-de-vitres', label: 'Vitres' },
   { href: '/realisations', label: 'Réalisations' },

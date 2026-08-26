@@ -114,13 +114,11 @@ const BANDES: Record<string, string> = {
 };
 
 const SERVICES: Record<ServiceType, string> = {
-  fin_de_chantier: 'fin de chantier',
-  apres_renovation: 'après rénovation',
+  fin_de_chantier: 'fin de travaux',
   vitres: 'vitres',
 };
 
 const SALISSURES: Record<SoilLevel, string> = {
-  leger: 'salissure légère',
   standard: 'salissure standard',
   lourd: 'salissure lourde',
 };

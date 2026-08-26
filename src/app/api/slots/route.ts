@@ -11,7 +11,7 @@ export const dynamic = 'force-dynamic';
 
 const requeteSchema = z.object({
   surface_m2: z.coerce.number().int().min(10).max(5000),
-  soil: z.enum(['leger', 'standard', 'lourd']).default('standard'),
+  soil: z.enum(['standard', 'lourd']).default('standard'),
   jours: z.coerce.number().int().min(1).max(60).default(21),
 });
 

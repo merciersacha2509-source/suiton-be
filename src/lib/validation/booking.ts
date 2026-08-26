@@ -18,7 +18,7 @@ import {
  */
 export const bookingSchema = z
   .object({
-    service: z.enum(['fin_de_chantier', 'apres_renovation', 'vitres']),
+    service: z.enum(['fin_de_chantier', 'vitres']),
     property_type: z.enum([
       'studio',
       'appartement',
@@ -28,7 +28,7 @@ export const bookingSchema = z
       'commerce',
       'autre',
     ]),
-    soil: z.enum(['leger', 'standard', 'lourd']),
+    soil: z.enum(['standard', 'lourd']),
     surface_m2: z.number().int().min(10, 'Surface minimale : 10 m²').max(5000),
 
     commune: communeSchema,

@@ -7,7 +7,7 @@ import { FilAriane } from '@/components/site/blocs';
 import type { ServiceType, SoilLevel, PropertyType } from '@/types/database';
 
 export const metadata: Metadata = metadonnees({
-  title: 'Demander un devis de nettoyage de fin de chantier',
+  title: 'Demander un devis de nettoyage de fin de travaux',
   description:
     'Décrivez votre chantier en deux minutes et recevez un devis ferme sous 24 heures ouvrées. ' +
     'Estimation immédiate, vitres comprises, rapport photo systématique.',
@@ -16,8 +16,8 @@ export const metadata: Metadata = metadonnees({
 
 export const dynamic = 'force-dynamic';
 
-const SERVICES_VALIDES: ServiceType[] = ['fin_de_chantier', 'apres_renovation', 'vitres'];
-const SALISSURES_VALIDES: SoilLevel[] = ['leger', 'standard', 'lourd'];
+const SERVICES_VALIDES: ServiceType[] = ['fin_de_chantier'];
+const SALISSURES_VALIDES: SoilLevel[] = ['standard', 'lourd'];
 const BIENS_VALIDES: PropertyType[] = [
   'studio',
   'appartement',

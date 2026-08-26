@@ -44,7 +44,7 @@ const FAQ = [
   {
     question: 'Quels éléments font varier le prix ?',
     reponse:
-      "Quatre. La surface, d'abord. Le niveau de salissure ensuite — un chantier après ponçage demande deux à trois fois plus de temps qu'une remise en état légère. La configuration : un duplex avec beaucoup de vitrages coûte plus qu'un plateau. Et l'urgence, si vous avez besoin d'une intervention sous 48 heures.",
+      "Quatre. La surface, d'abord. Le niveau de salissure ensuite — un chantier avec résidus de ciment ou de colle demande deux à trois fois plus de temps qu'une salissure standard. La configuration : un duplex avec beaucoup de vitrages coûte plus qu'un plateau. Et l'urgence, si vous avez besoin d'une intervention sous 48 heures.",
   },
   {
     question: 'La TVA est-elle comprise dans les montants affichés ?',
@@ -139,7 +139,7 @@ export default async function PageDevis() {
             {
               titre: 'Le niveau de salissure',
               detail:
-                "Léger, standard ou lourd. Un chantier après ponçage de plafonnage demande deux à trois fois plus de temps qu'une remise en état légère. C'est la variable qui pèse le plus.",
+                "Standard ou lourd. Un chantier après ponçage de plafonnage ou résidus de ciment demande deux à trois fois plus de temps qu'une salissure standard. C'est la variable qui pèse le plus.",
             },
             {
               titre: 'La configuration',

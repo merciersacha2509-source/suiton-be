@@ -47,7 +47,7 @@ const FAQ_ACCUEIL = [
   {
     question: 'Combien coûte un nettoyage de fin de chantier ?',
     reponse:
-      'Entre 5 et 14 € HTVA le m² selon le niveau de salissure. Un appartement de 90 m² après ponçage se situe généralement entre 630 et 720 € HTVA. Le calculateur ci-dessus donne une fourchette immédiate ; le devis, envoyé sous 24 heures ouvrées, donne un montant ferme.',
+      'Entre 7 et 14 € HTVA le m² selon le niveau de salissure. Un appartement de 90 m² après ponçage se situe généralement entre 630 et 720 € HTVA. Le calculateur ci-dessus donne une fourchette immédiate ; le devis, envoyé sous 24 heures ouvrées, donne un montant ferme.',
   },
   {
     question: 'Les vitres sont-elles vraiment comprises ?',
@@ -77,9 +77,9 @@ const FAQ_ACCUEIL = [
 ];
 
 export const metadata: Metadata = metadonnees({
-  title: 'Nettoyage de fin de chantier et après rénovation à Enghien',
+  title: 'Nettoyage de fin de travaux à Enghien et en Brabant wallon',
   description:
-    'Nettoyage de fin de chantier et après rénovation à Enghien, Hal, Nivelles, Waterloo et Bruxelles. Vitres comprises, rapport photo avant/après, devis ferme sous 24 h. Dès 5 €/m².',
+    'Nettoyage de fin de travaux à Enghien, Hal, Nivelles, Waterloo et Bruxelles. Construction neuve ou rénovation, vitres comprises, rapport photo avant/après, devis ferme sous 24 h. Dès 7 €/m².',
   chemin: '/',
 });
 
@@ -122,7 +122,7 @@ export default async function Accueil() {
             </h1>
 
             <p className="text-ardoise anime-apparition mt-5 max-w-xl text-base leading-relaxed [animation-delay:120ms] sm:text-lg">
-              Nettoyage de fin de chantier et d&apos;après-rénovation. Vitres et châssis
+              Nettoyage de fin de travaux, construction neuve ou rénovation. Vitres et châssis
               compris, jamais en supplément. Rapport photo avant/après remis à chaque livraison.
               Devis ferme sous 24 heures.
             </p>
@@ -230,9 +230,9 @@ export default async function Accueil() {
           <EnVue className="grid gap-4 sm:grid-cols-2">
             {[
               {
-                chiffre: '5 €',
+                chiffre: '7 €',
                 label: 'le m² HTVA',
-                detail: 'Salissure légère, tarif de départ',
+                detail: 'Salissure standard, tarif de départ',
               },
               {
                 chiffre: '24 h',
@@ -281,10 +281,16 @@ export default async function Accueil() {
               </h3>
               <p className="text-ardoise mt-3 flex-1 text-sm leading-relaxed">{s.accroche}</p>
               <p className="border-mineral-dark mt-5 flex items-baseline gap-2 border-t pt-4">
-                <span className="font-heading tabular text-xl font-semibold">
-                  dès {s.prixDepuis} €
-                </span>
-                <span className="text-ardoise text-xs">/ m² HTVA</span>
+                {s.slug === 'nettoyage-de-vitres' ? (
+                  <span className="font-heading text-xl font-semibold">Sur devis</span>
+                ) : (
+                  <>
+                    <span className="font-heading tabular text-xl font-semibold">
+                      dès {s.prixDepuis} €
+                    </span>
+                    <span className="text-ardoise text-xs">/ m² HTVA</span>
+                  </>
+                )}
               </p>
               <p className="text-ardoise mt-1 text-xs">{s.dureeType}</p>
             </Link>

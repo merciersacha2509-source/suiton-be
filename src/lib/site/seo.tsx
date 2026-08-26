@@ -137,7 +137,8 @@ export function jsonldService(s: {
   nom: string;
   description: string;
   chemin: string;
-  prixDepuis: number;
+  /** Absent quand le prix n'est pas calcule automatiquement (ex. vitres, devis apres visite). */
+  prixDepuis?: number;
   communes: { nom: string }[];
 }): Jsonld {
   return {
@@ -149,22 +150,26 @@ export function jsonldService(s: {
     serviceType: s.nom,
     provider: { '@id': url('/#entreprise') },
     areaServed: s.communes.map((c) => ({ '@type': 'City', name: c.nom })),
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'EUR',
-      price: s.prixDepuis,
-      // Le prix est un point de depart au m², pas un prix de prestation.
-      // `priceSpecification` le dit explicitement plutot que de laisser
-      // croire a un forfait.
-      priceSpecification: {
-        '@type': 'UnitPriceSpecification',
-        price: s.prixDepuis,
-        priceCurrency: 'EUR',
-        unitText: 'm²',
-        valueAddedTaxIncluded: false,
-      },
-      availability: 'https://schema.org/InStock',
-    },
+    ...(s.prixDepuis !== undefined
+      ? {
+          offers: {
+            '@type': 'Offer',
+            priceCurrency: 'EUR',
+            price: s.prixDepuis,
+            // Le prix est un point de depart au m², pas un prix de prestation.
+            // `priceSpecification` le dit explicitement plutot que de laisser
+            // croire a un forfait.
+            priceSpecification: {
+              '@type': 'UnitPriceSpecification',
+              price: s.prixDepuis,
+              priceCurrency: 'EUR',
+              unitText: 'm²',
+              valueAddedTaxIncluded: false,
+            },
+            availability: 'https://schema.org/InStock',
+          },
+        }
+      : {}),
   };
 }
 

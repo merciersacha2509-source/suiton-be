@@ -44,11 +44,13 @@ function Coche() {
  * Un chiffre unique donnerait une precision que la donnee ne porte pas.
  */
 
-const SERVICES: { valeur: ServiceType; label: string }[] = [
-  { valeur: 'fin_de_chantier', label: 'Fin de chantier' },
-  { valeur: 'apres_renovation', label: 'Après rénovation' },
-  { valeur: 'vitres', label: 'Vitres seules' },
-];
+/*
+ * Le calculateur ne sert plus que le nettoyage de fin de travaux : les
+ * vitres seules n'ont plus d'estimation automatique (devis apres visite,
+ * voir /nettoyage-de-vitres) et il n'existe plus qu'une seule prestation
+ * "chantier" — plus de choix de service a faire ici.
+ */
+const SERVICE_UNIQUE: ServiceType = 'fin_de_chantier';
 
 const BIENS: { valeur: PropertyType; label: string }[] = [
   { valeur: 'appartement', label: 'Appartement' },
@@ -58,7 +60,6 @@ const BIENS: { valeur: PropertyType; label: string }[] = [
 ];
 
 const SALISSURES: { valeur: SoilLevel; label: string; aide: string }[] = [
-  { valeur: 'leger', label: 'Léger', aide: 'Poussière fine, peu de résidus' },
   { valeur: 'standard', label: 'Standard', aide: 'Poussière de ponçage, traces de peinture' },
   { valeur: 'lourd', label: 'Lourd', aide: 'Ciment, colle, silicone, enduit' },
 ];
@@ -75,15 +76,12 @@ const euros = (n: number) =>
 export function Calculateur({
   settings,
   codePostalInitial = '7850',
-  serviceInitial = 'fin_de_chantier',
   compact = false,
 }: {
   settings: GrillePublique;
   codePostalInitial?: string;
-  serviceInitial?: ServiceType;
   compact?: boolean;
 }) {
-  const [service, setService] = useState<ServiceType>(serviceInitial);
   const [bien, setBien] = useState<PropertyType>('maison');
   const [soil, setSoil] = useState<SoilLevel>('standard');
   const [surface, setSurface] = useState(120);
@@ -96,7 +94,7 @@ export function Calculateur({
     try {
       return {
         prix: estimate(
-          { service, soil, surface_m2: surface, zone, urgent, property_type: bien },
+          { service: SERVICE_UNIQUE, soil, surface_m2: surface, zone, urgent, property_type: bien },
           settings,
         ),
         duree: estimateDuration({ surface_m2: surface, soil }),
@@ -104,10 +102,10 @@ export function Calculateur({
     } catch {
       return null;
     }
-  }, [service, bien, soil, surface, zone, urgent, settings]);
+  }, [bien, soil, surface, zone, urgent, settings]);
 
   const lien =
-    `/reservation?service=${service}&surface=${surface}&salissure=${soil}` +
+    `/reservation?service=${SERVICE_UNIQUE}&surface=${surface}&salissure=${soil}` +
     `&cp=${codePostal}&bien=${bien}${urgent ? '&urgent=1' : ''}`;
 
   const heures = (minutes: number) => {
@@ -129,31 +127,6 @@ export function Calculateur({
       </p>
 
       <div className="space-y-6">
-        <fieldset>
-          <legend className="text-ardoise inline-flex items-center gap-1.5 text-xs font-medium tracking-[0.1em] uppercase">
-            <span className="bg-ardoise-clair h-1 w-1 shrink-0 rounded-full" aria-hidden />
-            Type de nettoyage
-          </legend>
-          <div className="mt-3 grid grid-cols-3 gap-2">
-            {SERVICES.map((s) => (
-              <button
-                key={s.valeur}
-                type="button"
-                onClick={() => setService(s.valeur)}
-                aria-pressed={service === s.valeur}
-                className={cn(
-                  'h-touch rounded-suiton border px-2 text-[0.8125rem] font-medium transition-[background-color,border-color,transform,box-shadow] duration-200',
-                  service === s.valeur
-                    ? 'border-abysse bg-abysse text-mineral shadow-sm'
-                    : 'border-mineral-dark hover:border-aqua-deep/50 hover:-translate-y-px hover:shadow-sm active:translate-y-0 bg-white text-abysse',
-                )}
-              >
-                {s.label}
-              </button>
-            ))}
-          </div>
-        </fieldset>
-
         <fieldset>
           <legend className="text-ardoise inline-flex items-center gap-1.5 text-xs font-medium tracking-[0.1em] uppercase">
             <span className="bg-ardoise-clair h-1 w-1 shrink-0 rounded-full" aria-hidden />

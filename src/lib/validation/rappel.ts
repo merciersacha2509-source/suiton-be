@@ -23,6 +23,8 @@ export const rappelSchema = z.object({
     // plutot que d'imposer un format que personne ne connait par cœur.
     .regex(/^[+0-9 ().\-/]{8,24}$/, 'Numéro invalide. Exemple : 0489 21 01 24'),
   message: z.string().trim().max(1000, 'Message trop long.').optional().default(''),
+  /** Photos deposees via /api/photos/upload (memes id que la reservation). */
+  photos: z.array(z.string().uuid()).max(8, 'Huit photos au maximum').optional().default([]),
   /** Champ piege. Rempli = robot : les humains ne voient pas ce champ. */
   honeypot: z.string().max(0, 'Requete rejetee').default(''),
 });

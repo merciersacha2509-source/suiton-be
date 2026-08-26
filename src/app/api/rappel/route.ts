@@ -3,6 +3,7 @@ import { handle } from '@/lib/api';
 import { rappelSchema } from '@/lib/validation/rappel';
 import { notifierRappel } from '@/lib/notify';
 import { consommerQuota, ipDepuisRequete } from '@/lib/rate-limit';
+import { urlsPhotosParId } from '@/lib/storage';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -29,12 +30,14 @@ export async function POST(request: NextRequest) {
       if (brut === null) throw new Error('Corps de requête illisible.');
 
       const entree = rappelSchema.parse(brut);
+      const urlsPhotos = await urlsPhotosParId(entree.photos);
 
       const envoi = await notifierRappel({
         nom: entree.nom,
         telephone: entree.telephone,
         message: entree.message,
         ip,
+        urlsPhotos,
       });
 
       if (!envoi.envoye) {

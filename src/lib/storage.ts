@@ -70,3 +70,32 @@ export async function televerser(
 
   return error ? { ok: false, erreur: error.message } : { ok: true };
 }
+
+/**
+ * Liens signes vers des photos deposees hors reservation (formulaire de
+ * rappel avec photos, notamment). Les photos existent deja dans le bucket
+ * `chantiers` (deposees via /api/photos/upload) mais n'ont pas de job_id —
+ * on les retrouve donc par id plutot que par chemin.
+ *
+ * Duree volontairement plus longue que la miniature d'upload (1 h) : le
+ * lien part dans un e-mail que l'equipe ouvre parfois le lendemain.
+ */
+const DUREE_NOTIFICATION = 60 * 60 * 24 * 3; // 3 jours
+
+export async function urlsPhotosParId(ids: string[]): Promise<string[]> {
+  if (ids.length === 0) return [];
+
+  const { data, error } = await createAdminClient()
+    .from('photos')
+    .select('storage_path, thumb_path')
+    .in('id', ids);
+
+  if (error || !data) {
+    console.error('[storage] lecture photos impossible', error?.message);
+    return [];
+  }
+
+  const chemins = data.map((p) => p.thumb_path ?? p.storage_path);
+  const urls = await urlsSignees('chantiers', chemins, DUREE_NOTIFICATION);
+  return urls.filter((u): u is string => Boolean(u));
+}

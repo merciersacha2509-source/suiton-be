@@ -37,7 +37,9 @@ export default function NotFound() {
                 className="group flex items-baseline justify-between gap-4 py-3.5"
               >
                 <span className="group-hover:text-ocean text-sm font-medium">{s.nom}</span>
-                <span className="text-ardoise shrink-0 text-xs">dès {s.prixDepuis} €/m²</span>
+                <span className="text-ardoise shrink-0 text-xs">
+                  {s.slug === 'nettoyage-de-vitres' ? 'Sur devis' : `dès ${s.prixDepuis} €/m²`}
+                </span>
               </Link>
             </li>
           ))}

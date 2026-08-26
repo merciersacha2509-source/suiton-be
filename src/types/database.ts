@@ -34,8 +34,17 @@ export type InterventionStatus =
   | 'termine'
   | 'annule';
 
-export type ServiceType = 'fin_de_chantier' | 'apres_renovation' | 'vitres';
-export type SoilLevel = 'leger' | 'standard' | 'lourd';
+/*
+ * Les enums Postgres `service_type` et `soil_level` contiennent encore
+ * `apres_renovation` et `leger` (Postgres ne sait pas retirer une valeur
+ * d'enum sans recreer le type et toutes les colonnes qui en dependent).
+ * Ces deux valeurs restent donc valides en base mais mortes : plus aucune
+ * ligne n'en porte apres la migration de nettoyage, et l'application ne les
+ * propose ni ne les accepte plus jamais. Le type applicatif ci-dessous est
+ * volontairement plus etroit que l'enum reel pour l'exprimer.
+ */
+export type ServiceType = 'fin_de_chantier' | 'vitres';
+export type SoilLevel = 'standard' | 'lourd';
 export type ZoneTier = 'principale' | 'secondaire' | 'exceptionnelle';
 export type ClientKind = 'particulier' | 'professionnel';
 export type ScoreBand = 'A+' | 'A' | 'B' | 'C';

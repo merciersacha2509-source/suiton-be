@@ -36,8 +36,7 @@ export function FormulaireEstimation() {
             <Field label="Service">
               {(p) => (
                 <Select {...p} name="service" defaultValue="fin_de_chantier">
-                  <option value="fin_de_chantier">Fin de chantier</option>
-                  <option value="apres_renovation">Après rénovation</option>
+                  <option value="fin_de_chantier">Fin de travaux</option>
                   <option value="vitres">Vitres</option>
                 </Select>
               )}
@@ -89,7 +88,6 @@ export function FormulaireEstimation() {
             <Field label="Salissure">
               {(p) => (
                 <Select {...p} name="soil" defaultValue="standard">
-                  <option value="leger">Légère</option>
                   <option value="standard">Standard</option>
                   <option value="lourd">Lourde</option>
                 </Select>

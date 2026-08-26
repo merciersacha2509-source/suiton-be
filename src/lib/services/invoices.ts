@@ -48,7 +48,7 @@ export class PeppolRequisError extends ConflictError {
 }
 
 function estTravauxImmobiliers(service: string): boolean {
-  return service === 'fin_de_chantier' || service === 'apres_renovation';
+  return service === 'fin_de_chantier';
 }
 
 export async function produireFacture(params: {

@@ -34,13 +34,11 @@ import type {
  * ======================================================================== */
 
 export const LIBELLES_SERVICE: Record<ServiceType, string> = {
-  fin_de_chantier: 'Nettoyage de fin de chantier',
-  apres_renovation: 'Nettoyage après rénovation',
+  fin_de_chantier: 'Nettoyage de fin de travaux',
   vitres: 'Nettoyage de vitres',
 };
 
 export const LIBELLES_SALISSURE: Record<SoilLevel, string> = {
-  leger: 'légère',
   standard: 'standard',
   lourd: 'lourde',
 };
@@ -92,7 +90,7 @@ interface Forfait {
 const FORFAITS: Record<ServiceType, Forfait[]> = {
   fin_de_chantier: [
     {
-      description: 'Nettoyage fin de chantier — remise en état complète',
+      description: 'Nettoyage de fin de travaux — remise en état complète',
       detail: (s) => `Dépoussiérage intégral, ${s} m² traités`,
       part: 0.5,
     },
@@ -105,28 +103,6 @@ const FORFAITS: Record<ServiceType, Forfait[]> = {
       description: 'Nettoyage vitres et encadrements',
       detail: () => 'Intérieur, châssis, rainures et joints — jamais en supplément',
       part: 0.16,
-    },
-    {
-      description: 'Évacuation des déchets de nettoyage',
-      detail: () => 'Produits, matériel et évacuation compris',
-      part: 0.08,
-    },
-  ],
-  apres_renovation: [
-    {
-      description: 'Nettoyage après rénovation — remise en état',
-      detail: (s) => `Dépoussiérage intégral, ${s} m² traités`,
-      part: 0.52,
-    },
-    {
-      description: 'Traitement des sols et surfaces',
-      detail: () => 'Aspiration fine, lavage, détartrage sanitaires et cuisine',
-      part: 0.26,
-    },
-    {
-      description: 'Nettoyage vitres et encadrements',
-      detail: () => 'Intérieur, châssis, rainures et joints',
-      part: 0.14,
     },
     {
       description: 'Évacuation des déchets de nettoyage',
@@ -576,12 +552,16 @@ const PRESTATIONS: Record<ServiceType, { libelle: string; detail: string }[]> = 
       detail: 'Photographier chaque pièce avant toute intervention.',
     },
     {
+      libelle: 'Protection du mobilier restant',
+      detail: 'Bâches sur ce qui ne peut pas être déplacé, si le bien est occupé.',
+    },
+    {
       libelle: 'Dépoussiérage haut vers bas',
       detail: 'Plafonds, murs, corniches, radiateurs, plinthes.',
     },
     {
       libelle: 'Aspiration poussière fine',
-      detail: 'Deux passages. La poussière de découpe retombe.',
+      detail: 'Deux passages. La poussière de découpe ou de ponçage retombe.',
     },
     {
       libelle: 'Vitres et châssis',
@@ -589,20 +569,6 @@ const PRESTATIONS: Record<ServiceType, { libelle: string; detail: string }[]> = 
     },
     { libelle: 'Sanitaires et cuisine', detail: 'Détartrage, robinetterie, plans de travail.' },
     { libelle: 'Sols et contrôle final', detail: 'Lavage, puis relecture pièce par pièce.' },
-  ],
-  apres_renovation: [
-    { libelle: 'État des lieux', detail: 'Photographier chaque pièce, signaler l’existant.' },
-    {
-      libelle: 'Protection du mobilier restant',
-      detail: 'Bâches sur ce qui ne peut pas être déplacé.',
-    },
-    {
-      libelle: 'Dépoussiérage haut vers bas',
-      detail: 'Plafonds, murs, corniches, radiateurs.',
-    },
-    { libelle: 'Vitres et châssis', detail: 'Intérieur, rainures, joints.' },
-    { libelle: 'Sanitaires et cuisine', detail: 'Détartrage, robinetterie, plans de travail.' },
-    { libelle: 'Sols et contrôle final', detail: 'Lavage adapté au revêtement, relecture.' },
   ],
   vitres: [
     { libelle: 'État des lieux', detail: 'Repérer les vitrages inaccessibles ou fragilisés.' },
@@ -617,11 +583,11 @@ const MATERIEL: Record<ServiceType, string[]> = {
   fin_de_chantier: [
     'Aspirateur eau et poussière',
     'Escabeau',
+    'Bâches de protection',
     'Raclettes vitres',
     'Décapant doux',
     'Sacs gravats',
   ],
-  apres_renovation: ['Aspirateur', 'Bâches de protection', 'Raclettes vitres', 'Décapant doux'],
   vitres: ['Raclettes', 'Perche télescopique', 'Eau osmosée', 'Grattoir vitres'],
 };
 
@@ -918,7 +884,6 @@ export function composerFicheChantier(e: EntreesFicheChantier): DonneesFicheChan
 
 /** Cadence de reference, en minutes par m², par niveau de salissure. */
 const CADENCE_REFERENCE: Record<SoilLevel, { min: number; max: number }> = {
-  leger: { min: 1.4, max: 2.0 },
   standard: { min: 2.0, max: 2.8 },
   lourd: { min: 2.8, max: 4.0 },
 };

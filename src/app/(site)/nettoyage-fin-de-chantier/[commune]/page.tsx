@@ -85,7 +85,7 @@ export default async function PageCommune({
     },
     {
       question: `Combien coûte un nettoyage de fin de chantier à ${commune.nom} ?`,
-      reponse: `Le tarif est le même que partout ailleurs dans notre zone : de ${settings.prix_m2.fin_de_chantier?.leger?.min ?? 5} à ${settings.prix_m2.fin_de_chantier?.lourd?.max ?? 14} € HTVA le m² selon le niveau de salissure${gratuit ? '' : `, plus le forfait de déplacement de ${settings.zones.secondaire?.frais ?? 25} €`}. Le calculateur en haut de page donne une fourchette immédiate ; le devis, envoyé sous 24 heures ouvrées, donne un montant ferme.`,
+      reponse: `Le tarif est le même que partout ailleurs dans notre zone : de ${settings.prix_m2.fin_de_chantier?.standard?.min ?? 7} à ${settings.prix_m2.fin_de_chantier?.lourd?.max ?? 14} € HTVA le m² selon le niveau de salissure${gratuit ? '' : `, plus le forfait de déplacement de ${settings.zones.secondaire?.frais ?? 25} €`}. Le calculateur en haut de page donne une fourchette immédiate ; le devis, envoyé sous 24 heures ouvrées, donne un montant ferme.`,
     },
     {
       question: `Sous quel délai pouvez-vous intervenir à ${commune.nom} ?`,
@@ -230,10 +230,16 @@ export default async function PageCommune({
               </h3>
               <p className="text-ardoise mt-3 flex-1 text-sm leading-relaxed">{s.accroche}</p>
               <p className="border-mineral-dark mt-5 border-t pt-4 text-sm">
-                <span className="font-heading tabular text-lg font-semibold">
-                  dès {s.prixDepuis} €
-                </span>
-                <span className="text-ardoise text-xs"> / m² HTVA</span>
+                {s.slug === 'nettoyage-de-vitres' ? (
+                  <span className="font-heading text-lg font-semibold">Sur devis</span>
+                ) : (
+                  <>
+                    <span className="font-heading tabular text-lg font-semibold">
+                      dès {s.prixDepuis} €
+                    </span>
+                    <span className="text-ardoise text-xs"> / m² HTVA</span>
+                  </>
+                )}
               </p>
             </Link>
           ))}

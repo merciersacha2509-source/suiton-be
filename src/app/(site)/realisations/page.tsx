@@ -183,8 +183,8 @@ export default async function PageRealisations() {
             </p>
           </Carte>
 
-          <ul className="mt-6 grid gap-4 sm:grid-cols-3">
-            {['Fin de chantier', 'Après rénovation', 'Vitres & châssis'].map((categorie) => (
+          <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+            {['Fin de travaux', 'Vitres & châssis'].map((categorie) => (
               <li
                 key={categorie}
                 className="rounded-suiton border-mineral-dark flex h-full flex-col overflow-hidden border bg-white"

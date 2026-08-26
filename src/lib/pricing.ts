@@ -119,7 +119,6 @@ export function estimateDuration(input: Pick<EstimateInput, 'surface_m2' | 'soil
   max: number;
 } {
   const cadence: Record<SoilLevel, { min: number; max: number }> = {
-    leger: { min: 1.4, max: 2.0 },
     standard: { min: 2.0, max: 2.8 },
     lourd: { min: 2.8, max: 4.0 },
   };

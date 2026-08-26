@@ -33,7 +33,7 @@ export interface DevisProduit {
 
 /** Travaux immobiliers au sens TVA : ouvre l'autoliquidation entre assujettis. */
 function estTravauxImmobiliers(service: string): boolean {
-  return service === 'fin_de_chantier' || service === 'apres_renovation';
+  return service === 'fin_de_chantier';
 }
 
 export async function produireDevis(jobId: string): Promise<DevisProduit> {

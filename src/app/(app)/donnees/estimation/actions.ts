@@ -25,7 +25,7 @@ export interface EstimationState {
 }
 
 const schema = z.object({
-  service: z.enum(['fin_de_chantier', 'apres_renovation', 'vitres']),
+  service: z.enum(['fin_de_chantier', 'vitres']),
   propertyType: z.enum([
     'studio',
     'appartement',
@@ -35,7 +35,7 @@ const schema = z.object({
     'commerce',
     'autre',
   ]),
-  soil: z.enum(['leger', 'standard', 'lourd']),
+  soil: z.enum(['standard', 'lourd']),
   surface: z.coerce.number().int().min(10).max(5000),
   codePostal: z.string().regex(new RegExp('^[0-9]{4}$'), 'Code postal belge à 4 chiffres'),
   techniciens: z.coerce.number().int().min(1).max(6),

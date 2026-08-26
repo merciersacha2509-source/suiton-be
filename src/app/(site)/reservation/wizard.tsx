@@ -9,7 +9,7 @@ import { zonePourCodePostal, LIBELLES_ZONE } from '@/lib/zones';
 import { Stepper } from './stepper';
 import { ChoiceCard } from './choice-card';
 import { EstimationBar } from './estimation-bar';
-import { PhotoUploader } from './photo-uploader';
+import { PhotoUploader } from '@/components/site/photo-uploader';
 import { SlotPicker } from './slot-picker';
 import { Confirmation } from './confirmation';
 import {
@@ -17,7 +17,6 @@ import {
   ETAPES,
   ETAT_INITIAL,
   SALISSURES,
-  SERVICES,
   type EtatReservation,
   type GrillePublique,
 } from './types';
@@ -84,20 +83,20 @@ export function BookingWizard({
   function validerEtape(n: number): boolean {
     const e: Erreurs = {};
 
-    if (n === 2) {
+    if (n === 1) {
       if (etat.commune.trim().length < 2) e.commune = 'Indiquez la commune.';
       if (!/^[0-9]{4}$/.test(etat.code_postal))
         e.code_postal = 'Code postal belge à 4 chiffres.';
     }
 
-    if (n === 3) {
+    if (n === 2) {
       const s = etat.surface_m2;
       if (typeof s !== 'number' || Number.isNaN(s)) e.surface_m2 = 'Indiquez la surface.';
       else if (s < 10) e.surface_m2 = 'Minimum 10 m².';
       else if (s > 5000) e.surface_m2 = 'Au-delà de 5 000 m², appelez-nous.';
     }
 
-    if (n === 6) {
+    if (n === 5) {
       if (etat.nom.trim().length < 2) e.nom = 'Indiquez votre nom.';
       if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(etat.email)) e.email = 'Adresse e-mail invalide.';
       if (etat.telephone.trim().length < 8) e.telephone = 'Numéro de téléphone invalide.';
@@ -129,7 +128,7 @@ export function BookingWizard({
   }
 
   async function soumettre() {
-    if (!validerEtape(6)) return;
+    if (!validerEtape(5)) return;
 
     setEnvoi(true);
     setErreurGlobale(null);
@@ -201,8 +200,8 @@ export function BookingWizard({
     <div className="pb-4">
       <h1 className="font-heading mb-1 text-2xl font-semibold">Demander un devis</h1>
       <p className="text-ardoise mb-6 text-sm">
-        Six étapes, deux minutes. Estimation immédiate, devis ferme sous{' '}
-        {settings.delai_devis_heures} heures.
+        Nettoyage de fin de travaux — cinq étapes, deux minutes. Estimation immédiate, devis
+        ferme sous {settings.delai_devis_heures} heures.
       </p>
 
       <Stepper courante={etape} />
@@ -215,26 +214,8 @@ export function BookingWizard({
 
       <h2 className="font-heading mb-4 text-lg font-semibold">{ETAPES[etape - 1]?.titre}</h2>
 
-      {/* --- 1. Service ---------------------------------------------------- */}
+      {/* --- 1. Lieu ------------------------------------------------------- */}
       {etape === 1 ? (
-        <fieldset className="flex flex-col gap-2.5 border-0 p-0">
-          <legend className="sr-only">Type de prestation</legend>
-          {SERVICES.map((s) => (
-            <ChoiceCard
-              key={s.code}
-              name="service"
-              value={s.code}
-              checked={etat.service === s.code}
-              onChange={(v) => maj('service', v as EtatReservation['service'])}
-              titre={s.titre}
-              description={s.description}
-            />
-          ))}
-        </fieldset>
-      ) : null}
-
-      {/* --- 2. Lieu ------------------------------------------------------- */}
-      {etape === 2 ? (
         <div className="flex flex-col gap-4">
           <div className="grid gap-4 sm:grid-cols-[1fr_9rem]">
             <Field label="Commune" required error={erreurs.commune}>
@@ -298,8 +279,8 @@ export function BookingWizard({
         </div>
       ) : null}
 
-      {/* --- 3. Surface et etat -------------------------------------------- */}
-      {etape === 3 ? (
+      {/* --- 2. Surface et etat -------------------------------------------- */}
+      {etape === 2 ? (
         <div className="flex flex-col gap-5">
           <div className="grid gap-4 sm:grid-cols-2">
             <Field label="Surface à nettoyer (m²)" required error={erreurs.surface_m2}>
@@ -373,8 +354,8 @@ export function BookingWizard({
         </div>
       ) : null}
 
-      {/* --- 4. Photos ------------------------------------------------------ */}
-      {etape === 4 ? (
+      {/* --- 3. Photos ------------------------------------------------------ */}
+      {etape === 3 ? (
         <PhotoUploader
           photos={etat.photos}
           onChange={(photos) => maj('photos', photos)}
@@ -382,8 +363,8 @@ export function BookingWizard({
         />
       ) : null}
 
-      {/* --- 5. Creneau ----------------------------------------------------- */}
-      {etape === 5 ? (
+      {/* --- 4. Creneau ----------------------------------------------------- */}
+      {etape === 4 ? (
         <SlotPicker
           surface={typeof etat.surface_m2 === 'number' ? etat.surface_m2 : 100}
           soil={etat.soil}
@@ -392,8 +373,8 @@ export function BookingWizard({
         />
       ) : null}
 
-      {/* --- 6. Coordonnees ------------------------------------------------- */}
-      {etape === 6 ? (
+      {/* --- 5. Coordonnees ------------------------------------------------- */}
+      {etape === 5 ? (
         <div className="flex flex-col gap-4">
           <Field label="Nom et prénom" required error={erreurs.nom}>
             {(p) => (
@@ -468,15 +449,16 @@ export function BookingWizard({
           ) : null}
 
           <Field
-            label="Précisions"
-            hint="Accès, étage, contraintes horaires, ce qu'on doit savoir."
+            label="Décrivez votre besoin"
+            hint="Facultatif, mais utile : accès, étage, contraintes horaires."
           >
             {(p) => (
               <Textarea
                 {...p}
                 value={etat.notes}
                 onChange={(e) => maj('notes', e.target.value.slice(0, 1000))}
-                rows={3}
+                placeholder="Décrivez les travaux réalisés, l'état du bien, les difficultés particulières ou toute information utile pour préparer votre devis..."
+                rows={5}
               />
             )}
           </Field>
@@ -543,7 +525,7 @@ export function BookingWizard({
         )}
       </div>
 
-      {etape >= 3 ? (
+      {etape >= 2 ? (
         <div className="mt-6">
           <EstimationBar etat={etat} grille={settings} />
         </div>

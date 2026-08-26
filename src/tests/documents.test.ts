@@ -20,10 +20,10 @@ const CLIENT = {
 const D0 = new Date('2026-10-05T08:12:00+02:00');
 const D1 = new Date('2026-10-05T13:47:00+02:00');
 
-const CHANTIER_LEGER: EntreesBonIntervention['chantier'] = {
+const CHANTIER_STANDARD: EntreesBonIntervention['chantier'] = {
   service: 'vitres' as const,
   property_type: 'appartement' as const,
-  soil: 'leger' as const,
+  soil: 'standard' as const,
   surface_m2: 60,
   adresse: 'Rue de la Station 24',
   code_postal: '1400',
@@ -34,7 +34,7 @@ const CHANTIER_LEGER: EntreesBonIntervention['chantier'] = {
 };
 
 const CHANTIER_LOURD: EntreesBonIntervention['chantier'] = {
-  ...CHANTIER_LEGER,
+  ...CHANTIER_STANDARD,
   service: 'fin_de_chantier' as const,
   property_type: 'maison' as const,
   soil: 'lourd' as const,
@@ -79,35 +79,35 @@ describe('collection documentaire', () => {
 
 describe("bon d'intervention", () => {
   it('déduit les points sensibles du chantier — aucun n’est saisi à la main', () => {
-    const leger = bon(CHANTIER_LEGER).pointsSensibles;
+    const standard = bon(CHANTIER_STANDARD).pointsSensibles;
     const lourd = bon(CHANTIER_LOURD).pointsSensibles;
 
     expect(lourd.join(' ')).toContain('Salissure lourde');
     expect(lourd.join(' ')).toContain('320 m²');
-    expect(leger.join(' ')).not.toContain('Salissure lourde');
+    expect(standard.join(' ')).not.toContain('Salissure lourde');
   });
 
   it('n’en affiche jamais plus de quatre — le cinquième dilue le premier', () => {
     expect(bon(CHANTIER_LOURD).pointsSensibles.length).toBeLessThanOrEqual(4);
-    expect(bon(CHANTIER_LEGER).pointsSensibles.length).toBeLessThanOrEqual(4);
+    expect(bon(CHANTIER_STANDARD).pointsSensibles.length).toBeLessThanOrEqual(4);
   });
 
   it('rappelle toujours de photographier avant de commencer', () => {
-    for (const c of [CHANTIER_LEGER, CHANTIER_LOURD]) {
+    for (const c of [CHANTIER_STANDARD, CHANTIER_LOURD]) {
       expect(bon(c).pointsSensibles.join(' ')).toContain('Photographier AVANT');
     }
   });
 
   it('donne une consigne utile quand aucun accès n’est enregistré', () => {
-    expect(bon(CHANTIER_LEGER, null).acces).toContain('Appelez le client');
-    expect(bon(CHANTIER_LEGER, 'Clé sous le pot').acces).toBe('Clé sous le pot');
+    expect(bon(CHANTIER_STANDARD, null).acces).toContain('Appelez le client');
+    expect(bon(CHANTIER_STANDARD, 'Clé sous le pot').acces).toBe('Clé sous le pot');
   });
 
   it('adapte matériel et prestations au service', () => {
-    expect(bon(CHANTIER_LEGER).materiel.join(' ')).toContain('Perche');
+    expect(bon(CHANTIER_STANDARD).materiel.join(' ')).toContain('Perche');
     expect(bon(CHANTIER_LOURD).materiel.join(' ')).toContain('gravats');
-    expect(bon(CHANTIER_LOURD).prestations).toHaveLength(6);
-    expect(bon(CHANTIER_LEGER).prestations.length).toBeLessThan(6);
+    expect(bon(CHANTIER_LOURD).prestations).toHaveLength(7);
+    expect(bon(CHANTIER_STANDARD).prestations.length).toBeLessThan(7);
   });
 
   it('ne porte AUCUN montant — un bon se perd sur un chantier', () => {
@@ -141,7 +141,7 @@ describe('attestation de fin de chantier', () => {
   });
 
   it('énumère les prestations réellement couvertes par le service', () => {
-    expect(attestation.prestationsRealisees).toHaveLength(6);
+    expect(attestation.prestationsRealisees).toHaveLength(7);
     expect(attestation.prestationsRealisees.join(' ')).toContain('Vitres');
   });
 

@@ -44,8 +44,8 @@ export async function updateSettingsAction(
     return { error: 'Réglages introuvables. Appliquez les migrations.' };
   }
 
-  const services = ['fin_de_chantier', 'apres_renovation', 'vitres'] as const;
-  const niveaux = ['leger', 'standard', 'lourd'] as const;
+  const services = ['fin_de_chantier', 'vitres'] as const;
+  const niveaux = ['standard', 'lourd'] as const;
 
   const prix_m2 = Object.fromEntries(
     services.map((s) => [

@@ -40,18 +40,19 @@ export const SERVICES: Service[] = [
   {
     slug: 'nettoyage-fin-de-chantier',
     type: 'fin_de_chantier',
-    nom: 'Nettoyage de fin de chantier',
-    h1: 'Nettoyage de fin de chantier en Belgique',
-    titleSeo: 'Nettoyage fin de chantier | Devis en 60 secondes — SUITON',
+    nom: 'Nettoyage de fin de travaux',
+    h1: 'Nettoyage de fin de travaux en Belgique',
+    titleSeo: 'Nettoyage de fin de travaux | Devis en 60 secondes — SUITON',
     metaDescription:
-      'Nettoyage de fin de chantier après construction ou gros œuvre. Vitres et châssis compris, rapport photo avant/après, garantie retouche 48 h. Devis ferme sous 24 h.',
+      'Nettoyage de fin de travaux — construction neuve ou rénovation. Vitres et châssis compris, rapport photo avant/après, garantie 48 h. Devis ferme sous 24 h.',
     accroche:
-      "Un chantier livré n'est pas un chantier propre. Nous rendons le bien habitable, avec la preuve du résultat.",
+      "Un chantier livré n'est pas un chantier propre. Que le bien soit neuf, rénové ou occupé pendant les travaux, nous le rendons livrable — avec la preuve du résultat.",
     probleme:
-      "La poussière de découpe s'infiltre partout et retombe deux fois. Les résidus de plâtre, de silicone et de colle résistent à un nettoyage classique. Un bien mal nettoyé se remarque immédiatement à la réception — et c'est l'entrepreneur qu'on juge, pas le nettoyeur.",
+      "La poussière de découpe et de ponçage s'infiltre partout et retombe deux fois, y compris dans les pièces non concernées par les travaux. Les résidus de plâtre, de silicone et de colle résistent à un nettoyage classique. Un bien mal nettoyé se remarque immédiatement à la réception ou à la remise des clés — et c'est l'entrepreneur ou le propriétaire qu'on juge, pas le nettoyeur.",
     inclus: [
+      'Protection du mobilier qui ne peut pas être déplacé, si le bien est occupé',
       'Dépoussiérage complet du haut vers le bas : plafonds, murs, corniches, radiateurs, plinthes',
-      'Deux passages d’aspiration : la poussière de découpe retombe après le premier',
+      'Deux passages d’aspiration : la poussière de découpe ou de ponçage retombe après le premier',
       'Vitres intérieures, châssis, rainures et joints — jamais en supplément',
       'Sanitaires et cuisine : détartrage, robinetterie, plans de travail',
       'Sols lavés selon le revêtement, puis relecture pièce par pièce',
@@ -61,6 +62,7 @@ export const SERVICES: Service[] = [
       'Évacuation des gravats et déchets de chantier (nous nettoyons, nous ne débarrassons pas)',
       'Vitres en hauteur nécessitant une nacelle ou un échafaudage',
       'Décapage de sols nécessitant une monobrosse industrielle',
+      'Nettoyage de textiles et de tapis (nous aspirons, nous ne shampouinons pas)',
       'Traitement de moisissures ou de dégâts des eaux',
     ],
     deroulement: [
@@ -70,12 +72,17 @@ export const SERVICES: Service[] = [
           'Chaque pièce avant intervention. Un dégât préexistant est signalé le jour même.',
       },
       {
+        titre: 'Protection du mobilier',
+        detail: 'Bâches sur ce qui ne peut pas être déplacé, si le bien est occupé.',
+      },
+      {
         titre: 'Dépoussiérage haut vers bas',
-        detail: 'Plafonds, murs, corniches, radiateurs, plinthes. L’ordre compte.',
+        detail:
+          'Plafonds, murs, corniches, radiateurs, plinthes — y compris les pièces non concernées par les travaux.',
       },
       {
         titre: 'Aspiration fine, deux passages',
-        detail: 'Le second après la pose des sols, quand la poussière est retombée.',
+        detail: 'Le second une fois la poussière de découpe ou de ponçage retombée.',
       },
       {
         titre: 'Vitres et châssis',
@@ -84,11 +91,11 @@ export const SERVICES: Service[] = [
       { titre: 'Sanitaires et cuisine', detail: 'Détartrage, robinetterie, plans de travail.' },
       {
         titre: 'Sols et contrôle final',
-        detail: 'Lavage adapté, puis relecture pièce par pièce.',
+        detail: 'Lavage adapté au revêtement, puis relecture pièce par pièce.',
       },
     ],
     prixDepuis: 7,
-    dureeType: '5 à 7 h pour une maison de 140 m²',
+    dureeType: '4 à 7 h selon la surface et le type de bien',
     faq: [
       {
         question: 'Les vitres sont-elles comprises dans le prix ?',
@@ -96,78 +103,10 @@ export const SERVICES: Service[] = [
           "Oui, systématiquement. Vitres intérieures, châssis, rainures et joints sont inclus dans le prix annoncé. Beaucoup de sociétés les facturent en supplément — nous avons choisi l'inverse, parce qu'un chantier livré avec des vitres sales n'est pas un chantier livré.",
       },
       {
-        question: 'Combien de temps faut-il pour nettoyer une maison de 150 m² ?',
+        question: 'Cette prestation couvre-t-elle aussi bien le neuf que la rénovation ?',
         reponse:
-          'Entre 5 et 7 heures pour une salissure standard, davantage si les résidus sont incrustés. Nous annonçons une fourchette et nous vous remettons la durée réelle dans le rapport de fin de chantier.',
+          "Oui. Construction neuve, gros œuvre, rénovation complète ou partielle, bureaux et locaux professionnels : le protocole est le même, seule la préparation change — un bien occupé demande une protection du mobilier que nous ajoutons systématiquement.",
       },
-      {
-        question: 'Intervenez-vous avant la réception provisoire ?',
-        reponse:
-          "C'est même le moment idéal. Un bien nettoyé avant la visite de réception se réceptionne mieux : les défauts se voient, mais le travail aussi.",
-      },
-      {
-        question: 'Que se passe-t-il si un point ne me convient pas ?',
-        reponse:
-          'Vous avez 48 heures pour le signaler. Nous repassons sans frais et sans discussion. Un appel au 0489 21 01 24 suffit.',
-      },
-      {
-        question: 'Travaillez-vous avec les entreprises générales ?',
-        reponse:
-          "Oui, et c'est une part importante de notre activité. Nous proposons un suivi dédié, une facturation groupée et des délais garantis. La facturation se fait au format structuré Peppol, comme la loi belge l'exige depuis janvier 2026.",
-      },
-    ],
-    connexes: ['nettoyage-apres-renovation', 'nettoyage-de-vitres'],
-  },
-
-  {
-    slug: 'nettoyage-apres-renovation',
-    type: 'apres_renovation',
-    nom: 'Nettoyage après rénovation',
-    h1: 'Nettoyage après rénovation',
-    titleSeo: 'Nettoyage après rénovation | Remise en état — SUITON',
-    metaDescription:
-      'Nettoyage après travaux de rénovation dans un bien occupé ou remis en location. Protection du mobilier, dépoussiérage intégral, vitres comprises. Devis sous 24 h.',
-    accroche:
-      "Rénover dans un bien occupé laisse une poussière qui s'installe pour des semaines. Nous la faisons disparaître en une journée.",
-    probleme:
-      'Une rénovation partielle salit tout le logement, pas seulement la pièce concernée. La poussière de ponçage traverse les portes fermées et se dépose sur le mobilier, dans les textiles, dans les gaines de ventilation. Un nettoyage domestique classique la déplace au lieu de la retirer.',
-    inclus: [
-      'Protection du mobilier qui ne peut pas être déplacé',
-      'Dépoussiérage intégral, y compris les pièces non rénovées',
-      'Vitres, châssis et rainures',
-      'Sanitaires et cuisine remis en état',
-      'Sols traités selon le revêtement — parquet, carrelage, vinyle',
-      'Contrôle pièce par pièce en fin d’intervention',
-    ],
-    exclus: [
-      'Nettoyage de textiles et de tapis (nous aspirons, nous ne shampouinons pas)',
-      'Déplacement de mobilier lourd sans accord préalable',
-      'Évacuation des déchets de rénovation',
-    ],
-    deroulement: [
-      {
-        titre: 'État des lieux photographié',
-        detail:
-          'Chaque pièce, avec signalement de l’existant. Un meuble rayé avant notre passage est documenté.',
-      },
-      {
-        titre: 'Protection du mobilier',
-        detail: 'Bâches sur ce qui ne peut pas être déplacé.',
-      },
-      {
-        titre: 'Dépoussiérage haut vers bas',
-        detail: 'Y compris les pièces qui n’ont pas été rénovées : la poussière y est allée.',
-      },
-      { titre: 'Vitres et châssis', detail: 'Intérieur, rainures, joints.' },
-      { titre: 'Sanitaires et cuisine', detail: 'Détartrage, robinetterie, plans de travail.' },
-      {
-        titre: 'Sols et contrôle final',
-        detail: 'Lavage adapté au revêtement, puis relecture.',
-      },
-    ],
-    prixDepuis: 6,
-    dureeType: '4 à 6 h pour un appartement de 100 m²',
-    faq: [
       {
         question: 'Puis-je rester dans le logement pendant l’intervention ?',
         reponse:
@@ -179,17 +118,17 @@ export const SERVICES: Service[] = [
           "Oui, et c'est indispensable. La poussière de ponçage traverse les portes fermées. Nettoyer uniquement la pièce rénovée revient à ne rien nettoyer du tout.",
       },
       {
-        question: 'Mon parquet vient d’être posé, y a-t-il un risque ?',
+        question: 'Que se passe-t-il si un point ne me convient pas ?',
         reponse:
-          "Nous adaptons le lavage au revêtement et à son âge. Un parquet huilé récent se traite différemment d'un vinyle. Signalez-le à la réservation : cela figure sur le bon d'intervention de l'équipe.",
+          'Vous avez 48 heures pour le signaler. Nous repassons sans frais et sans discussion. Un appel au 0489 21 01 24 suffit.',
       },
       {
-        question: 'Intervenez-vous pour une remise en location ?',
+        question: 'Travaillez-vous avec les entreprises générales et les promoteurs ?',
         reponse:
-          "Régulièrement. Le rapport photo avant/après sert alors de preuve d'état des lieux, ce qui simplifie la relation avec le locataire entrant comme sortant.",
+          "Oui, et c'est une part importante de notre activité. Nous proposons un suivi dédié, une facturation groupée et des délais garantis. La facturation se fait au format structuré Peppol, comme la loi belge l'exige depuis janvier 2026.",
       },
     ],
-    connexes: ['nettoyage-fin-de-chantier', 'nettoyage-appartement'],
+    connexes: ['nettoyage-de-vitres', 'nettoyage-appartement'],
   },
 
   {
@@ -330,7 +269,7 @@ export const SERVICES: Service[] = [
     h1: 'Nettoyage de vitres et châssis',
     titleSeo: 'Nettoyage de vitres et châssis | Sans trace — SUITON',
     metaDescription:
-      'Nettoyage de vitres, châssis et encadrements. Intérieur et extérieur accessible, rainures détartrées, contrôle en lumière rasante. Devis immédiat.',
+      'Nettoyage de vitres, châssis et encadrements. Intérieur et extérieur accessible, rainures détartrées, contrôle en lumière rasante. Devis après visite sur place.',
     accroche: 'Une vitre propre ne se remarque pas. Une vitre mal nettoyée se voit de la rue.',
     probleme:
       "Les traces ne se voient que de biais, en lumière rasante — jamais de face, au moment où on nettoie. C'est pour cela qu'un nettoyage de vitres se contrôle autrement qu'il ne se fait. Et les rainures de châssis, où s'accumulent poussière et silicone, sont presque toujours oubliées.",
@@ -359,6 +298,11 @@ export const SERVICES: Service[] = [
     prixDepuis: 4,
     dureeType: '2 à 3 h pour une maison de 140 m²',
     faq: [
+      {
+        question: 'Pourquoi pas de prix affiché directement en ligne ?',
+        reponse:
+          "Parce qu'il dépend de trop de facteurs pour être honnête à distance : accessibilité, nombre de faces et de vitrages, hauteur, état des châssis. Décrivez votre besoin et ajoutez des photos si possible : nous revenons avec un devis sous 24 heures ouvrées, après une visite si nécessaire.",
+      },
       {
         question: 'Intervenez-vous en hauteur ?',
         reponse:

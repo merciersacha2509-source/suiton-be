@@ -13,7 +13,6 @@ const bandeSchema = z
   });
 
 const niveauxSchema = z.object({
-  leger: bandeSchema,
   standard: bandeSchema,
   lourd: bandeSchema,
 });
@@ -23,7 +22,9 @@ const coefSchema = z.number().min(0.5).max(2);
 export const settingsUpdateSchema = z.object({
   prix_m2: z.object({
     fin_de_chantier: niveauxSchema,
-    apres_renovation: niveauxSchema,
+    // Vitres n'est plus affiche/calcule automatiquement sur le site public
+    // (devis uniquement apres visite), mais l'equipe garde une grille de
+    // reference interne pour chiffrer sur place.
     vitres: niveauxSchema,
   }),
   zones: z.object({

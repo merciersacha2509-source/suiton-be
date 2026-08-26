@@ -77,17 +77,10 @@ describe('settingsUpdateSchema', () => {
   const base = {
     prix_m2: {
       fin_de_chantier: {
-        leger: { min: 5, max: 5 },
         standard: { min: 7, max: 8 },
         lourd: { min: 10, max: 14 },
       },
-      apres_renovation: {
-        leger: { min: 4, max: 5 },
-        standard: { min: 6, max: 7 },
-        lourd: { min: 9, max: 12 },
-      },
       vitres: {
-        leger: { min: 3, max: 4 },
         standard: { min: 4, max: 5 },
         lourd: { min: 6, max: 8 },
       },
@@ -134,17 +127,10 @@ describe('coefficients par type de bien', () => {
   const grille = {
     prix_m2: {
       fin_de_chantier: {
-        leger: { min: 5, max: 5 },
         standard: { min: 7, max: 8 },
         lourd: { min: 10, max: 14 },
       },
-      apres_renovation: {
-        leger: { min: 4, max: 5 },
-        standard: { min: 6, max: 7 },
-        lourd: { min: 9, max: 12 },
-      },
       vitres: {
-        leger: { min: 3, max: 4 },
         standard: { min: 4, max: 5 },
         lourd: { min: 6, max: 8 },
       },

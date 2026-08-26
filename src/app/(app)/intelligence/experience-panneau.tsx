@@ -128,8 +128,7 @@ export function LancerExperience({
           {(p) => (
             <Select {...p} name="service" defaultValue="">
               <option value="">Tous</option>
-              <option value="fin_de_chantier">Fin de chantier</option>
-              <option value="apres_renovation">Après rénovation</option>
+              <option value="fin_de_chantier">Fin de travaux</option>
               <option value="vitres">Vitres</option>
             </Select>
           )}

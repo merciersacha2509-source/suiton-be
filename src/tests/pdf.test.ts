@@ -114,8 +114,8 @@ describe('découpage en forfaits', () => {
     expect(avec.some((l) => l.description.includes('Majoration'))).toBe(true);
   });
 
-  it('couvre les trois services', () => {
-    for (const s of ['fin_de_chantier', 'apres_renovation', 'vitres'] as const) {
+  it('couvre les deux services', () => {
+    for (const s of ['fin_de_chantier', 'vitres'] as const) {
       const lignes = decouperForfaits(s, 1000, 100, { fraisZone: 0, majorationUrgence: 0 });
       expect(lignes.length).toBeGreaterThanOrEqual(2);
     }

@@ -4,12 +4,21 @@ import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Alert } from '@/components/ui/alert';
-import type { PhotoDeposee } from './types';
+
+export interface PhotoDeposee {
+  id: string;
+  apercu: string | null;
+  nom: string;
+}
 
 const MAX_PHOTOS = 8;
 
 /**
  * Depot de photos.
+ *
+ * Partage entre le parcours de reservation et les formulaires de demande
+ * (vitres, rappel) : c'est la meme mecanique d'upload reel, pas une
+ * simulation propre a chaque formulaire.
  *
  * Le fichier part vers /api/photos/upload, qui le re-encode et supprime les
  * metadonnees AVANT stockage. Il n'existe volontairement pas d'URL signee
@@ -23,10 +32,12 @@ export function PhotoUploader({
   photos,
   onChange,
   onErreur,
+  texteAide = 'Facultatif, mais utile : avec des photos, notre devis est ferme plutôt qu’indicatif, et nous arrivons avec le bon matériel.',
 }: {
   photos: PhotoDeposee[];
   onChange: (photos: PhotoDeposee[]) => void;
   onErreur: (message: string | null) => void;
+  texteAide?: string;
 }) {
   const champ = useRef<HTMLInputElement>(null);
   const [enCours, setEnCours] = useState(0);
@@ -71,10 +82,7 @@ export function PhotoUploader({
 
   return (
     <div className="flex flex-col gap-4">
-      <p className="text-ardoise text-sm">
-        Facultatif, mais utile : avec des photos, notre devis est ferme plutôt
-        qu&apos;indicatif, et nous arrivons avec le bon matériel.
-      </p>
+      <p className="text-ardoise text-sm">{texteAide}</p>
 
       <input
         ref={champ}
