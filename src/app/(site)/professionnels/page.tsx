@@ -10,6 +10,7 @@ import {
   TitreSection,
 } from '@/components/site/blocs';
 import { FormulaireProfessionnel } from '@/components/site/formulaire-professionnel';
+import { SuitonMark } from '@/components/brand/suiton-mark';
 import { ENTREPRISE } from '@/lib/site/entreprise';
 import { Jsonld, jsonldFaq, jsonldFilAriane, metadonnees } from '@/lib/site/seo';
 
@@ -82,8 +83,13 @@ export default function PageProfessionnels() {
         ]}
       />
 
-      <section className="border-mineral-dark bg-abysse text-mineral border-b">
-        <div className="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+      <section className="border-mineral-dark bg-abysse text-mineral relative overflow-hidden border-b">
+        <SuitonMark
+          size={640}
+          inverse
+          className="pointer-events-none absolute -top-24 -right-40 hidden opacity-[0.06] lg:block"
+        />
+        <div className="relative mx-auto max-w-6xl px-4 py-16 lg:py-20">
           <p className="text-aqua text-xs font-medium tracking-[0.14em] uppercase">
             Entrepreneurs · Promoteurs · Architectes · Syndics
           </p>

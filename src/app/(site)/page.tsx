@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { Calculateur } from '@/components/site/calculateur';
 import { EnVue } from '@/components/site/en-vue';
+import { SuitonMark } from '@/components/brand/suiton-mark';
 import {
   AppelFinal,
   Carte,
@@ -94,19 +95,13 @@ export default async function Accueil() {
       {/* Premier ecran                                                     */}
       {/* ---------------------------------------------------------------- */}
       <section className="border-mineral-dark bg-mineral relative overflow-hidden border-b">
-        {/* Motif discret : quelques lignes fines inspirees de l'onde du
-            logo. Opacite quasi imperceptible, jamais au-dessus du texte. */}
-        <svg
-          className="pointer-events-none absolute top-0 right-0 hidden h-full w-[28rem] opacity-[0.04] lg:block"
-          viewBox="0 0 400 500"
-          fill="none"
-          aria-hidden
-        >
-          <circle cx="380" cy="60" r="60" stroke="#0B2239" strokeWidth="1.5" />
-          <circle cx="380" cy="60" r="120" stroke="#0B2239" strokeWidth="1.5" />
-          <circle cx="380" cy="60" r="180" stroke="#0B2239" strokeWidth="1.5" />
-          <circle cx="380" cy="60" r="240" stroke="#0B2239" strokeWidth="1.5" />
-        </svg>
+        {/* Le symbole SUITON en grand format, en filigrane. Bleu marine de
+            l'identite, opacite legere : une touche de serieux en fond, sans
+            jamais concurrencer le texte au-dessus. */}
+        <SuitonMark
+          size={640}
+          className="pointer-events-none absolute -top-24 -right-40 hidden opacity-[0.07] lg:block"
+        />
 
         <div className="relative mx-auto grid max-w-6xl gap-10 px-4 py-12 lg:grid-cols-[1fr_26rem] lg:gap-16 lg:py-20">
           <div className="lg:pt-6">

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Calculateur } from '@/components/site/calculateur';
 import { FormulaireRappel } from '@/components/site/formulaire-rappel';
+import { SuitonMark } from '@/components/brand/suiton-mark';
 import {
   AppelFinal,
   Carte,
@@ -70,8 +71,12 @@ export function PageService({
       />
 
       {/* Premier ecran ------------------------------------------------- */}
-      <section className="border-mineral-dark border-b">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 pt-8 pb-14 lg:grid-cols-[1fr_24rem] lg:gap-14">
+      <section className="border-mineral-dark relative overflow-hidden border-b">
+        <SuitonMark
+          size={560}
+          className="pointer-events-none absolute -top-20 -right-36 hidden opacity-[0.07] lg:block"
+        />
+        <div className="relative mx-auto grid max-w-6xl gap-10 px-4 pt-8 pb-14 lg:grid-cols-[1fr_24rem] lg:gap-14">
           <div>
             <h1 className="max-w-2xl text-3xl leading-[1.15] font-semibold sm:text-4xl">
               {service.h1}
