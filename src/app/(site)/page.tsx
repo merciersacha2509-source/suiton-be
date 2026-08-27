@@ -73,7 +73,7 @@ const FAQ_ACCUEIL = [
   {
     question: 'Dans quelles communes intervenez-vous ?',
     reponse:
-      "Depuis Enghien, dans un rayon de 45 km : Hal, Tubize, Nivelles, Braine-l'Alleud, Waterloo, Saint-Pieters-Leeuw et Bruxelles. Aucun frais de déplacement dans un rayon de 20 km ; 25 € au-delà, annoncés sur le devis et jamais ajoutés après coup.",
+      "Depuis Enghien, dans un rayon de 45 km : Hal, Tubize, Nivelles, Braine-l'Alleud, Waterloo, Sint-Pieters-Leeuw et Bruxelles. Aucun frais de déplacement dans un rayon de 20 km ; 25 € au-delà, annoncés sur le devis et jamais ajoutés après coup.",
   },
 ];
 

@@ -290,8 +290,7 @@ export const COMMUNES: Commune[] = [
 
   {
     slug: 'saint-pieters-leeuw',
-    nom: 'Saint-Pieters-Leeuw',
-    nomNl: 'Sint-Pieters-Leeuw',
+    nom: 'Sint-Pieters-Leeuw',
     codePostal: '1600',
     province: 'Brabant flamand',
     zone: 'secondaire',
@@ -299,12 +298,12 @@ export const COMMUNES: Commune[] = [
     latitude: 50.7789,
     longitude: 4.2417,
     trajet: '30 minutes',
-    titleSeo: 'Nettoyage fin de chantier Saint-Pieters-Leeuw | SUITON',
+    titleSeo: 'Nettoyage fin de chantier Sint-Pieters-Leeuw | SUITON',
     metaDescription:
       'Nettoyage de fin de chantier à Sint-Pieters-Leeuw : lotissements récents, maisons quatre façades, rénovations. Vitres comprises, devis sous 24 h.',
-    h1: 'Nettoyage de fin de chantier à Saint-Pieters-Leeuw',
+    h1: 'Nettoyage de fin de chantier à Sint-Pieters-Leeuw',
     contexte: [
-      'Saint-Pieters-Leeuw — Sint-Pieters-Leeuw — est une commune périurbaine en croissance continue, à la limite sud-ouest de Bruxelles. Le bâti y est majoritairement récent : lotissements pavillonnaires, maisons quatre façades, jardins.',
+      'Sint-Pieters-Leeuw est une commune périurbaine en croissance continue, à la limite sud-ouest de Bruxelles. Le bâti y est majoritairement récent : lotissements pavillonnaires, maisons quatre façades, jardins.',
       "C'est un profil de chantier assez homogène, ce qui a un avantage concret : nos estimations y sont particulièrement fiables. Une maison quatre façades de 160 m² à Ruisbroek se nettoie dans les mêmes durées qu'une maison équivalente à Vlezenbeek.",
     ],
     parcImmobilier:
