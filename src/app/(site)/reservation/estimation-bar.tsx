@@ -63,7 +63,7 @@ export function EstimationBar({
     >
       {resultat.surDevis ? (
         <>
-          <p className="text-ardoise text-[0.8125rem]">Estimation</p>
+          <p className="text-ardoise text-[0.8125rem]">Estimation indicative</p>
           <p className="font-heading text-aqua-deep text-lg font-semibold">Sur devis</p>
           <p className="text-ardoise mt-0.5 text-[0.8125rem]">
             Surface ou zone hors barème standard. Nous chiffrons au cas par cas.
@@ -71,12 +71,13 @@ export function EstimationBar({
         </>
       ) : (
         <>
-          <p className="text-ardoise text-[0.8125rem]">Estimation, hors TVA</p>
+          <p className="text-ardoise text-[0.8125rem]">Estimation indicative, hors TVA</p>
           <p className="tabular font-heading text-lg font-semibold">
             {formatRange(resultat.min, resultat.max)}
           </p>
           <p className="text-ardoise mt-0.5 text-[0.8125rem]">
-            Vitres et châssis compris. Devis ferme sous {grille.delai_devis_heures} h.
+            Vitres et châssis compris. Montant définitif confirmé par devis sous{' '}
+            {grille.delai_devis_heures} h.
           </p>
         </>
       )}

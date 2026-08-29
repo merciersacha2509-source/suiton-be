@@ -58,7 +58,7 @@ const FAQ = [
 ];
 
 export const metadata: Metadata = metadonnees({
-  title: 'Nettoyage de fin de chantier pour entrepreneurs et promoteurs',
+  title: 'Nettoyage de fin de travaux pour entrepreneurs et promoteurs',
   description:
     'Pour entrepreneurs, promoteurs, architectes et syndics : grille négociée au volume, autoliquidation TVA, facturation Peppol, rapport photo transmissible.',
   chemin: '/professionnels',

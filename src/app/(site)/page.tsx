@@ -14,7 +14,7 @@ import {
 } from '@/components/site/blocs';
 import { grillePublique } from '@/lib/site/tarifs';
 import { ENTREPRISE, GARANTIES, ETAPES_CLIENT } from '@/lib/site/entreprise';
-import { SERVICES } from '@/lib/site/services';
+import { parSlug } from '@/lib/site/services';
 import { COMMUNES } from '@/lib/site/communes';
 import { Jsonld, jsonldFaq, metadonnees } from '@/lib/site/seo';
 
@@ -41,12 +41,12 @@ export const revalidate = 3600;
  * arrivons avec un debut de qualification plutot qu'un « bonjour ».
  */
 const MESSAGE_WHATSAPP = encodeURIComponent(
-  'Bonjour, je souhaite un devis pour un nettoyage de fin de chantier.',
+  'Bonjour, je souhaite un devis pour un nettoyage de fin de travaux.',
 );
 
 const FAQ_ACCUEIL = [
   {
-    question: 'Combien coûte un nettoyage de fin de chantier ?',
+    question: 'Combien coûte un nettoyage de fin de travaux ?',
     reponse:
       'Entre 7 et 14 € HTVA le m² selon le niveau de salissure. Un appartement de 90 m² après ponçage se situe généralement entre 630 et 720 € HTVA. Le calculateur ci-dessus donne une fourchette immédiate ; le devis, envoyé sous 24 heures ouvrées, donne un montant ferme.',
   },
@@ -74,6 +74,46 @@ const FAQ_ACCUEIL = [
     question: 'Dans quelles communes intervenez-vous ?',
     reponse:
       "Depuis Enghien, dans un rayon de 45 km : Hal, Tubize, Nivelles, Braine-l'Alleud, Waterloo, Sint-Pieters-Leeuw et Bruxelles. Aucun frais de déplacement dans un rayon de 20 km ; 25 € au-delà, annoncés sur le devis et jamais ajoutés après coup.",
+  },
+];
+
+/*
+ * Quatre prestations, deux niveaux : fin de travaux et vitres sont le cœur
+ * de metier (priorite 1 et 2), textile et auto sont complementaires. Cette
+ * hierarchie doit se voir sur la page — SUITON n'est pas une societe de
+ * nettoyage generaliste qui propose neuf services a egalite.
+ */
+const finDeTravaux = parSlug('nettoyage-fin-de-chantier');
+const vitres = parSlug('nettoyage-de-vitres');
+
+const PRESTATIONS_ACCUEIL = [
+  {
+    slug: 'nettoyage-fin-de-chantier',
+    nom: finDeTravaux?.nom ?? 'Nettoyage de fin de travaux',
+    accroche: finDeTravaux?.accroche ?? '',
+    prix: `dès ${finDeTravaux?.prixDepuis ?? 7} € / m² HTVA`,
+    complementaire: false,
+  },
+  {
+    slug: 'nettoyage-de-vitres',
+    nom: vitres?.nom ?? 'Nettoyage de vitres',
+    accroche: vitres?.accroche ?? '',
+    prix: 'Sur devis après visite',
+    complementaire: false,
+  },
+  {
+    slug: 'nettoyage-textile',
+    nom: 'Nettoyage textile',
+    accroche: 'Tapis, canapés, matelas — un nettoyage en profondeur, pièce par pièce.',
+    prix: 'Sur devis',
+    complementaire: true,
+  },
+  {
+    slug: 'nettoyage-auto',
+    nom: 'Nettoyage automobile',
+    accroche: 'Intérieur ou intérieur et extérieur, sur rendez-vous à Enghien.',
+    prix: 'Sur devis',
+    complementaire: true,
   },
 ];
 
@@ -261,31 +301,28 @@ export default async function Accueil() {
       <Section fond="mineral">
         <TitreSection
           surtitre="Nos prestations"
-          titre="Cinq métiers, une seule exigence"
-          chapeau="Chaque prestation a son protocole et ses produits propres. Nous ne facturons pas un nettoyage de fin de chantier au tarif d'un entretien, et l'inverse est vrai aussi."
+          titre="Spécialistes du nettoyage de fin de travaux"
+          chapeau="Notre cœur de métier : la remise en état après construction ou rénovation, vitres et châssis compris. Textile et automobile complètent l'offre pour nos clients réguliers."
         />
-        <EnVue className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((s) => (
+        <EnVue className="mt-10 grid gap-4 sm:grid-cols-2">
+          {PRESTATIONS_ACCUEIL.map((s) => (
             <Link
               key={s.slug}
               href={`/${s.slug}`}
               className="group rounded-suiton border-mineral-dark hover:border-aqua-deep/40 flex flex-col border bg-white p-6 shadow-sm transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-md"
             >
+              {s.complementaire ? (
+                <p className="text-ardoise-clair mb-2 inline-flex items-center gap-1.5 text-[0.6875rem] font-medium tracking-[0.12em] uppercase">
+                  <span className="bg-ardoise-clair h-1 w-1 shrink-0 rounded-full" aria-hidden />
+                  Prestation complémentaire
+                </p>
+              ) : null}
               <h3 className="font-heading group-hover:text-ocean text-lg font-semibold">
                 {s.nom}
               </h3>
               <p className="text-ardoise mt-3 flex-1 text-sm leading-relaxed">{s.accroche}</p>
-              <p className="border-mineral-dark mt-5 flex items-baseline gap-2 border-t pt-4">
-                {s.slug === 'nettoyage-de-vitres' ? (
-                  <span className="font-heading text-xl font-semibold">Sur devis</span>
-                ) : (
-                  <>
-                    <span className="font-heading tabular text-xl font-semibold">
-                      dès {s.prixDepuis} €
-                    </span>
-                    <span className="text-ardoise text-xs">/ m² HTVA</span>
-                  </>
-                )}
+              <p className="border-mineral-dark mt-5 border-t pt-4">
+                <span className="font-heading text-lg font-semibold">{s.prix}</span>
               </p>
             </Link>
           ))}

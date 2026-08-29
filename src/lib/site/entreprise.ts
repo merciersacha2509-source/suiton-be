@@ -12,7 +12,7 @@
 export const ENTREPRISE = {
   nom: 'SUITON',
   slogan: 'Nous ne nettoyons pas simplement. Nous prouvons le résultat.',
-  activite: 'Nettoyage de fin de chantier',
+  activite: 'Nettoyage de fin de travaux',
   adresse: 'Rue Boussart 7',
   codePostal: '7850',
   commune: 'Enghien',

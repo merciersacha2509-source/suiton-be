@@ -22,7 +22,7 @@ import { Jsonld, jsonldFilAriane, metadonnees } from '@/lib/site/seo';
 export const revalidate = 86400;
 
 export const metadata: Metadata = metadonnees({
-  title: 'Contact — SUITON, nettoyage de fin de chantier à Enghien',
+  title: 'Contact — SUITON, nettoyage de fin de travaux à Enghien',
   description: `Contactez SUITON au ${ENTREPRISE.telephone} ou par courriel. Basés à Enghien, nous intervenons dans un rayon de ${ENTREPRISE.rayonKm} km : Hal, Tubize, Nivelles, Waterloo, Bruxelles.`,
   chemin: '/contact',
 });

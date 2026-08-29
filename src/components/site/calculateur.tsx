@@ -295,8 +295,9 @@ export function Calculateur({
               </span>
             </p>
             <p className="text-ardoise mt-3 text-xs leading-relaxed">
-              Fourchette calculée sur le bien, la surface et le niveau de salissure annoncés. Le
-              devis, lui, est ferme : il vous engage sur un montant, pas sur une plage.
+              Cette estimation est calculée selon les informations communiquées. Le montant
+              définitif est confirmé après analyse de votre demande — le devis, lui, est ferme :
+              il vous engage sur un montant, pas sur une plage.
             </p>
           </div>
         )}
@@ -305,7 +306,7 @@ export function Calculateur({
           href={lien}
           className="h-touch rounded-suiton bg-abysse text-mineral hover:bg-abysse-90 mt-5 flex w-full items-center justify-center px-4 text-sm font-medium shadow-sm transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-md active:translate-y-0"
         >
-          Obtenir un devis ferme sous 24 h
+          Devis définitif sous 24 h
         </Link>
         <p className="text-ardoise mt-2 text-center text-xs">
           Gratuit, sans engagement — 2 minutes

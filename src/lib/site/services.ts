@@ -126,7 +126,7 @@ export const SERVICES: Service[] = [
           "Oui, et c'est une part importante de notre activité. Nous proposons un suivi dédié, une facturation groupée et des délais garantis. La facturation se fait au format structuré Peppol, comme la loi belge l'exige depuis janvier 2026.",
       },
     ],
-    connexes: ['nettoyage-de-vitres', 'nettoyage-appartement'],
+    connexes: ['nettoyage-de-vitres'],
   },
 
   {
@@ -140,7 +140,7 @@ export const SERVICES: Service[] = [
     accroche:
       "En appartement, la contrainte n'est pas la surface : c'est l'accès, les voisins et les parties communes.",
     probleme:
-      "Un appartement en fin de chantier pose des problèmes qu'une maison ne pose pas : ascenseur à protéger, palier à ne pas salir, horaires de copropriété à respecter, eau et électricité parfois pas encore raccordées. Une société qui n'y a pas pensé perd deux heures sur place.",
+      "Un appartement en fin de travaux pose des problèmes qu'une maison ne pose pas : ascenseur à protéger, palier à ne pas salir, horaires de copropriété à respecter, eau et électricité parfois pas encore raccordées. Une société qui n'y a pas pensé perd deux heures sur place.",
     inclus: [
       'Protection du palier et de l’ascenseur pendant l’intervention',
       'Dépoussiérage intégral, du haut vers le bas',
@@ -189,7 +189,7 @@ export const SERVICES: Service[] = [
       {
         question: 'Nettoyez-vous l’intérieur des armoires de cuisine ?',
         reponse:
-          "Oui, systématiquement en fin de chantier. La poussière de découpe se dépose à l'intérieur des meubles même portes fermées : les joints d'un caisson neuf ne sont pas étanches, et l'aspiration d'une scie ne capte jamais tout. Nous vidons, aspirons et essuyons chaque caisson, tiroirs compris, avant le nettoyage des façades.",
+          "Oui, systématiquement en fin de travaux. La poussière de découpe se dépose à l'intérieur des meubles même portes fermées : les joints d'un caisson neuf ne sont pas étanches, et l'aspiration d'une scie ne capte jamais tout. Nous vidons, aspirons et essuyons chaque caisson, tiroirs compris, avant le nettoyage des façades.",
       },
     ],
     connexes: ['nettoyage-fin-de-chantier', 'nettoyage-maison'],
@@ -247,7 +247,7 @@ export const SERVICES: Service[] = [
       {
         question: 'Nettoyez-vous les terrasses et les allées ?',
         reponse:
-          "Pas dans le forfait de fin de chantier. Le nettoyage extérieur haute pression fait l'objet d'un devis séparé — le dire clairement évite une déception à la réception.",
+          "Pas dans le forfait de fin de travaux. Le nettoyage extérieur haute pression fait l'objet d'un devis séparé — le dire clairement évite une déception à la réception.",
       },
       {
         question: 'Combien de personnes intervenez-vous ?',
@@ -310,12 +310,12 @@ export const SERVICES: Service[] = [
       },
       {
         question:
-          'Le nettoyage de vitres est-il compris dans un nettoyage de fin de chantier ?',
+          'Le nettoyage de vitres est-il compris dans un nettoyage de fin de travaux ?',
         reponse:
-          "Oui, toujours, et sans supplément : vitres, châssis, rainures et seuils font partie du forfait de fin de chantier. C'est le poste que beaucoup de sociétés sortent du devis pour afficher un prix au m² plus bas, puis refacturent une fois sur place. Cette page-ci concerne les interventions où seules les vitres sont demandées, sans le reste du chantier.",
+          "Oui, toujours, et sans supplément : vitres, châssis, rainures et seuils font partie du forfait de fin de travaux. C'est le poste que beaucoup de sociétés sortent du devis pour afficher un prix au m² plus bas, puis refacturent une fois sur place. Cette page-ci concerne les interventions où seules les vitres sont demandées, sans le reste du chantier.",
       },
     ],
-    connexes: ['nettoyage-fin-de-chantier', 'nettoyage-maison'],
+    connexes: ['nettoyage-fin-de-chantier'],
   },
 ];
 

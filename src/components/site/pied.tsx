@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { SuitonLogo } from '@/components/brand/suiton-mark';
 import { ENTREPRISE } from '@/lib/site/entreprise';
-import { SERVICES } from '@/lib/site/services';
 import { COMMUNES } from '@/lib/site/communes';
 
 /**
@@ -10,7 +9,19 @@ import { COMMUNES } from '@/lib/site/communes';
  * Il porte le maillage interne : chaque service et chaque commune y sont
  * lies depuis toutes les pages. C'est la structure la moins spectaculaire
  * du site et l'une des plus determinantes pour l'indexation.
+ *
+ * La liste de services est volontairement la hierarchie a quatre prestations
+ * (fin de travaux, vitres, puis textile/auto en complementaire) et non le
+ * tableau complet `SERVICES` — celui-ci inclut des variantes par type de
+ * bien (appartement, maison) qui n'ont pas leur place dans une liste
+ * presentee comme "nos services".
  */
+const SERVICES_PIED = [
+  { slug: 'nettoyage-fin-de-chantier', nom: 'Nettoyage de fin de travaux' },
+  { slug: 'nettoyage-de-vitres', nom: 'Nettoyage de vitres' },
+  { slug: 'nettoyage-textile', nom: 'Nettoyage textile' },
+  { slug: 'nettoyage-auto', nom: 'Nettoyage automobile' },
+];
 export function Pied() {
   return (
     <footer className="bg-abysse text-mineral border-aqua-deep/60 border-t-2">
@@ -49,7 +60,7 @@ export function Pied() {
               Services
             </h2>
             <ul className="mt-4 space-y-2 text-sm">
-              {SERVICES.map((s) => (
+              {SERVICES_PIED.map((s) => (
                 <li key={s.slug}>
                   <Link
                     href={`/${s.slug}`}

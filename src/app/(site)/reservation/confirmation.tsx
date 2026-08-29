@@ -28,7 +28,7 @@ export function Confirmation({
 
       <div className="rounded-suiton border-mineral-dark border p-4">
         <p className="text-ardoise text-[0.8125rem]">
-          {succes.estimation.surDevis ? 'Chiffrage' : 'Estimation, hors TVA'}
+          {succes.estimation.surDevis ? 'Chiffrage' : 'Estimation indicative, hors TVA'}
         </p>
         <p className="tabular font-heading mt-1 text-xl font-semibold">
           {succes.estimation.surDevis

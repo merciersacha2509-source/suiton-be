@@ -276,7 +276,7 @@ export default async function PageRealisation({
                     href={`/nettoyage-fin-de-chantier/${commune.slug}`}
                     className="text-ocean hover:underline"
                   >
-                    Nettoyage de fin de chantier à {commune.nom}
+                    Nettoyage de fin de travaux à {commune.nom}
                   </Link>
                 </li>
               ) : null}

@@ -13,9 +13,9 @@ import { Jsonld, jsonldFilAriane, metadonnees } from '@/lib/site/seo';
 export const revalidate = 86400;
 
 export const metadata: Metadata = metadonnees({
-  title: 'À propos de SUITON — nettoyage de fin de chantier à Enghien',
+  title: 'À propos de SUITON — nettoyage de fin de travaux à Enghien',
   description:
-    'SUITON est une entreprise de nettoyage de fin de chantier basée à Enghien. Notre méthode, nos engagements, et pourquoi nous documentons chaque intervention.',
+    'SUITON est une entreprise de nettoyage de fin de travaux basée à Enghien. Notre méthode, nos engagements, et pourquoi nous documentons chaque intervention.',
   chemin: '/a-propos',
 });
 
@@ -50,7 +50,7 @@ export default function PageAPropos() {
         <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
           <div className="text-ardoise max-w-2xl space-y-5 text-base leading-relaxed">
             <p>
-              SUITON est née d&apos;un constat simple : dans le nettoyage de fin de chantier, le
+              SUITON est née d&apos;un constat simple : dans le nettoyage de fin de travaux, le
               client ne peut presque jamais vérifier ce qu&apos;il a acheté. Il arrive après,
               dans un bien vide, et il juge une impression. Si quelque chose a été oublié
               derrière un radiateur ou dans une rainure de châssis, il le découvrira trois

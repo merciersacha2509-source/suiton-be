@@ -84,7 +84,7 @@ export default async function PageCommune({
         : `Oui, un forfait de ${settings.zones.secondaire?.frais ?? 25} € HTVA, annoncé sur le devis et jamais ajouté après coup. C'est un montant fixe, pas un calcul au kilomètre qui varie selon l'itinéraire pris.`,
     },
     {
-      question: `Combien coûte un nettoyage de fin de chantier à ${commune.nom} ?`,
+      question: `Combien coûte un nettoyage de fin de travaux à ${commune.nom} ?`,
       reponse: `Le tarif est le même que partout ailleurs dans notre zone : de ${settings.prix_m2.fin_de_chantier?.standard?.min ?? 7} à ${settings.prix_m2.fin_de_chantier?.lourd?.max ?? 14} € HTVA le m² selon le niveau de salissure${gratuit ? '' : `, plus le forfait de déplacement de ${settings.zones.secondaire?.frais ?? 25} €`}. Le calculateur en haut de page donne une fourchette immédiate ; le devis, envoyé sous 24 heures ouvrées, donne un montant ferme.`,
     },
     {
@@ -100,7 +100,7 @@ export default async function PageCommune({
           jsonldFaq(faq),
           jsonldFilAriane([
             { nom: 'Accueil', chemin: '/' },
-            { nom: 'Nettoyage de fin de chantier', chemin: '/nettoyage-fin-de-chantier' },
+            { nom: 'Nettoyage de fin de travaux',chemin: '/nettoyage-fin-de-chantier' },
             { nom: commune.nom, chemin: `/nettoyage-fin-de-chantier/${commune.slug}` },
           ]),
         ]}
@@ -109,7 +109,7 @@ export default async function PageCommune({
       <FilAriane
         items={[
           { nom: 'Accueil', href: '/' },
-          { nom: 'Nettoyage de fin de chantier', href: '/nettoyage-fin-de-chantier' },
+          { nom: 'Nettoyage de fin de travaux',href: '/nettoyage-fin-de-chantier' },
           { nom: commune.nom, href: `/nettoyage-fin-de-chantier/${commune.slug}` },
         ]}
       />
@@ -271,7 +271,7 @@ export default async function PageCommune({
       <Section>
         <Faq
           items={faq}
-          titre={`Nettoyage de fin de chantier à ${commune.nom} : vos questions`}
+          titre={`Nettoyage de fin de travaux à ${commune.nom} : vos questions`}
         />
       </Section>
 

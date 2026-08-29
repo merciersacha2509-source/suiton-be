@@ -58,10 +58,10 @@ export const COMMUNES: Commune[] = [
     latitude: 50.6939,
     longitude: 4.0342,
     trajet: 'sur place',
-    titleSeo: 'Nettoyage fin de chantier Enghien | SUITON, entreprise locale',
+    titleSeo: 'Nettoyage fin de travaux Enghien | SUITON, entreprise locale',
     metaDescription:
-      'Entreprise de nettoyage de fin de chantier basée à Enghien. Intervention rapide, vitres comprises, rapport photo. Devis sous 24 h au 0489 21 01 24.',
-    h1: 'Nettoyage de fin de chantier à Enghien',
+      'Entreprise de nettoyage de fin de travaux basée à Enghien. Intervention rapide, vitres comprises, rapport photo. Devis sous 24 h au 0489 21 01 24.',
+    h1: 'Nettoyage de fin de travaux à Enghien',
     contexte: [
       "SUITON est basée rue Boussart, à Enghien. C'est notre commune : nous y intervenons sans frais de déplacement et souvent dans la journée quand un chantier se libère.",
       'Enghien occupe une position particulière, à la frontière linguistique entre le Hainaut et le Brabant flamand. Cela se retrouve dans le bâti : un centre ancien classé autour du parc, des lotissements des années 1970 vers Marcq et Petit-Enghien, et de la construction neuve en périphérie. Trois époques, trois façons de salir un chantier.',
@@ -89,10 +89,10 @@ export const COMMUNES: Commune[] = [
     latitude: 50.5977,
     longitude: 4.3268,
     trajet: '30 minutes',
-    titleSeo: 'Nettoyage fin de chantier Nivelles | Devis 24 h — SUITON',
+    titleSeo: 'Nettoyage fin de travaux Nivelles | Devis 24 h — SUITON',
     metaDescription:
       'Nettoyage de fin de travaux à Nivelles. Constructions neuves, rénovations du centre historique. Vitres comprises, garantie 48 h.',
-    h1: 'Nettoyage de fin de chantier à Nivelles',
+    h1: 'Nettoyage de fin de travaux à Nivelles',
     contexte: [
       "Nivelles est l'une des communes du Brabant wallon où l'on construit le plus. Les nouveaux quartiers résidentiels au sud et à l'est de la ville produisent un flux régulier de chantiers à livrer, et les délais y sont serrés : la réception provisoire tombe souvent quelques jours après la fin du gros œuvre.",
       "Le centre historique, autour de la collégiale Sainte-Gertrude, connaît lui un mouvement inverse : de la rénovation lourde dans du bâti ancien, avec les contraintes qui vont avec — accès étroits, planchers anciens, poussière qui s'infiltre chez les voisins.",
@@ -128,10 +128,10 @@ export const COMMUNES: Commune[] = [
     latitude: 50.6836,
     longitude: 4.3676,
     trajet: '35 minutes',
-    titleSeo: "Nettoyage fin de chantier Braine-l'Alleud | SUITON",
+    titleSeo: "Nettoyage fin de travaux Braine-l'Alleud | SUITON",
     metaDescription:
-      "Nettoyage de fin de chantier et de villas à Braine-l'Alleud. Grandes surfaces, vitrages importants, rapport photo avant/après. Devis ferme sous 24 h.",
-    h1: "Nettoyage de fin de chantier à Braine-l'Alleud",
+      "Nettoyage de fin de travaux et de villas à Braine-l'Alleud. Grandes surfaces, vitrages importants, rapport photo avant/après. Devis ferme sous 24 h.",
+    h1: "Nettoyage de fin de travaux à Braine-l'Alleud",
     contexte: [
       "Braine-l'Alleud est une commune résidentielle où les surfaces sont sensiblement plus grandes qu'ailleurs dans le Brabant wallon. Les villas de 250 à 400 m² y sont courantes, souvent avec de grandes baies vitrées et plusieurs niveaux.",
       "Cela change la manière de travailler. Sur une villa, le vitrage représente une part bien plus importante du temps que sur une maison classique — parfois un tiers de l'intervention. Une société qui chiffre à la surface habitable sans regarder le vitrage se trompe systématiquement.",
@@ -165,10 +165,10 @@ export const COMMUNES: Commune[] = [
     latitude: 50.7157,
     longitude: 4.399,
     trajet: '40 minutes',
-    titleSeo: 'Nettoyage fin de chantier Waterloo | Villas et rénovations',
+    titleSeo: 'Nettoyage fin de travaux Waterloo | Villas et rénovations',
     metaDescription:
       'Nettoyage de fin de travaux à Waterloo. Villas, biens de standing, remises en location. Rapport photo, garantie retouche 48 h.',
-    h1: 'Nettoyage de fin de chantier à Waterloo',
+    h1: 'Nettoyage de fin de travaux à Waterloo',
     contexte: [
       "Waterloo compte une proportion inhabituelle de biens haut de gamme et de locations meublées, liée à la présence d'une population internationale. Les rotations locatives y sont fréquentes, et avec elles les remises en état entre deux occupants.",
       "L'exigence y est plus élevée qu'ailleurs, et le rapport photo avant/après y prend tout son sens : il documente l'état du bien à la remise des clés, ce qui simplifie la relation entre propriétaire, agence et locataire.",
@@ -196,10 +196,10 @@ export const COMMUNES: Commune[] = [
     latitude: 50.8467,
     longitude: 4.3525,
     trajet: '45 minutes',
-    titleSeo: 'Nettoyage fin de chantier Bruxelles | Appartements et bureaux',
+    titleSeo: 'Nettoyage fin de travaux Bruxelles | Appartements et bureaux',
     metaDescription:
       'Entreprise de nettoyage de chantier à Bruxelles : appartements, immeubles de rapport, bureaux. Accès en étage, protection des communs, vitres comprises.',
-    h1: 'Nettoyage de fin de chantier à Bruxelles',
+    h1: 'Nettoyage de fin de travaux à Bruxelles',
     contexte: [
       "À Bruxelles, la difficulté n'est presque jamais la surface : c'est l'accès. Stationnement introuvable, ascenseur à réserver, parties communes à protéger, horaires de copropriété à respecter. Une intervention mal préparée perd deux heures avant même de commencer.",
       "Le parc bruxellois est dominé par l'appartement et l'immeuble de rapport, souvent en rénovation par plateau. La poussière y circule entre les niveaux par les cages d'escalier et les gaines techniques, ce qui oblige à traiter davantage que la seule unité rénovée.",
@@ -235,10 +235,10 @@ export const COMMUNES: Commune[] = [
     latitude: 50.6919,
     longitude: 4.2028,
     trajet: '20 minutes',
-    titleSeo: 'Nettoyage fin de chantier Tubize | Intervention rapide',
+    titleSeo: 'Nettoyage fin de travaux Tubize | Intervention rapide',
     metaDescription:
-      "Nettoyage de fin de chantier à Tubize : logements neufs, reconversions industrielles, rénovations. À 20 minutes d'Enghien. Devis sous 24 h.",
-    h1: 'Nettoyage de fin de chantier à Tubize',
+      "Nettoyage de fin de travaux à Tubize : logements neufs, reconversions industrielles, rénovations. À 20 minutes d'Enghien. Devis sous 24 h.",
+    h1: 'Nettoyage de fin de travaux à Tubize',
     contexte: [
       "Tubize est l'une de nos communes les plus proches — vingt minutes depuis Enghien. C'est aussi l'une de celles où le bâti change le plus vite : la reconversion des anciennes friches industrielles, autour de Clabecq notamment, y produit régulièrement des programmes de logements neufs.",
       "Ces chantiers de reconversion ont une particularité : la poussière de béton et de découpe métallique y est plus abrasive que sur une construction classique. Elle raye si on l'essuie à sec, et un premier passage à l'aspiration est indispensable avant tout lavage.",
@@ -267,10 +267,10 @@ export const COMMUNES: Commune[] = [
     latitude: 50.7362,
     longitude: 4.2333,
     trajet: '25 minutes',
-    titleSeo: 'Nettoyage fin de chantier Hal (Halle) | SUITON',
+    titleSeo: 'Nettoyage fin de travaux Hal (Halle) | SUITON',
     metaDescription:
-      'Nettoyage de fin de chantier à Hal / Halle. Zone principale, sans frais de déplacement. Vitres comprises, rapport photo, garantie 48 h.',
-    h1: 'Nettoyage de fin de chantier à Hal',
+      'Nettoyage de fin de travaux à Hal / Halle. Zone principale, sans frais de déplacement. Vitres comprises, rapport photo, garantie 48 h.',
+    h1: 'Nettoyage de fin de travaux à Hal',
     contexte: [
       "Hal — Halle en néerlandais — fait partie de notre zone principale : nous y intervenons sans frais de déplacement, comme à Enghien. Vingt-cinq minutes de route, et une position de nœud ferroviaire qui en fait une commune très demandée pour l'habitat.",
       "Cette attractivité se traduit par une densification continue : divisions d'immeubles anciens, petits programmes neufs près de la gare, rénovations lourdes dans le centre autour de la basilique. Beaucoup de chantiers de taille moyenne, livrés vite.",
@@ -298,10 +298,10 @@ export const COMMUNES: Commune[] = [
     latitude: 50.7789,
     longitude: 4.2417,
     trajet: '30 minutes',
-    titleSeo: 'Nettoyage fin de chantier Sint-Pieters-Leeuw | SUITON',
+    titleSeo: 'Nettoyage fin de travaux Sint-Pieters-Leeuw | SUITON',
     metaDescription:
-      'Nettoyage de fin de chantier à Sint-Pieters-Leeuw : lotissements récents, maisons quatre façades, rénovations. Vitres comprises, devis sous 24 h.',
-    h1: 'Nettoyage de fin de chantier à Sint-Pieters-Leeuw',
+      'Nettoyage de fin de travaux à Sint-Pieters-Leeuw : lotissements récents, maisons quatre façades, rénovations. Vitres comprises, devis sous 24 h.',
+    h1: 'Nettoyage de fin de travaux à Sint-Pieters-Leeuw',
     contexte: [
       'Sint-Pieters-Leeuw est une commune périurbaine en croissance continue, à la limite sud-ouest de Bruxelles. Le bâti y est majoritairement récent : lotissements pavillonnaires, maisons quatre façades, jardins.',
       "C'est un profil de chantier assez homogène, ce qui a un avantage concret : nos estimations y sont particulièrement fiables. Une maison quatre façades de 160 m² à Ruisbroek se nettoie dans les mêmes durées qu'une maison équivalente à Vlezenbeek.",

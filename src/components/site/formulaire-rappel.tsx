@@ -19,7 +19,7 @@ export function FormulaireRappel({
   titre = 'Faites-vous rappeler',
   description = 'Deux champs. Nous rappelons le jour même en semaine.',
   libelleMessage = 'Votre chantier',
-  placeholderMessage = 'Maison de 140 m² à Enghien, fin de chantier, réception le 12.',
+  placeholderMessage = 'Maison de 140 m² à Enghien, fin de travaux, réception le 12.',
   libelleSubmit = 'Demander un rappel',
   avecPhotos = false,
   id,

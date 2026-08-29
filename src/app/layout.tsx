@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: `%s · ${ENTREPRISE.nom}`,
   },
   description:
-    "Nettoyage de fin de chantier et d'après-rénovation en Belgique. Vitres comprises, " +
+    'Nettoyage de fin de travaux en Belgique — construction neuve ou rénovation. Vitres comprises, ' +
     'rapport photo avant/après, devis ferme sous 24 heures.',
   applicationName: ENTREPRISE.nom,
   authors: [{ name: ENTREPRISE.nom, url: SITE_URL }],

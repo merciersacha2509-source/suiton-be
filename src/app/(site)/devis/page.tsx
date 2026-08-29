@@ -54,7 +54,7 @@ const FAQ = [
 ];
 
 export const metadata: Metadata = metadonnees({
-  title: 'Devis nettoyage de fin de chantier — gratuit et ferme sous 24 h',
+  title: 'Devis nettoyage de fin de travaux — gratuit et ferme sous 24 h',
   description:
     'Estimation immédiate et devis ferme sous 24 heures ouvrées. Gratuit, sans engagement, sans visite obligatoire. Vitres comprises, garantie retouche 48 h.',
   chemin: '/devis',
