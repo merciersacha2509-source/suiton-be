@@ -61,8 +61,8 @@ export default function PageContact() {
           <Carte>
             <h2 className="font-heading text-base font-semibold">Par téléphone</h2>
             <p className="text-ardoise mt-3 text-sm leading-relaxed">
-              Du lundi au vendredi de 8 h à 17 h, le samedi de 8 h à 13 h. Si nous sommes sur un
-              chantier, laissez un message : nous rappelons le jour même.
+              Si nous sommes sur un chantier, laissez un message : nous rappelons le jour même en
+              semaine.
             </p>
             <a
               href={`tel:${ENTREPRISE.telephoneE164}`}
@@ -142,7 +142,7 @@ export default function PageContact() {
       <Section fond="mineral">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
-            <TitreSection titre="Adresse et horaires" niveau={2} />
+            <TitreSection titre="Adresse" niveau={2} />
             <address className="mt-6 space-y-1 text-base not-italic">
               <div className="font-medium">{ENTREPRISE.nom}</div>
               <div>{ENTREPRISE.adresse}</div>
@@ -152,16 +152,8 @@ export default function PageContact() {
             </address>
             <p className="text-ardoise mt-4 text-sm">
               Siège administratif. Nous n&apos;avons pas de comptoir : nous travaillons chez
-              vous.
+              vous. Message ou appel, nous revenons vers vous le jour même en semaine.
             </p>
-            <dl className="border-mineral-dark mt-8 max-w-sm space-y-2 border-t pt-5 text-sm">
-              {ENTREPRISE.horaires.map((h) => (
-                <div key={h.jours} className="flex justify-between gap-4">
-                  <dt className="text-ardoise">{h.jours}</dt>
-                  <dd className="font-medium">{h.heures}</dd>
-                </div>
-              ))}
-            </dl>
             <dl className="border-mineral-dark mt-8 max-w-sm space-y-2 border-t pt-5 text-sm">
               <div className="flex justify-between gap-4">
                 <dt className="text-ardoise">TVA</dt>

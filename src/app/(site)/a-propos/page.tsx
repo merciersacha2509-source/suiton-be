@@ -99,15 +99,10 @@ export default function PageAPropos() {
                 </div>
               ))}
             </dl>
-            <h3 className="font-heading mt-8 text-base font-semibold">Horaires</h3>
-            <dl className="mt-4 space-y-2 text-sm">
-              {ENTREPRISE.horaires.map((h) => (
-                <div key={h.jours} className="flex justify-between gap-4">
-                  <dt className="text-ardoise">{h.jours}</dt>
-                  <dd className="font-medium">{h.heures}</dd>
-                </div>
-              ))}
-            </dl>
+            <h3 className="font-heading mt-8 text-base font-semibold">Disponibilité</h3>
+            <p className="text-ardoise mt-4 text-sm leading-relaxed">
+              Message ou appel, nous revenons vers vous le jour même en semaine.
+            </p>
           </Carte>
         </div>
       </Section>
