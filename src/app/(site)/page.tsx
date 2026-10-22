@@ -70,7 +70,7 @@ const FAQ_ACCUEIL = [
   {
     question: 'Travaillez-vous avec les entreprises et les syndics ?',
     reponse:
-      "Oui. Pour les entrepreneurs, promoteurs et syndics, nous appliquons l'autoliquidation de la TVA (article 20 de l'AR n° 1) et facturons par voie électronique structurée via Peppol, comme l'impose la réglementation belge depuis le 1er janvier 2026. Un espace dédié existe : voir la page Professionnels.",
+      "Oui. Pour les entrepreneurs, promoteurs et syndics, nous appliquons l'autoliquidation de la TVA (art. 51, §2, 5° CTVA et art. 20, AR n° 1) et facturons par voie électronique structurée via Peppol, comme l'impose la réglementation belge depuis le 1er janvier 2026. Un espace dédié existe : voir la page Professionnels.",
   },
   {
     question: 'Dans quelles communes intervenez-vous ?',
@@ -459,7 +459,7 @@ export default async function Accueil() {
       <Section>
         <TitreSection
           surtitre="Zone d'intervention"
-          titre="Huit communes, un rayon de 45 km"
+          titre="Un rayon de 45 km autour d'Enghien"
           chapeau="Nous sommes basés à Enghien, à la frontière linguistique. C'est un avantage opérationnel : le Hainaut, le Brabant wallon, le Brabant flamand et Bruxelles sont tous à moins de quarante minutes."
         />
         <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -482,6 +482,10 @@ export default async function Accueil() {
             </li>
           ))}
         </ul>
+        <p className="text-ardoise mt-6 text-sm leading-relaxed">
+          Et toutes les communes entre ces villes : Ath, Soignies, Braine-le-Comte, Lessines,
+          Rebecq, Mons…
+        </p>
       </Section>
 
       {/* ---------------------------------------------------------------- */}
@@ -499,7 +503,7 @@ export default async function Accueil() {
               <ListePuces
                 items={[
                   'Grille tarifaire négociée au volume, valable à l’année',
-                  'Autoliquidation TVA (art. 20, AR n° 1) appliquée d’office',
+                  'Autoliquidation de la TVA (art. 51, §2, 5° CTVA et art. 20, AR n° 1) appliquée d’office',
                   'Facturation électronique structurée Peppol — conforme depuis le 1ᵉʳ janvier 2026',
                   'Rapport photo transmissible tel quel à votre client final',
                   'Interlocuteur unique, joignable, qui connaît vos chantiers',

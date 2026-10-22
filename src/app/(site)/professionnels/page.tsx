@@ -29,7 +29,7 @@ const FAQ = [
   {
     question: 'Appliquez-vous l’autoliquidation de la TVA ?',
     reponse:
-      "Oui, d'office pour les travaux immobiliers entre assujettis établis en Belgique, conformément à l'article 20 de l'arrêté royal n° 1. La facture porte la mention légale « Autoliquidation » et ne contient aucune TVA : c'est vous qui la déclarez et la déduisez dans la même déclaration.",
+      "Oui, d'office pour les travaux immobiliers entre assujettis établis en Belgique, conformément à l'article 51, §2, 5° du Code de la TVA et à l'article 20 de l'arrêté royal n° 1. La facture porte la mention légale « Autoliquidation » et ne contient aucune TVA : c'est vous qui la déclarez et la déduisez dans la même déclaration.",
   },
   {
     question: 'Vos factures sont-elles conformes à l’obligation de facturation électronique ?',
@@ -165,8 +165,8 @@ export default function PageProfessionnels() {
           <Carte>
             <h3 className="font-heading text-base font-semibold">Une facture conforme</h3>
             <p className="text-ardoise mt-3 text-sm leading-relaxed">
-              Autoliquidation appliquée d&apos;office et facturation électronique structurée via
-              Peppol, comme l&apos;impose la réglementation belge depuis le 1<sup>er</sup>{' '}
+              Autoliquidation de la TVA (art. 51, §2, 5° CTVA et art. 20, AR n° 1) appliquée
+              d&apos;office et facturation électronique structurée via Peppol, comme l&apos;impose la réglementation belge depuis le 1<sup>er</sup>{' '}
               janvier 2026.
             </p>
             <dl className="border-mineral-dark mt-5 space-y-2 border-t pt-4 text-sm">
