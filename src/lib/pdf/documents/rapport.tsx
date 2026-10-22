@@ -18,8 +18,8 @@ import type { DonneesRapport } from '@/lib/pdf/documents/types';
 /**
  * Rapport d'intervention.
  *
- * C'est le document qui tient la promesse commerciale : « nous ne nettoyons
- * pas simplement, nous prouvons le resultat ». Il part AVANT la facture — un
+ * C'est le document qui tient la promesse commerciale : un resultat prouve, pas
+ * seulement annonce. Il part AVANT la facture — un
  * client qui a vu le resultat paie sans discuter, un client qui recoit
  * d'abord une facture cherche ce qui cloche.
  *

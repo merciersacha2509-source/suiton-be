@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { SuitonLogo } from '@/components/brand/suiton-mark';
+import { ENTREPRISE } from '@/lib/site/entreprise';
 import { LoginForm } from './login-form';
 
 export const metadata: Metadata = {
@@ -20,7 +21,7 @@ export default async function ConnexionPage({
         <div className="mb-7 flex flex-col items-center gap-2.5 text-center">
           <SuitonLogo inverse />
           <p className="text-ardoise-clair text-[0.8125rem]">
-            Nous ne nettoyons pas simplement. Nous prouvons le résultat.
+            {ENTREPRISE.slogan}
           </p>
         </div>
 

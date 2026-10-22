@@ -32,7 +32,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = metadonnees({
   title: 'Réalisations et rapports de chantier — SUITON',
   description:
-    'Comment nous prouvons le résultat : checklist horodatée poste par poste et photos avant/après au même cadrage, remises à chaque livraison de chantier.',
+    'Ce que vous recevez à la fin de chaque chantier : checklist horodatée poste par poste et photos avant/après au même cadrage.',
   chemin: '/realisations',
 });
 
@@ -90,7 +90,7 @@ export default async function PageRealisations() {
       <section className="border-mineral-dark border-b">
         <div className="mx-auto max-w-6xl px-4 pt-8 pb-14">
           <h1 className="max-w-3xl text-3xl leading-[1.15] font-semibold sm:text-4xl">
-            Nous ne nettoyons pas simplement. Nous prouvons le résultat.
+            Ce que vous recevez à la fin de chaque chantier.
           </h1>
           <p className="text-ardoise mt-5 max-w-2xl text-base leading-relaxed sm:text-lg">
             À la fin de chaque chantier, vous recevez un rapport : la checklist suivie poste par
