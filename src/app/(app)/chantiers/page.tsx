@@ -8,7 +8,7 @@ import { Table, Td, Th } from '@/components/ui/table';
 import { EmptyState } from '@/components/ui/empty-state';
 import { ScoreBadge, StageBadge, Badge, STAGE_LABELS } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { formatDate, formatRange } from '@/lib/format';
+import { formatDate, formatRange, joursDepuis } from '@/lib/format';
 import { cn } from '@/lib/cn';
 import type { JobStage, ScoreBand } from '@/types/database';
 
@@ -32,6 +32,14 @@ const FILTRES = [
   { cle: 'tous', libelle: 'Tous', stages: [] },
 ] as const;
 
+/**
+ * Relance : un chantier en attente d'une reponse client, sans mouvement
+ * depuis 3 jours, mérite d'être relance. Pas d'envoi automatique — juste un
+ * repere visuel, voir src/lib/format.ts#joursDepuis.
+ */
+const STAGES_EN_ATTENTE: readonly JobStage[] = ['devis_envoye', 'relance', 'negociation'];
+const SEUIL_RELANCE_JOURS = 3;
+
 interface LigneChantier {
   id: string;
   reference: string;
@@ -42,6 +50,7 @@ interface LigneChantier {
   estimation_min: number | null;
   estimation_max: number | null;
   created_at: string;
+  updated_at: string;
   client: { nom: string; score: number; score_band: ScoreBand } | null;
 }
 
@@ -59,7 +68,7 @@ export default async function ChantiersPage({
   let requete = supabase
     .from('jobs')
     .select(
-      `id, reference, stage, commune, surface_m2, urgent, estimation_min, estimation_max, created_at,
+      `id, reference, stage, commune, surface_m2, urgent, estimation_min, estimation_max, created_at, updated_at,
        client:clients ( nom, score, score_band )`,
     )
     .order('urgent', { ascending: false })
@@ -132,7 +141,11 @@ export default async function ChantiersPage({
                 </tr>
               </thead>
               <tbody>
-                {chantiers.map((c) => (
+                {chantiers.map((c) => {
+                  const aRelancer =
+                    STAGES_EN_ATTENTE.includes(c.stage) &&
+                    joursDepuis(c.updated_at) >= SEUIL_RELANCE_JOURS;
+                  return (
                   <tr key={c.id} className="hover:bg-mineral">
                     <Td>
                       <Link
@@ -144,6 +157,11 @@ export default async function ChantiersPage({
                       {c.urgent ? (
                         <Badge ton="alerte" className="ml-2">
                           Urgent
+                        </Badge>
+                      ) : null}
+                      {aRelancer ? (
+                        <Badge ton="danger" className="ml-2">
+                          À relancer · {joursDepuis(c.updated_at)} j
                         </Badge>
                       ) : null}
                     </Td>
@@ -171,7 +189,8 @@ export default async function ChantiersPage({
                       {formatDate(c.created_at)}
                     </Td>
                   </tr>
-                ))}
+                  );
+                })}
               </tbody>
             </Table>
           </CardBody>

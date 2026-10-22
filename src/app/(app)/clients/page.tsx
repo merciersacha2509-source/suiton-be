@@ -78,7 +78,12 @@ export default async function ClientsPage() {
                   <tr key={c.id} className="hover:bg-mineral">
                     <Td>
                       <span className="flex items-center gap-2">
-                        <span className="truncate font-medium">{c.nom}</span>
+                        <Link
+                          href={`/clients/${c.id}`}
+                          className="text-ocean truncate font-medium underline-offset-2 hover:underline"
+                        >
+                          {c.nom}
+                        </Link>
                         {c.kind === 'professionnel' ? <Badge ton="ocean">Pro</Badge> : null}
                         {c.no_contact ? <Badge ton="danger">Ne pas contacter</Badge> : null}
                       </span>
@@ -118,12 +123,6 @@ export default async function ClientsPage() {
         ne modifie aucun prix.
       </p>
 
-      <p className="text-ardoise mt-1 text-[0.75rem]">
-        La fiche client détaillée arrive au Sprint 3.{' '}
-        <Link href="/chantiers" className="text-ocean underline-offset-2 hover:underline">
-          Voir les chantiers
-        </Link>
-      </p>
     </>
   );
 }

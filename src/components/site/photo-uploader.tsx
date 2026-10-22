@@ -33,11 +33,14 @@ export function PhotoUploader({
   onChange,
   onErreur,
   texteAide = 'Facultatif, mais utile : avec des photos, notre devis est ferme plutôt qu’indicatif, et nous arrivons avec le bon matériel.',
+  texteUsage = 'Elles servent à chiffrer votre chantier et à constituer votre rapport avant/après.',
 }: {
   photos: PhotoDeposee[];
   onChange: (photos: PhotoDeposee[]) => void;
   onErreur: (message: string | null) => void;
   texteAide?: string;
+  /** Premiere phrase de l'encadre « Ce que deviennent vos photos ». */
+  texteUsage?: string;
 }) {
   const champ = useRef<HTMLInputElement>(null);
   const [enCours, setEnCours] = useState(0);
@@ -145,9 +148,8 @@ export function PhotoUploader({
       ) : null}
 
       <Alert ton="info" titre="Ce que deviennent vos photos">
-        Elles servent à chiffrer votre chantier et à constituer votre rapport avant/après. Les
-        données de localisation contenues dans les fichiers sont supprimées dès la réception.
-        Rien n&apos;est publié sans votre accord explicite.
+        {texteUsage} Les données de localisation contenues dans les fichiers sont supprimées dès
+        la réception. Rien n&apos;est publié sans votre accord explicite.
       </Alert>
     </div>
   );

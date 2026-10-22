@@ -124,7 +124,10 @@ export function PageService({
                 libelleMessage="Décrivez votre besoin"
                 placeholderMessage="Type de bien, nombre de fenêtres approximatif, accessibilité, hauteur, état des châssis…"
                 libelleSubmit="Demander mon devis"
+                avecEmail
+                avecAdresse
                 avecPhotos
+                source="vitres"
               />
             ) : (
               <Calculateur settings={settings} compact />

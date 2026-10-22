@@ -18,6 +18,7 @@ import { COMMUNES } from '@/lib/site/communes';
  */
 const SERVICES_PIED = [
   { slug: 'nettoyage-fin-de-chantier', nom: 'Nettoyage de fin de travaux' },
+  { slug: 'nettoyage-fin-de-location', nom: 'Nettoyage de fin de location' },
   { slug: 'nettoyage-de-vitres', nom: 'Nettoyage de vitres' },
   { slug: 'nettoyage-textile', nom: 'Nettoyage textile' },
   { slug: 'nettoyage-auto', nom: 'Nettoyage automobile' },

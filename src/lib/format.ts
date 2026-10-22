@@ -42,6 +42,12 @@ export function formatDateTime(value: string | Date): string {
   return DATETIME.format(typeof value === 'string' ? new Date(value) : value);
 }
 
+/** Nombre de jours pleins depuis une date — sert au repérage des relances. */
+export function joursDepuis(value: string | Date): number {
+  const date = typeof value === 'string' ? new Date(value) : value;
+  return Math.floor((Date.now() - date.getTime()) / 86_400_000);
+}
+
 /** Duree en minutes -> « 5 h 47 ». */
 export function formatDuration(minutes: number): string {
   const h = Math.floor(minutes / 60);

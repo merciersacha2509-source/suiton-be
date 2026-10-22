@@ -22,6 +22,13 @@ export function FormulaireRappel({
   placeholderMessage = 'Maison de 140 m² à Enghien, fin de travaux, réception le 12.',
   libelleSubmit = 'Demander un rappel',
   avecPhotos = false,
+  avecEmail = false,
+  avecAdresse = false,
+  source,
+  resume,
+  recap,
+  aidePhotos,
+  usagePhotos,
   id,
 }: {
   titre?: string;
@@ -31,6 +38,19 @@ export function FormulaireRappel({
   libelleSubmit?: string;
   /** Ajoute une zone de depot de photos reelle (Supabase Storage), pas simulee. */
   avecPhotos?: boolean;
+  /** Ajoute un champ e-mail facultatif — utile quand une confirmation ecrite compte. */
+  avecEmail?: boolean;
+  /** Ajoute un champ adresse facultatif — utile pour une prestation a domicile. */
+  avecAdresse?: boolean;
+  /** Page d'origine : rend la demande retrouvable dans le tableau de bord. */
+  source: 'contact' | 'nettoyage-auto' | 'nettoyage-textile' | 'fin-de-location' | 'vitres';
+  /** Choix du client (base, options, total) : place en tete du message transmis. */
+  resume?: string;
+  /** Version lisible du choix, affichee au-dessus du bouton d'envoi. */
+  recap?: string;
+  /** Textes de la zone photos, quand ceux d'un chantier ne conviennent pas. */
+  aidePhotos?: string;
+  usagePhotos?: string;
   id?: string;
 }) {
   const [etat, setEtat] = useState<'saisie' | 'envoi' | 'ok' | 'erreur'>('saisie');
@@ -50,7 +70,12 @@ export function FormulaireRappel({
         body: JSON.stringify({
           nom: String(donnees.get('nom') ?? ''),
           telephone: String(donnees.get('telephone') ?? ''),
-          message: String(donnees.get('message') ?? ''),
+          email: String(donnees.get('email') ?? ''),
+          adresse: String(donnees.get('adresse') ?? ''),
+          message: [resume, String(donnees.get('message') ?? '').trim()]
+            .filter(Boolean)
+            .join('\n\n'),
+          source,
           photos: photos.map((p) => p.id),
           honeypot: String(donnees.get('societe') ?? ''),
         }),
@@ -135,6 +160,37 @@ export function FormulaireRappel({
           />
         </div>
 
+        {avecEmail ? (
+          <div>
+            <label htmlFor="rappel-email" className="block text-sm font-medium">
+              Votre e-mail <span className="text-ardoise font-normal">— facultatif</span>
+            </label>
+            <input
+              id="rappel-email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              placeholder="vous@exemple.be"
+              className="h-touch rounded-suiton border-mineral-dark focus:border-ocean mt-1.5 w-full border px-3 text-sm transition-colors duration-150 focus:outline-none"
+            />
+          </div>
+        ) : null}
+
+        {avecAdresse ? (
+          <div>
+            <label htmlFor="rappel-adresse" className="block text-sm font-medium">
+              Votre adresse <span className="text-ardoise font-normal">— facultatif</span>
+            </label>
+            <input
+              id="rappel-adresse"
+              name="adresse"
+              autoComplete="street-address"
+              placeholder="Rue et numéro, commune"
+              className="h-touch rounded-suiton border-mineral-dark focus:border-ocean mt-1.5 w-full border px-3 text-sm transition-colors duration-150 focus:outline-none"
+            />
+          </div>
+        ) : null}
+
         <div>
           <label htmlFor="rappel-message" className="block text-sm font-medium">
             {libelleMessage} <span className="text-ardoise font-normal">— facultatif</span>
@@ -153,7 +209,13 @@ export function FormulaireRappel({
             <p className="mb-1.5 block text-sm font-medium">
               Ajouter des photos <span className="text-ardoise font-normal">— facultatif</span>
             </p>
-            <PhotoUploader photos={photos} onChange={setPhotos} onErreur={setErreur} />
+            <PhotoUploader
+              photos={photos}
+              onChange={setPhotos}
+              onErreur={setErreur}
+              texteAide={aidePhotos}
+              texteUsage={usagePhotos}
+            />
           </div>
         ) : null}
 
@@ -166,6 +228,16 @@ export function FormulaireRappel({
           <input id="rappel-societe" name="societe" tabIndex={-1} autoComplete="off" />
         </div>
       </div>
+
+      {recap ? (
+        <div
+          className="rounded-suiton border-aqua-deep/25 bg-aqua-wash mt-5 border px-3.5 py-3 text-sm"
+          aria-live="polite"
+        >
+          <span className="text-ardoise block text-xs">Votre sélection</span>
+          <span className="font-medium">{recap}</span>
+        </div>
+      ) : null}
 
       <button
         type="submit"

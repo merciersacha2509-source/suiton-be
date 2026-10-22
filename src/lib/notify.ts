@@ -216,6 +216,10 @@ export async function notifierInterne(params: {
 export async function notifierRappel(params: {
   nom: string;
   telephone: string;
+  /** Facultatif : n'apparait que sur les formulaires qui le demandent. */
+  email?: string;
+  /** Facultatif : n'apparait que sur les formulaires qui le demandent. */
+  adresse?: string;
   message: string;
   ip: string;
   /** Liens signes vers les photos deposees, deja resolus (voir lib/storage.ts). */
@@ -225,6 +229,7 @@ export async function notifierRappel(params: {
   if (!destinataire) return { envoye: false, erreur: 'NOTIFY_EMAIL absente' };
 
   const tel = params.telephone.replace(/\s/g, '');
+  const coordonneesHtml = `${params.email ? `<br><a href="mailto:${params.email}">${params.email}</a>` : ''}${params.adresse ? `<br>${params.adresse}` : ''}`;
   const photosHtml =
     params.urlsPhotos && params.urlsPhotos.length > 0
       ? `<p><strong>${params.urlsPhotos.length} photo${params.urlsPhotos.length > 1 ? 's' : ''} jointe${params.urlsPhotos.length > 1 ? 's' : ''}</strong><br>${params.urlsPhotos
@@ -232,10 +237,11 @@ export async function notifierRappel(params: {
           .join(' · ')}</p>`
       : '';
   const corps = `<p><strong>${params.nom}</strong><br>
-<a href="tel:${tel}">${params.telephone}</a></p>
+<a href="tel:${tel}">${params.telephone}</a>${coordonneesHtml}</p>
 ${params.message ? `<p style="white-space:pre-wrap">${params.message}</p>` : '<p><em>Aucun message.</em></p>'}
 ${photosHtml}`;
 
+  const coordonneesTexte = `${params.email ? `\n${params.email}` : ''}${params.adresse ? `\n${params.adresse}` : ''}`;
   const photosTexte =
     params.urlsPhotos && params.urlsPhotos.length > 0
       ? `\n\nPhotos :\n${params.urlsPhotos.join('\n')}`
@@ -245,8 +251,40 @@ ${photosHtml}`;
     destinataire,
     `Rappel demandé — ${params.nom} — ${params.telephone}`,
     gabarit('Demande de rappel', corps, { libelle: 'Appeler', url: `tel:${tel}` }),
-    `${params.nom}\n${params.telephone}\n\n${params.message || '(aucun message)'}${photosTexte}`,
+    `${params.nom}\n${params.telephone}${coordonneesTexte}\n\n${params.message || '(aucun message)'}${photosTexte}`,
   );
+}
+
+/**
+ * Accuse de reception cote client pour une demande de rappel.
+ *
+ * N'existe que si le client a renseigne son e-mail — ce champ est
+ * facultatif sur ce formulaire, contrairement a la reservation. Pas de lien
+ * de portail : une demande de rappel ne cree pas de dossier suivi cote
+ * client, seulement en interne (voir `public.rappels`). Pas de promesse de
+ * prix non plus : ce parcours existe justement parce que le prix depend
+ * d'un echange, pas d'une surface.
+ */
+export async function accuseReceptionRappel(params: {
+  email: string;
+  nom: string;
+}): Promise<ResultatEnvoi> {
+  const prenom = params.nom.trim().split(/\s+/)[0] || params.nom;
+  const corps = `<p>Bonjour ${prenom},</p>
+<p>C'est noté, nous avons bien reçu votre demande.</p>
+<p>Nous vous rappelons le jour même si vous nous avez écrit en semaine avant 16 h, sinon le lendemain matin.</p>
+<p>Si c'est urgent, appelez directement le <a href="tel:+32489210124">0489 21 01 24</a>.</p>`;
+
+  const texte = `Bonjour ${prenom},
+
+C'est noté, nous avons bien reçu votre demande.
+Nous vous rappelons le jour même si vous nous avez écrit en semaine avant 16 h, sinon le lendemain matin.
+
+Urgent ? Appelez le 0489 21 01 24.
+
+SUITON`;
+
+  return envoyer(params.email, 'Votre demande — SUITON', gabarit('C’est noté', corps), texte);
 }
 
 /**

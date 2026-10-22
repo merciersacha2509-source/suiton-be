@@ -1,5 +1,5 @@
 import { cn } from '@/lib/cn';
-import type { JobStage, ScoreBand, AutomationState } from '@/types/database';
+import type { JobStage, ScoreBand, AutomationState, RappelStage } from '@/types/database';
 
 type Ton = 'neutre' | 'ocean' | 'preuve' | 'succes' | 'alerte' | 'danger';
 
@@ -96,3 +96,29 @@ const AUTOMATION_LABELS: Record<AutomationState, string> = {
 export function AutomationBadge({ state }: { state: AutomationState }) {
   return <Badge ton={AUTOMATION_TONS[state]}>{AUTOMATION_LABELS[state]}</Badge>;
 }
+
+export const RAPPEL_STAGE_LABELS: Record<RappelStage, string> = {
+  nouveau: 'Nouveau',
+  contacte: 'Contacté',
+  traite: 'Traité',
+  perdu: 'Perdu',
+};
+
+const RAPPEL_STAGE_TONS: Record<RappelStage, Ton> = {
+  nouveau: 'ocean',
+  contacte: 'alerte',
+  traite: 'succes',
+  perdu: 'danger',
+};
+
+export function RappelStageBadge({ stage }: { stage: RappelStage }) {
+  return <Badge ton={RAPPEL_STAGE_TONS[stage]}>{RAPPEL_STAGE_LABELS[stage]}</Badge>;
+}
+
+export const RAPPEL_SOURCE_LABELS: Record<string, string> = {
+  contact: 'Contact',
+  'nettoyage-auto': 'Auto',
+  'nettoyage-textile': 'Textile',
+  'fin-de-location': 'Fin de location',
+  vitres: 'Vitres (sur devis)',
+};

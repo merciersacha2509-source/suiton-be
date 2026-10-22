@@ -104,7 +104,7 @@ export default function PageContact() {
         </div>
 
         <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_1.1fr] lg:gap-10">
-          <FormulaireRappel />
+          <FormulaireRappel source="contact" />
 
           <div className="rounded-suiton border-aqua-deep/25 bg-aqua-wash border p-6">
             <h2 className="font-heading text-base font-semibold">Vous voulez un prix ?</h2>

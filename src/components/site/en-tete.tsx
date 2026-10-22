@@ -23,6 +23,7 @@ const LIENS = [
 ];
 
 const COMPLEMENTAIRES = [
+  { href: '/nettoyage-fin-de-location', label: 'Fin de location' },
   { href: '/nettoyage-auto', label: 'Nettoyage auto' },
   { href: '/nettoyage-textile', label: 'Nettoyage textile' },
 ];

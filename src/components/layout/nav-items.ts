@@ -23,6 +23,8 @@ export const NAV_ITEMS: readonly NavItem[] = [
     sprint: 1,
   },
   { href: '/chantiers', label: 'Chantiers', capability: 'jobs.read', sprint: 3 },
+  { href: '/rappels', label: 'Demandes de rappel', capability: 'rappels.read', sprint: 3 },
+  { href: '/clients', label: 'Clients', capability: 'clients.read', sprint: 3 },
   { href: '/planning', label: 'Planning', capability: 'planning.read', sprint: 4 },
   { href: '/terrain', label: 'Terrain', capability: 'terrain.execute', sprint: 5 },
   { href: '/facturation', label: 'Facturation', capability: 'invoices.read', sprint: 7 },

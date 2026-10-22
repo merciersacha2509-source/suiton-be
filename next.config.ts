@@ -106,6 +106,13 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['@supabase/supabase-js'],
   },
+  // @react-pdf/renderer lit ces polices via fs au moment du rendu : Next.js
+  // ne peut pas suivre ce chemin par analyse statique et les exclut donc du
+  // bundle serverless sans cette declaration explicite (ENOENT en
+  // production sinon, alors que tout fonctionne en local).
+  outputFileTracingIncludes: {
+    '/chantiers/[id]': ['./src/lib/pdf/fonts/**/*'],
+  },
   async headers() {
     return [{ source: '/:path*', headers: [...securityHeaders, ...entetesEnvironnement] }];
   },

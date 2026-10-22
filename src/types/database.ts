@@ -63,6 +63,8 @@ export type QuoteStatus = 'brouillon' | 'envoye' | 'accepte' | 'refuse' | 'expir
 export type InvoiceStatus = 'brouillon' | 'emise' | 'payee' | 'annulee';
 export type PhotoPhase = 'avant' | 'apres' | 'contexte' | 'incident';
 export type AutomationState = 'actif' | 'suspendu' | 'desactive';
+export type RappelSource = 'contact' | 'nettoyage-auto' | 'nettoyage-textile' | 'fin-de-location' | 'vitres';
+export type RappelStage = 'nouveau' | 'contacte' | 'traite' | 'perdu';
 
 export interface Profile {
   id: string;

@@ -1,9 +1,19 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Section, TitreSection, Carte, ListePuces, Faq, FilAriane } from '@/components/site/blocs';
-import { FormulaireRappel } from '@/components/site/formulaire-rappel';
+import { DevisTextile } from '@/components/site/devis-textile';
 import { ENTREPRISE } from '@/lib/site/entreprise';
 import { Jsonld, jsonldFilAriane, jsonldFaq, metadonnees } from '@/lib/site/seo';
+import {
+  CONTENU_VAPEUR_CANAPE,
+  PRIX_TAPIS,
+  PRIX_TAPIS_SUPPLEMENTAIRE,
+  TAILLES_MATELAS,
+  VAPEUR_CANAPE,
+  calculerCanape,
+  AVERTISSEMENT_VAPEUR,
+  eur,
+} from '@/lib/site/tarifs-secondaires';
 
 /**
  * Nettoyage textile — prestation secondaire.
@@ -14,10 +24,13 @@ import { Jsonld, jsonldFilAriane, jsonldFaq, metadonnees } from '@/lib/site/seo'
 
 export const revalidate = 86400;
 
+const PETIT_CANAPE = calculerCanape(2, false);
+const PALIERS_CANAPE = [2, 4, 6, 8].map((places) => ({ places, ...calculerCanape(places, false) }));
+
 export const metadata: Metadata = metadonnees({
   title: 'Nettoyage textile — tapis, canapés, matelas — SUITON, Enghien',
   description:
-    'Nettoyage en profondeur de tapis, canapés et matelas. Traitement des taches et odeurs. Basés à Enghien, sur rendez-vous ou à domicile.',
+    `Nettoyage en profondeur de tapis, canapés et matelas. Canapés dès ${eur(PETIT_CANAPE.min)} TVAC, matelas dès ${eur(TAILLES_MATELAS[0]!.prixMin)}, tapis ${eur(PRIX_TAPIS)} pièce. Basés à Enghien, sur rendez-vous ou à domicile.`,
   chemin: '/nettoyage-textile',
 });
 
@@ -28,7 +41,7 @@ const ARTICLES = [
   },
   {
     titre: 'Canapés',
-    detail: 'Tissu ou cuir, coussins compris, désodorisation incluse.',
+    detail: 'Tissu ou cuir, coussins compris.',
   },
   {
     titre: 'Matelas',
@@ -37,6 +50,18 @@ const ARTICLES = [
 ] as const;
 
 const FAQ = [
+  {
+    question: 'Combien coûte le nettoyage d’un canapé ?',
+    reponse: `${PALIERS_CANAPE.map((p) => `${p.places} places : ${eur(p.min)} à ${eur(p.max)}`).join(' ; ')} TVAC, selon l'état du canapé. Le prix exact est confirmé sur photos avant l'intervention.`,
+  },
+  {
+    question: 'Combien coûte le nettoyage d’un matelas ou d’un tapis ?',
+    reponse: `Un matelas 1 place coûte de ${eur(TAILLES_MATELAS[0]!.prixMin)} à ${eur(TAILLES_MATELAS[0]!.prixMax)} TVAC, un 2 places de ${eur(TAILLES_MATELAS[1]!.prixMin)} à ${eur(TAILLES_MATELAS[1]!.prixMax)}, les deux faces, selon l'état. Un tapis de taille courante coûte ${eur(PRIX_TAPIS)} TVAC, ${eur(PRIX_TAPIS + PRIX_TAPIS_SUPPLEMENTAIRE)} pour deux. Le prix exact est confirmé sur photos.`,
+  },
+  {
+    question: 'En quoi consiste l’option total vapeur ?',
+    reponse: `${CONTENU_VAPEUR_CANAPE} Elle coûte +${eur(VAPEUR_CANAPE)} TVAC par canapé, quel que soit l'état du canapé, et reste toujours facultative. ${AVERTISSEMENT_VAPEUR}`,
+  },
   {
     question: 'Le nettoyage se fait-il chez moi ?',
     reponse:
@@ -79,8 +104,8 @@ export default function PageNettoyageTextile() {
             Nettoyage textile — tapis, canapés, matelas
           </h1>
           <p className="text-ardoise mt-5 max-w-2xl text-base leading-relaxed sm:text-lg">
-            Un nettoyage en profondeur, pièce par pièce. Décrivez ce que vous avez, nous vous
-            rappelons avec un prix.
+            Un nettoyage en profondeur, pièce par pièce. Canapés, matelas et tapis à la pièce :
+            simulez votre prix, nous vous rappelons pour confirmer.
           </p>
         </div>
       </section>
@@ -98,7 +123,7 @@ export default function PageNettoyageTextile() {
         <div className="mt-8 max-w-2xl">
           <ListePuces
             items={[
-              'Traitement des taches et odeurs',
+              'Traitement des taches',
               'Produits adaptés à chaque type de tissu',
               'Séchage rapide, intervention à domicile pour canapés et matelas',
             ]}
@@ -107,30 +132,14 @@ export default function PageNettoyageTextile() {
       </Section>
 
       <Section fond="mineral" id="devis">
-        <div className="grid gap-6 lg:grid-cols-[1fr_1.1fr] lg:gap-10">
-          <FormulaireRappel
-            titre="Demander un devis textile"
-            description="Dites-nous ce qu'il faut nettoyer. Nous rappelons le jour même en semaine."
-            libelleMessage="Ce que vous voulez faire nettoyer"
-            placeholderMessage="Un canapé 3 places en tissu, quelques taches, et un tapis 200x300."
-          />
-
-          <div className="rounded-suiton border-aqua-deep/25 bg-aqua-wash border p-6">
-            <h2 className="font-heading text-base font-semibold">Pourquoi pas de prix affiché ?</h2>
-            <p className="mt-2 max-w-xl text-sm leading-relaxed">
-              Le prix dépend de la taille, du tissu et de l&apos;état de chaque pièce — pas
-              d&apos;une surface. Décrivez-nous ce que vous avez, nous vous rappelons avec un
-              chiffrage précis.
-            </p>
-            <p className="text-ardoise mt-5 text-sm">
-              Besoin d&apos;un nettoyage de fin de travaux ? Le{' '}
-              <Link href="/reservation" className="text-ocean font-medium underline">
-                parcours en ligne
-              </Link>{' '}
-              affiche un prix immédiat pour ces prestations-là.
-            </p>
-          </div>
-        </div>
+        <DevisTextile />
+        <p className="text-ardoise mt-6 text-sm">
+          Besoin d&apos;un nettoyage de fin de travaux ? Le{' '}
+          <Link href="/reservation" className="text-ocean font-medium underline">
+            parcours en ligne
+          </Link>{' '}
+          affiche un prix immédiat pour ces prestations-là.
+        </p>
       </Section>
 
       <Faq items={FAQ} />
@@ -141,7 +150,7 @@ export default function PageNettoyageTextile() {
             Un tapis, un canapé, un matelas à faire nettoyer ?
           </h2>
           <p className="text-mineral/70 mt-4 text-base leading-relaxed">
-            Deux champs, une réponse le jour même en semaine.
+            Une réponse le jour même en semaine.
           </p>
           <div className="mt-8">
             <a

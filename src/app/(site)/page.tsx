@@ -15,6 +15,8 @@ import {
 import { grillePublique } from '@/lib/site/tarifs';
 import { ENTREPRISE, GARANTIES, ETAPES_CLIENT } from '@/lib/site/entreprise';
 import { parSlug } from '@/lib/site/services';
+import { cn } from '@/lib/cn';
+import { FIN_LOCATION, PRIX_APPEL_VEHICULE, calculerCanape, eur } from '@/lib/site/tarifs-secondaires';
 import { COMMUNES } from '@/lib/site/communes';
 import { Jsonld, jsonldFaq, metadonnees } from '@/lib/site/seo';
 
@@ -78,8 +80,8 @@ const FAQ_ACCUEIL = [
 ];
 
 /*
- * Quatre prestations, deux niveaux : fin de travaux et vitres sont le cœur
- * de metier (priorite 1 et 2), textile et auto sont complementaires. Cette
+ * Cinq prestations, deux niveaux : fin de travaux et vitres sont le cœur de
+ * metier, fin de location, textile et auto sont complementaires. Cette
  * hierarchie doit se voir sur la page — SUITON n'est pas une societe de
  * nettoyage generaliste qui propose neuf services a egalite.
  */
@@ -95,6 +97,13 @@ const PRESTATIONS_ACCUEIL = [
     complementaire: false,
   },
   {
+    slug: 'nettoyage-fin-de-location',
+    nom: 'Nettoyage de fin de location',
+    accroche: "Vous quittez votre logement : nous le remettons propre pour l'état des lieux de sortie.",
+    prix: `${eur(FIN_LOCATION.forfaitTvac)} TVAC jusqu'à ${FIN_LOCATION.surfaceMax} m²`,
+    complementaire: true,
+  },
+  {
     slug: 'nettoyage-de-vitres',
     nom: vitres?.nom ?? 'Nettoyage de vitres',
     accroche: vitres?.accroche ?? '',
@@ -105,14 +114,14 @@ const PRESTATIONS_ACCUEIL = [
     slug: 'nettoyage-textile',
     nom: 'Nettoyage textile',
     accroche: 'Tapis, canapés, matelas — un nettoyage en profondeur, pièce par pièce.',
-    prix: 'Sur devis',
+    prix: `Canapés dès ${eur(calculerCanape(2, false).min)} TVAC`,
     complementaire: true,
   },
   {
     slug: 'nettoyage-auto',
     nom: 'Nettoyage automobile',
-    accroche: 'Intérieur ou intérieur et extérieur, sur rendez-vous à Enghien.',
-    prix: 'Sur devis',
+    accroche: 'Nettoyage intérieur, avec options au choix : sièges, vapeur. Sur rendez-vous.',
+    prix: `Dès ${eur(PRIX_APPEL_VEHICULE)} TVAC`,
     complementaire: true,
   },
 ];
@@ -302,14 +311,19 @@ export default async function Accueil() {
         <TitreSection
           surtitre="Nos prestations"
           titre="Spécialistes du nettoyage de fin de travaux"
-          chapeau="Notre cœur de métier : la remise en état après construction ou rénovation, vitres et châssis compris. Textile et automobile complètent l'offre pour nos clients réguliers."
+          chapeau="Notre cœur de métier : la remise en état après construction ou rénovation, vitres et châssis compris. Fin de location, textile et automobile complètent l'offre."
         />
         <EnVue className="mt-10 grid gap-4 sm:grid-cols-2">
-          {PRESTATIONS_ACCUEIL.map((s) => (
+          {PRESTATIONS_ACCUEIL.map((s, i) => (
             <Link
               key={s.slug}
               href={`/${s.slug}`}
-              className="group rounded-suiton border-mineral-dark hover:border-aqua-deep/40 flex flex-col border bg-white p-6 shadow-sm transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-md"
+              className={cn(
+                PRESTATIONS_ACCUEIL.length % 2 === 1 && i === PRESTATIONS_ACCUEIL.length - 1
+                  ? 'sm:col-span-2'
+                  : '',
+                'group rounded-suiton border-mineral-dark hover:border-aqua-deep/40 flex flex-col border bg-white p-6 shadow-sm transition-[border-color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-md',
+              )}
             >
               {s.complementaire ? (
                 <p className="text-ardoise-clair mb-2 inline-flex items-center gap-1.5 text-[0.6875rem] font-medium tracking-[0.12em] uppercase">

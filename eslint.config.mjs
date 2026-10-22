@@ -69,7 +69,13 @@ const config = [
      * (aspect-[4/3] ou padding proportionnel), donc aucun decalage de mise en
      * page, et tout est en `loading="lazy"` sous la ligne de flottaison.
      */
-    files: ['src/components/site/comparaison.tsx', 'src/app/(site)/realisations/**/*.tsx'],
+    files: [
+      'src/components/site/comparaison.tsx',
+      'src/app/(site)/realisations/**/*.tsx',
+      // Photos jointes a une demande de rappel : memes URL signees que les
+      // photos de chantier, meme raison.
+      'src/app/(app)/rappels/**/*.tsx',
+    ],
     rules: { '@next/next/no-img-element': 'off' },
   },
   {
