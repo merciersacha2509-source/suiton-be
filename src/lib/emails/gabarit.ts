@@ -86,7 +86,7 @@ ${params.postScriptum ? `<p style="margin:18px 0 0;font-size:13px;color:${C.ardo
 
 <tr><td style="padding:16px 24px;border-top:1px solid ${C.mineralSombre};font-size:11px;line-height:1.6;color:${C.ardoise}">
 SUITON · Rue Boussart 7, 7850 Enghien · TVA BE1040784957<br>
-0489 21 01 24 · suiton.detailing@gmail.com
+0489 21 01 24 · contact@suiton.be
 </td></tr>
 
 </table></body></html>`;
@@ -111,6 +111,6 @@ export function texteEmail(params: {
     lignes.push('', `${params.lien.libelle} : ${params.lien.url}`);
   }
 
-  lignes.push('', 'SUITON · 0489 21 01 24 · suiton.detailing@gmail.com');
+  lignes.push('', 'SUITON · 0489 21 01 24 · contact@suiton.be');
   return lignes.join('\n');
 }

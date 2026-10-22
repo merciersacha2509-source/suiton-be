@@ -24,7 +24,7 @@ export const ENTREPRISE = {
   telephone: '0489 21 01 24',
   telephoneE164: '+32489210124',
   whatsapp: '32489210124',
-  email: 'suiton.detailing@gmail.com',
+  email: 'contact@suiton.be',
   /** Coordonnees d'Enghien. Servent au JSON-LD et a la carte. */
   latitude: 50.6939,
   longitude: 4.0342,

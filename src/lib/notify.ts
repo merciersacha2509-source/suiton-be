@@ -97,7 +97,7 @@ ${
 }
 </td></tr>
 <tr><td style="padding:16px 24px;border-top:1px solid #E2E7E6;font-size:12px;color:#64748B">
-SUITON · Rue Boussart 7, 7850 Enghien · TVA BE1040784957<br>0489 21 01 24 · suiton.detailing@gmail.com
+SUITON · Rue Boussart 7, 7850 Enghien · TVA BE1040784957<br>0489 21 01 24 · contact@suiton.be
 </td></tr></table></body></html>`;
 }
 
