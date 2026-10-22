@@ -255,7 +255,9 @@ export function Calculateur({
             />
             <span className="text-sm">
               Intervention urgente
-              <span className="text-ardoise block text-xs">Sous 48 h</span>
+              <span className="text-ardoise block text-xs">
+                Selon disponibilités, nous vous rappelons
+              </span>
             </span>
           </label>
         </div>
@@ -306,7 +308,7 @@ export function Calculateur({
           href={lien}
           className="h-touch rounded-suiton bg-abysse text-mineral hover:bg-abysse-90 mt-5 flex w-full items-center justify-center px-4 text-sm font-medium shadow-sm transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-md active:translate-y-0"
         >
-          Devis définitif sous 24 h
+          Devis définitif sous 24 h ouvrées
         </Link>
         <p className="text-ardoise mt-2 text-center text-xs">
           Gratuit, sans engagement — 2 minutes

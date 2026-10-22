@@ -43,7 +43,7 @@ export const SERVICES: Service[] = [
     h1: 'Nettoyage de fin de travaux en Belgique',
     titleSeo: 'Nettoyage de fin de travaux | Devis en 60 secondes — SUITON',
     metaDescription:
-      'Nettoyage de fin de travaux — construction neuve ou rénovation. Vitres et châssis compris, rapport photo avant/après, garantie 48 h. Devis ferme sous 24 h.',
+      'Nettoyage de fin de travaux — construction neuve ou rénovation. Vitres et châssis compris, rapport photo avant/après, garantie 48 h. Devis ferme sous 24 h ouvrées.',
     accroche:
       "Un chantier livré n'est pas un chantier propre. Que le bien soit neuf, rénové ou occupé pendant les travaux, nous le rendons livrable — avec la preuve du résultat.",
     probleme:

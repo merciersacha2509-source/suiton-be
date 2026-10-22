@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   description:
     'Nettoyage de fin de travaux en Belgique — construction neuve ou rénovation. Vitres comprises, ' +
-    'rapport photo avant/après, devis ferme sous 24 heures.',
+    'rapport photo avant/après, devis ferme sous 24 heures ouvrées.',
   applicationName: ENTREPRISE.nom,
   authors: [{ name: ENTREPRISE.nom, url: SITE_URL }],
   creator: ENTREPRISE.nom,

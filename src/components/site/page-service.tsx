@@ -102,7 +102,7 @@ export function PageService({
               <div>
                 <dt className="text-ardoise text-xs tracking-[0.1em] uppercase">Devis</dt>
                 <dd className="font-heading mt-1 text-base font-medium">
-                  {surDevisApresVisite ? 'Après visite sur place' : 'Ferme, sous 24 h'}
+                  {surDevisApresVisite ? 'Après visite sur place' : 'Ferme, sous 24 h ouvrées'}
                 </dd>
               </div>
             </dl>

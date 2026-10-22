@@ -58,7 +58,7 @@ export const GARANTIES = [
       'Un point ne vous convient pas ? Nous repassons sans frais et sans discussion. Un appel suffit.',
   },
   {
-    titre: 'Devis ferme sous 24 heures',
+    titre: 'Devis ferme sous 24 heures ouvrées',
     detail:
       'Pas une fourchette qui bouge le jour du chantier. Le montant est ferme pour la surface et le niveau de salissure annoncés.',
   },

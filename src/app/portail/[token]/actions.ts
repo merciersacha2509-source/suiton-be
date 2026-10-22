@@ -153,7 +153,7 @@ export async function accepterDevisAction(
       ok: true,
       message: intervention
         ? 'Devis accepté. Votre intervention est confirmée.'
-        : 'Devis accepté. Nous vous proposons des dates sous 24 h.',
+        : 'Devis accepté. Nous vous proposons des dates sous 24 h ouvrées.',
     };
   } catch (e) {
     if (e instanceof AppError) return { error: e.message };

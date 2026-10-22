@@ -60,7 +60,7 @@ const FAQ_ACCUEIL = [
   {
     question: 'Sous quel délai pouvez-vous intervenir ?',
     reponse:
-      "En temps normal, sous 5 à 10 jours ouvrés. Pour une remise de clés serrée, nous proposons une intervention sous 48 heures avec une majoration de 25 %. Dites-nous la date de réception : c'est elle qui commande, pas notre planning.",
+      "En temps normal, sous 5 à 10 jours ouvrés. Pour une remise de clés serrée, nous proposons, selon nos disponibilités, une intervention urgente avec une majoration de 25 %. Dites-nous la date de réception : c'est elle qui commande, pas notre planning.",
   },
   {
     question: 'Que se passe-t-il si le résultat ne me convient pas ?',
@@ -129,7 +129,7 @@ const PRESTATIONS_ACCUEIL = [
 export const metadata: Metadata = metadonnees({
   title: 'Nettoyage de fin de travaux à Enghien et en Brabant wallon',
   description:
-    'Nettoyage de fin de travaux à Enghien, Hal, Nivelles, Waterloo et Bruxelles. Construction neuve ou rénovation, vitres comprises, rapport photo avant/après, devis ferme sous 24 h. Dès 7 €/m².',
+    'Nettoyage de fin de travaux à Enghien, Hal, Nivelles, Waterloo et Bruxelles. Construction neuve ou rénovation, vitres comprises, rapport photo avant/après, devis ferme sous 24 h ouvrées. Dès 7 €/m².',
   chemin: '/',
 });
 
@@ -168,7 +168,7 @@ export default async function Accueil() {
             <p className="text-ardoise anime-apparition mt-5 max-w-xl text-base leading-relaxed [animation-delay:120ms] sm:text-lg">
               Nettoyage de fin de travaux, construction neuve ou rénovation. Vitres et châssis
               compris, jamais en supplément. Rapport photo avant/après remis à chaque livraison.
-              Devis ferme sous 24 heures.
+              Devis ferme sous 24 heures ouvrées.
             </p>
 
             <ul className="anime-apparition mt-8 grid gap-3 [animation-delay:180ms] sm:grid-cols-2">
@@ -235,7 +235,7 @@ export default async function Accueil() {
             </div>
 
             <p className="text-ardoise mt-4 text-xs">
-              Réponse sous 24 h · Devis ferme · Rapport photo avant/après
+              Réponse sous 24 h ouvrées · Devis ferme · Rapport photo avant/après
             </p>
           </div>
 

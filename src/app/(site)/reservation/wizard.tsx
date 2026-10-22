@@ -346,7 +346,7 @@ export function BookingWizard({
             <span>
               <span className="block text-sm font-medium">C&apos;est urgent</span>
               <span className="text-ardoise mt-0.5 block text-[0.8125rem]">
-                Intervention sous 15 jours. Majoration de{' '}
+                Selon disponibilités, nous vous rappelons. Majoration de{' '}
                 {Math.round(settings.majoration_urgence * 100)} %, annoncée d&apos;emblée.
               </span>
             </span>

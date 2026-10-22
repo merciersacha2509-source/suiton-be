@@ -89,7 +89,7 @@ export default async function PageCommune({
     },
     {
       question: `Sous quel délai pouvez-vous intervenir à ${commune.nom} ?`,
-      reponse: `Sous 5 à 10 jours ouvrés en temps normal. Pour une remise de clés serrée, une intervention sous 48 heures est possible avec une majoration de ${Math.round(settings.majoration_urgence * 100)} %. Dites-nous la date de réception : c'est elle qui commande.`,
+      reponse: `Sous 5 à 10 jours ouvrés en temps normal. Pour une remise de clés serrée, une intervention urgente est possible selon nos disponibilités, avec une majoration de ${Math.round(settings.majoration_urgence * 100)} %. Dites-nous la date de réception : c'est elle qui commande.`,
     },
   ];
 
@@ -153,7 +153,7 @@ export default async function PageCommune({
               </div>
               <div>
                 <dt className="text-ardoise text-xs tracking-[0.1em] uppercase">Devis</dt>
-                <dd className="font-heading mt-1 text-lg font-semibold">Sous 24 h</dd>
+                <dd className="font-heading mt-1 text-lg font-semibold">Sous 24 h ouvrées</dd>
               </div>
             </dl>
 

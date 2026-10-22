@@ -60,7 +60,7 @@ export const COMMUNES: Commune[] = [
     trajet: 'sur place',
     titleSeo: 'Nettoyage fin de travaux Enghien | SUITON, entreprise locale',
     metaDescription:
-      'Entreprise de nettoyage de fin de travaux basée à Enghien. Intervention rapide, vitres comprises, rapport photo. Devis sous 24 h au 0489 21 01 24.',
+      'Entreprise de nettoyage de fin de travaux basée à Enghien. Intervention rapide, vitres comprises, rapport photo. Devis sous 24 h ouvrées au 0489 21 01 24.',
     h1: 'Nettoyage de fin de travaux à Enghien',
     contexte: [
       "SUITON est basée rue Boussart, à Enghien. C'est notre commune : nous y intervenons sans frais de déplacement et souvent dans la journée quand un chantier se libère.",
@@ -89,7 +89,7 @@ export const COMMUNES: Commune[] = [
     latitude: 50.5977,
     longitude: 4.3268,
     trajet: '30 minutes',
-    titleSeo: 'Nettoyage fin de travaux Nivelles | Devis 24 h — SUITON',
+    titleSeo: 'Nettoyage fin de travaux Nivelles | Devis 24 h ouvrées — SUITON',
     metaDescription:
       'Nettoyage de fin de travaux à Nivelles. Constructions neuves, rénovations du centre historique. Vitres comprises, garantie 48 h.',
     h1: 'Nettoyage de fin de travaux à Nivelles',
@@ -130,7 +130,7 @@ export const COMMUNES: Commune[] = [
     trajet: '35 minutes',
     titleSeo: "Nettoyage fin de travaux Braine-l'Alleud | SUITON",
     metaDescription:
-      "Nettoyage de fin de travaux et de villas à Braine-l'Alleud. Grandes surfaces, vitrages importants, rapport photo avant/après. Devis ferme sous 24 h.",
+      "Nettoyage de fin de travaux et de villas à Braine-l'Alleud. Grandes surfaces, vitrages importants, rapport photo avant/après. Devis ferme sous 24 h ouvrées.",
     h1: "Nettoyage de fin de travaux à Braine-l'Alleud",
     contexte: [
       "Braine-l'Alleud est une commune résidentielle où les surfaces sont sensiblement plus grandes qu'ailleurs dans le Brabant wallon. Les villas de 250 à 400 m² y sont courantes, souvent avec de grandes baies vitrées et plusieurs niveaux.",
@@ -237,7 +237,7 @@ export const COMMUNES: Commune[] = [
     trajet: '20 minutes',
     titleSeo: 'Nettoyage fin de travaux Tubize | Intervention rapide',
     metaDescription:
-      "Nettoyage de fin de travaux à Tubize : logements neufs, reconversions industrielles, rénovations. À 20 minutes d'Enghien. Devis sous 24 h.",
+      "Nettoyage de fin de travaux à Tubize : logements neufs, reconversions industrielles, rénovations. À 20 minutes d'Enghien. Devis sous 24 h ouvrées.",
     h1: 'Nettoyage de fin de travaux à Tubize',
     contexte: [
       "Tubize est l'une de nos communes les plus proches — vingt minutes depuis Enghien. C'est aussi l'une de celles où le bâti change le plus vite : la reconversion des anciennes friches industrielles, autour de Clabecq notamment, y produit régulièrement des programmes de logements neufs.",
@@ -300,7 +300,7 @@ export const COMMUNES: Commune[] = [
     trajet: '30 minutes',
     titleSeo: 'Nettoyage fin de travaux Sint-Pieters-Leeuw | SUITON',
     metaDescription:
-      'Nettoyage de fin de travaux à Sint-Pieters-Leeuw : lotissements récents, maisons quatre façades, rénovations. Vitres comprises, devis sous 24 h.',
+      'Nettoyage de fin de travaux à Sint-Pieters-Leeuw : lotissements récents, maisons quatre façades, rénovations. Vitres comprises, devis sous 24 h ouvrées.',
     h1: 'Nettoyage de fin de travaux à Sint-Pieters-Leeuw',
     contexte: [
       'Sint-Pieters-Leeuw est une commune périurbaine en croissance continue, à la limite sud-ouest de Bruxelles. Le bâti y est majoritairement récent : lotissements pavillonnaires, maisons quatre façades, jardins.',

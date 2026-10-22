@@ -44,7 +44,7 @@ const FAQ = [
   {
     question: 'Quels éléments font varier le prix ?',
     reponse:
-      "Quatre. La surface, d'abord. Le niveau de salissure ensuite — un chantier avec résidus de ciment ou de colle demande deux à trois fois plus de temps qu'une salissure standard. La configuration : un duplex avec beaucoup de vitrages coûte plus qu'un plateau. Et l'urgence, si vous avez besoin d'une intervention sous 48 heures.",
+      "Quatre. La surface, d'abord. Le niveau de salissure ensuite — un chantier avec résidus de ciment ou de colle demande deux à trois fois plus de temps qu'une salissure standard. La configuration : un duplex avec beaucoup de vitrages coûte plus qu'un plateau. Et l'urgence, si vous avez besoin d'une intervention urgente, selon nos disponibilités.",
   },
   {
     question: 'La TVA est-elle comprise dans les montants affichés ?',
@@ -54,7 +54,7 @@ const FAQ = [
 ];
 
 export const metadata: Metadata = metadonnees({
-  title: 'Devis nettoyage de fin de travaux — gratuit et ferme sous 24 h',
+  title: 'Devis nettoyage de fin de travaux — gratuit et ferme sous 24 h ouvrées',
   description:
     'Estimation immédiate et devis ferme sous 24 heures ouvrées. Gratuit, sans engagement, sans visite obligatoire. Vitres comprises, garantie retouche 48 h.',
   chemin: '/devis',
@@ -148,7 +148,7 @@ export default async function PageDevis() {
             },
             {
               titre: 'Le délai',
-              detail: `Une intervention sous 48 heures mobilise l'équipe hors planning. Elle est majorée de ${Math.round(settings.majoration_urgence * 100)} %, annoncée à l'avance et jamais appliquée sans votre accord.`,
+              detail: `Une intervention urgente, proposée selon nos disponibilités, passe devant le planning. Elle est majorée de ${Math.round(settings.majoration_urgence * 100)} %, annoncée à l'avance et jamais appliquée sans votre accord.`,
             },
           ].map((v, i) => (
             <Carte key={v.titre} className="bg-white">
