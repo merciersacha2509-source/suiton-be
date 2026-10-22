@@ -110,8 +110,15 @@ const nextConfig: NextConfig = {
   // ne peut pas suivre ce chemin par analyse statique et les exclut donc du
   // bundle serverless sans cette declaration explicite (ENOENT en
   // production sinon, alors que tout fonctionne en local).
+  // Toutes les routes qui produisent un PDF : devis (chantiers), facture
+  // (facturation), rapport (terrain), documents annexes a l'acceptation d'un
+  // devis (portail) et reservation en ligne (api/booking).
   outputFileTracingIncludes: {
     '/chantiers/[id]': ['./src/lib/pdf/fonts/**/*'],
+    '/facturation': ['./src/lib/pdf/fonts/**/*'],
+    '/terrain/[id]': ['./src/lib/pdf/fonts/**/*'],
+    '/portail/[token]': ['./src/lib/pdf/fonts/**/*'],
+    '/api/booking': ['./src/lib/pdf/fonts/**/*'],
   },
   async headers() {
     return [{ source: '/:path*', headers: [...securityHeaders, ...entetesEnvironnement] }];
