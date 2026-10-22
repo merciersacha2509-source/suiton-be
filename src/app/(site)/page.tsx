@@ -1,3 +1,4 @@
+import { AvisClients } from '@/components/site/avis-clients';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { Calculateur } from '@/components/site/calculateur';
@@ -80,8 +81,9 @@ const FAQ_ACCUEIL = [
 ];
 
 /*
- * Cinq prestations, deux niveaux : fin de travaux et vitres sont le cœur de
- * metier, fin de location, textile et auto sont complementaires. Cette
+ * Six prestations, deux niveaux : fin de travaux, entretien de bureaux et vitres
+ * sont le cœur de metier (B2B), fin de location, textile et auto sont
+ * complementaires. Cette
  * hierarchie doit se voir sur la page — SUITON n'est pas une societe de
  * nettoyage generaliste qui propose neuf services a egalite.
  */
@@ -94,6 +96,14 @@ const PRESTATIONS_ACCUEIL = [
     nom: finDeTravaux?.nom ?? 'Nettoyage de fin de travaux',
     accroche: finDeTravaux?.accroche ?? '',
     prix: `dès ${finDeTravaux?.prixDepuis ?? 7} € / m² HTVA`,
+    complementaire: false,
+  },
+  {
+    slug: 'entretien-bureaux',
+    nom: 'Entretien de bureaux et cabinets',
+    accroche:
+      'Bureaux, entrepôts, cabinets médicaux. Un passage à jour fixe, chaque semaine, toutes les 2 semaines ou chaque mois, avec une fiche de contrôle signée après chaque passage.',
+    prix: 'Sur devis après visite',
     complementaire: false,
   },
   {
@@ -487,6 +497,8 @@ export default async function Accueil() {
           Rebecq, Mons…
         </p>
       </Section>
+
+      <AvisClients />
 
       {/* ---------------------------------------------------------------- */}
       {/* Professionnels                                                    */}

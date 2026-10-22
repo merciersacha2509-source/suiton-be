@@ -18,6 +18,7 @@ import { cn } from '@/lib/cn';
 const LIENS = [
   { href: '/nettoyage-fin-de-chantier', label: 'Fin de travaux' },
   { href: '/professionnels', label: 'Professionnels' },
+  { href: '/entretien-bureaux', label: 'Bureaux' },
   { href: '/nettoyage-de-vitres', label: 'Vitres' },
   { href: '/realisations', label: 'Réalisations' },
 ];

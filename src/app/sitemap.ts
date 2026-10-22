@@ -22,6 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/devis`, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${SITE_URL}/reservation`, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${SITE_URL}/professionnels`, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE_URL}/entretien-bureaux`, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE_URL}/nettoyage-fin-de-location`, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE_URL}/nettoyage-auto`, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE_URL}/nettoyage-textile`, changeFrequency: 'monthly', priority: 0.7 },

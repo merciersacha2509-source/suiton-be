@@ -1,3 +1,4 @@
+import { ChantiersRecents } from '@/components/site/chantiers-recents';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import {
@@ -99,6 +100,8 @@ export default async function PageRealisations() {
           </p>
         </div>
       </section>
+
+      <ChantiersRecents />
 
       {chantiers.length > 0 ? (
         <Section fond="mineral">
