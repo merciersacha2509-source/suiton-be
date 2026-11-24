@@ -68,7 +68,7 @@ export const ETAPES_CLIENT = [
   {
     numero: 1,
     titre: 'Vous décrivez le chantier',
-    detail: 'Six étapes, deux minutes. Une estimation s’affiche pendant que vous remplissez.',
+    detail: 'Cinq étapes, deux minutes. Une estimation s’affiche pendant que vous remplissez.',
   },
   {
     numero: 2,

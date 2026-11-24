@@ -6,6 +6,7 @@ import {
   ajouterTva,
   FIN_LOCATION,
   OPTIONS_FIN_LOCATION,
+  blackWeekActive,
   calculerCanape,
   calculerFinLocation,
   calculerMatelas,
@@ -194,5 +195,16 @@ describe('affichage', () => {
     expect(eur(90).replace(/\s/g, ' ')).toBe('90 €');
     expect(eur(108.9).replace(/\s/g, ' ')).toBe('108,90 €');
     expect(eur(37.5).replace(/\s/g, ' ')).toBe('37,50 €');
+  });
+});
+
+describe('Black Week', () => {
+  it('active jusqu’au 30/11 à 23:59 heure de Bruxelles, éteinte à minuit', () => {
+    expect(blackWeekActive(new Date('2026-11-30T23:59:59+01:00').getTime())).toBe(true);
+    expect(blackWeekActive(new Date('2026-12-01T00:00:00+01:00').getTime())).toBe(false);
+  });
+
+  it('ne change pas le tarif de référence de la vapeur', () => {
+    expect(calculerCanape(3, true).supplementVapeur).toBe(20);
   });
 });

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { Calculateur } from '@/components/site/calculateur';
 import { EnVue } from '@/components/site/en-vue';
+import { BandeauBlackWeek } from '@/components/site/bandeau-black-week';
 import { SuitonMark } from '@/components/brand/suiton-mark';
 import {
   AppelFinal,
@@ -149,6 +150,7 @@ export default async function Accueil() {
   return (
     <>
       <Jsonld donnees={jsonldFaq(FAQ_ACCUEIL)} />
+      <BandeauBlackWeek />
 
       {/* ---------------------------------------------------------------- */}
       {/* Premier ecran                                                     */}

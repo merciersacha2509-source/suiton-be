@@ -178,6 +178,18 @@ export const CANAPE_PLACE_AU_DELA = 10;
 const PLACES_PALIER_MAX = 8;
 /** Total vapeur : un supplement forfaitaire par canape, quelle que soit sa taille. */
 export const VAPEUR_CANAPE = 20;
+
+/**
+ * Black Week : option vapeur offerte sur les canapes jusqu'au 30/11 inclus,
+ * heure de Bruxelles. Le tarif de reference reste VAPEUR_CANAPE ; seul le
+ * simulateur et le bandeau lisent cette date, pour que l'offre s'eteigne
+ * seule sans toucher a la grille.
+ */
+export const FIN_BLACK_WEEK = new Date('2026-12-01T00:00:00+01:00').getTime();
+
+export function blackWeekActive(maintenant: number = Date.now()): boolean {
+  return maintenant < FIN_BLACK_WEEK;
+}
 export const PLACES_MAX_CANAPE = 12;
 
 export const CONTENU_VAPEUR_CANAPE =

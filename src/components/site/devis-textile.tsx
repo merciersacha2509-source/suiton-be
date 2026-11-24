@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Carte } from '@/components/site/blocs';
 import { FormulaireRappel } from '@/components/site/formulaire-rappel';
 import { PrixTvac } from '@/components/site/prix-tvac';
@@ -14,6 +14,7 @@ import {
   TAPIS_MAX,
   TAILLES_MATELAS,
   VAPEUR_CANAPE,
+  blackWeekActive,
   calculerCanape,
   calculerMatelas,
   calculerTapis,
@@ -49,14 +50,24 @@ export function DevisTextile() {
   const [matelas, setMatelas] = useState<QuantitesMatelas>({});
   const [nbTapis, setNbTapis] = useState(0);
 
-  const canape = places >= 1 ? calculerCanape(places, vapeur) : null;
+  // Meme double controle que le bandeau : l'offre ne survit pas au 30/11,
+  // meme sur une page regeneree la veille.
+  const [blackWeek, setBlackWeek] = useState(() => blackWeekActive());
+  useEffect(() => {
+    if (!blackWeekActive()) setBlackWeek(false);
+  }, []);
+
+  // Pendant la Black Week, la vapeur reste cochable mais ne s'ajoute pas au
+  // prix : le client voit exactement ce que le bandeau lui a promis.
+  const vapeurOfferte = vapeur && blackWeek;
+  const canape = places >= 1 ? calculerCanape(places, vapeur && !blackWeek) : null;
   const lits = calculerMatelas(matelas);
   const tapis = nbTapis > 0 ? calculerTapis(nbTapis) : null;
 
   const lignes: { libelle: string; min: number; max: number }[] = [];
   if (canape) {
     lignes.push({
-      libelle: `Canapé ${places} place${places > 1 ? 's' : ''}${vapeur ? ' + Total vapeur' : ''}`,
+      libelle: `Canapé ${places} place${places > 1 ? 's' : ''}${vapeur ? (vapeurOfferte ? ' + Total vapeur (offert, Black Week)' : ' + Total vapeur') : ''}`,
       min: canape.min,
       max: canape.max,
     });
@@ -131,7 +142,14 @@ export function DevisTextile() {
               <span className="flex items-baseline justify-between gap-3">
                 <span className="text-sm font-medium">+ Total vapeur</span>
                 <span className="shrink-0 text-sm font-medium">
-                  <PrixTvac tvac={VAPEUR_CANAPE} prefixe="+" avecHtva={false} />
+                  {blackWeek ? (
+                    <span className="block text-right">
+                      <s className="text-ardoise font-normal">+{eur(VAPEUR_CANAPE)}</s>{' '}
+                      Offert
+                    </span>
+                  ) : (
+                    <PrixTvac tvac={VAPEUR_CANAPE} prefixe="+" avecHtva={false} />
+                  )}
                   <span className="text-ardoise block text-right text-xs font-normal">
                     par canapé
                   </span>
@@ -139,6 +157,7 @@ export function DevisTextile() {
               </span>
               <span className="text-ardoise mt-0.5 block text-[0.8125rem] leading-relaxed">
                 {CONTENU_VAPEUR_CANAPE} Quel que soit l&apos;état du canapé.
+                {blackWeek ? ' Offerte pour tout canapé réservé jusqu’au 30/11.' : null}
               </span>
             </span>
           </label>

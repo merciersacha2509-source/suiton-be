@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { BandeauBlackWeek } from '@/components/site/bandeau-black-week';
 import { Section, TitreSection, Carte, ListePuces, Faq, FilAriane } from '@/components/site/blocs';
 import { DevisTextile } from '@/components/site/devis-textile';
 import { ENTREPRISE } from '@/lib/site/entreprise';
@@ -91,6 +92,7 @@ export default function PageNettoyageTextile() {
           jsonldFaq(FAQ),
         ]}
       />
+      <BandeauBlackWeek />
       <FilAriane
         items={[
           { nom: 'Accueil', href: '/' },
